@@ -6,81 +6,92 @@ const products = [
     id: 1,
     title: "Business Growth Ebook",
     category: "Ebook",
-    price: "₦4,500",
+    price: "₦92,000",
     icon: "📚",
     description: "Complete guide to scaling your business",
+    product_uuid: "b1751fac-fb9e-40c9-82dc-be64f039eb28",
   },
   {
     id: 2,
     title: "Invoice & Receipt Templates Pack",
     category: "Template Bundle",
-    price: "₦6,000",
+    price: "₦110,000",
     icon: "📄",
     description: "Professional business document templates",
+    product_uuid: "810eaa8f-e066-453b-a1de-7824d713c83f",
   },
   {
     id: 3,
     title: "Social Media Marketing Guide",
     category: "Ebook",
-    price: "₦5,200",
+    price: "₦98,500",
     icon: "📱",
     description: "Master social media marketing strategies",
+    product_uuid: "99013bb2-6ce9-4ea6-8309-6fb3d4323272",
   },
   {
     id: 4,
     title: "Startup Pitch Deck Template",
     category: "Presentation",
-    price: "₦7,500",
+    price: "₦130,000",
     icon: "📊",
     description: "Investor-ready pitch deck template",
+    product_uuid: "5cdb43e6-6450-4348-ae10-544e666c0ab3",
   },
   {
     id: 5,
     title: "Web Design UI Kit",
     category: "Digital Asset",
-    price: "₦8,000",
+    price: "₦150,000",
     icon: "🎨",
     description: "Complete UI components for web design",
+    product_uuid: "c070f19c-aea6-4227-893e-d2b3baa64f6e",
   },
   {
     id: 6,
     title: "Personal Finance Planner",
     category: "Digital Planner",
-    price: "₦3,500",
+    price: "₦90,500",
     icon: "🧮",
     description: "Organize your finances effectively",
+    product_uuid: "33d28631-f3b8-47bd-bdac-9075c9174d8a",
   },
   {
     id: 7,
     title: "Content Calendar Template",
     category: "Productivity Kit",
-    price: "₦4,000",
+    price: "₦95,500",
     icon: "📅",
     description: "Plan your content strategy",
+    product_uuid: "bdaab02e-ea1c-47b2-a3c7-77680ed0643e",
   },
   {
     id: 8,
     title: "Cybersecurity Awareness Ebook",
     category: "Ebook",
-    price: "₦5,800",
+    price: "₦105,000",
     icon: "🔒",
     description: "Stay safe in the digital world",
+    product_uuid: "e52400dc-ed3f-4192-a85b-62328eea1c87",
   },
   {
     id: 9,
     title: "Resume & CV Template Pack",
     category: "Templates",
-    price: "₦3,800",
+    price: "₦91,500",
     icon: "👤",
     description: "Professional resume and CV designs",
+
+    product_uuid: "56daaa4a-443b-44e4-b22b-972da4568081",
   },
   {
     id: 10,
     title: "Small Business Legal Docs Bundle",
     category: "Templates",
-    price: "₦6,500",
+    price: "₦120,000",
     icon: "🏢",
     description: "Essential legal documents for businesses",
+    product_uuid: "80351708-fe59-47c2-afd3-b5999a7cf2a7",
   },
 ];
 
@@ -125,12 +136,57 @@ function renderProducts() {
             <p class="product-description">${product.description}</p>
             <div class="product-footer">
                 <span class="product-price">${product.price}</span>
-                <button class="btn-cta" onclick="handleBuyNow(${product.id})">Buy Now</button>
+                <button class="btn-cta" onclick="loadIframe('https://checkout-page-frontend-development-749119130796.europe-west1.run.app/checkout?id=${product.product_uuid}', '${product.title}')">Buy Now</button>
             </div>
         </div>
     `
     )
     .join("");
+}
+
+// Load checkout page in an overlay iframe (caller supplies full URL)
+function loadIframe(url, productTitle) {
+  let overlay = document.getElementById("checkoutOverlay");
+  if (!overlay) {
+    overlay = document.createElement("div");
+    overlay.id = "checkoutOverlay";
+    overlay.style.cssText =
+      "position:fixed;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;z-index:10000;";
+
+    const container = document.createElement("div");
+    container.style.cssText =
+      "width:95%;max-width:1100px;height:85%;background:#fff;border-radius:10px;overflow:hidden;position:relative;";
+
+    const closeBtn = document.createElement("button");
+    closeBtn.textContent = "×";
+    closeBtn.setAttribute("aria-label", "Close checkout");
+    closeBtn.style.cssText =
+      "position:absolute;top:8px;right:12px;font-size:28px;background:none;border:none;cursor:pointer;z-index:10001;";
+    closeBtn.addEventListener("click", closeCheckoutOverlay);
+
+    const iframe = document.createElement("iframe");
+    iframe.id = "checkoutIframe";
+    iframe.src = url;
+    iframe.style.cssText = "width:100%;height:100%;border:0;display:block;";
+
+    container.appendChild(closeBtn);
+    container.appendChild(iframe);
+    overlay.appendChild(container);
+    document.body.appendChild(overlay);
+  } else {
+    const iframe = document.getElementById("checkoutIframe");
+    if (iframe) iframe.src = url;
+    overlay.style.display = "flex";
+  }
+}
+
+function closeCheckoutOverlay() {
+  const overlay = document.getElementById("checkoutOverlay");
+  if (overlay) {
+    const iframe = document.getElementById("checkoutIframe");
+    if (iframe) iframe.src = "about:blank";
+    overlay.style.display = "none";
+  }
 }
 
 // Handle Buy Now

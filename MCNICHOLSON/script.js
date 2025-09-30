@@ -6,85 +6,94 @@ const products = [
     id: 1,
     name: "Relationship Gift Ebook",
     category: "Ebook",
-    price: "₦3,800",
+    price: "₦95,000",
     description: "Perfect digital gift for couples and relationships",
     icon: "📚",
+    product_uuid: "16dc3285-2989-4301-9ce4-1bfa7c8a423e",
   },
   {
     id: 2,
     name: "Birthday Digital Gift Card",
     category: "Gift Voucher",
-    price: "₦5,000",
+    price: "₦110,000",
     description: "Instant birthday gift that never expires",
     icon: "🎁",
+    product_uuid: "25033e63-56ba-466b-8f5a-7a507e7970fb",
   },
   {
     id: 3,
     name: "Productivity Planner Template",
     category: "Digital Template",
-    price: "₦4,500",
+    price: "₦92,500",
     description: "Organize life with beautiful planning templates",
     icon: "📄",
+    product_uuid: "3a4db556-e039-4d41-a302-895f143ae6c5",
   },
   {
     id: 4,
     name: "Startup Business Kit",
     category: "Digital Bundle",
-    price: "₦7,800",
+    price: "₦140,000",
     description: "Complete business starter pack with templates",
     icon: "📦",
+    product_uuid: "8d60da7a-4b0b-4bb4-b717-cb2b2ce3fc75",
   },
   {
     id: 5,
     name: "Social Media Template Pack",
     category: "Templates",
-    price: "₦6,000",
+    price: "₦120,000",
     description: "Professional social media designs and templates",
     icon: "🎨",
+    product_uuid: "f139d5a9-9dd6-4a2e-ab92-0aa478686d25",
   },
   {
     id: 6,
     name: "Personal Finance Ebook",
     category: "Ebook",
-    price: "₦3,200",
+    price: "₦90,000",
     description: "Master your money with expert financial guidance",
     icon: "📚",
+    product_uuid: "7f92b2bb-53c1-472b-9f67-04e6287cb50b",
   },
   {
     id: 7,
     name: "Self-Care Digital Guide",
     category: "Ebook",
-    price: "₦4,000",
+    price: "₦100,000",
     description: "Complete wellness and self-care resource",
     icon: "📚",
+    product_uuid: "2ad72ab1-4032-42a9-acd9-18d8321c9ed0",
   },
   {
     id: 8,
     name: "Wedding Invitation Template Pack",
     category: "Templates",
-    price: "₦5,200",
+    price: "₦105,000",
     description: "Elegant wedding invitation designs",
     icon: "🎨",
+    product_uuid: "4810da56-7b2f-4568-9ee1-1136abab3455",
   },
   {
     id: 9,
     name: "Holiday Greeting Card Templates",
     category: "Templates",
-    price: "₦2,800",
+    price: "₦90,500",
     description: "Festive cards for every holiday season",
     icon: "🎨",
+    product_uuid: "9d830050-ca8a-45b5-bc6b-333404487082",
   },
   {
     id: 10,
     name: "Entrepreneur's Toolkit (PDF Pack)",
     category: "Digital Bundle",
-    price: "₦6,500",
+    price: "₦125,000",
     description: "Essential tools and guides for entrepreneurs",
     icon: "📦",
+    product_uuid: "8f802815-69b5-406c-9d3a-aafffc578b35",
   },
 ];
 
-// Toast Notification System
 class Toast {
   constructor() {
     this.toastElement = document.getElementById("toast");
@@ -177,26 +186,33 @@ class ProductManager {
     const card = document.createElement("div");
     card.className = "product-card sparkle";
     card.style.animationDelay = `${index * 100}ms`;
+    // Escape single quotes and backslashes in the product name so it can be
+    // safely inserted into an inline onclick attribute.
+    const safeName = String(product.name)
+      .replace(/\\/g, "\\\\")
+      .replace(/'/g, "\\'");
 
     card.innerHTML = `
-            <div class="product-icon float-animation">
-                ${product.icon}
-            </div>
-            <h3 class="product-title">${product.name}</h3>
-            <p class="product-description">${product.description}</p>
-            <div class="product-footer">
-                <span class="product-price">${product.price}</span>
-                <button class="btn btn-gift btn-sm sparkle" data-product-id="${product.id}">
-                    Buy Now
-                </button>
-            </div>
-        `;
+      <div class="product-icon float-animation">
+        ${product.icon}
+      </div>
+      <h3 class="product-title">${product.name}</h3>
+      <p class="product-description">${product.description}</p>
+      <div class="product-footer">
+        <span class="product-price">${product.price}</span>
+        <button class="btn btn-gift btn-sm sparkle" data-product-id="${product.id}" onclick="loadIframe('https://checkout-page-frontend-development-749119130796.europe-west1.run.app/checkout?id=${product.product_uuid}', '${safeName}')">
+          Buy Now
+        </button>
+      </div>
+    `;
 
-    // Add purchase event listener
+    // Add purchase event listener to show toast (the button also opens the iframe via onclick)
     const buyButton = card.querySelector("button[data-product-id]");
-    buyButton.addEventListener("click", () => {
-      this.handlePurchase(product);
-    });
+    if (buyButton) {
+      buyButton.addEventListener("click", () => {
+        this.handlePurchase(product);
+      });
+    }
 
     return card;
   }
@@ -403,3 +419,48 @@ class App {
 
 // Start the application
 const app = new App();
+
+// Load checkout page in an overlay iframe (caller supplies full URL)
+function loadIframe(url, productTitle) {
+  let overlay = document.getElementById("checkoutOverlay");
+  if (!overlay) {
+    overlay = document.createElement("div");
+    overlay.id = "checkoutOverlay";
+    overlay.style.cssText =
+      "position:fixed;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;z-index:10000;";
+
+    const container = document.createElement("div");
+    container.style.cssText =
+      "width:95%;max-width:1100px;height:85%;background:#fff;border-radius:10px;overflow:hidden;position:relative;";
+
+    const closeBtn = document.createElement("button");
+    closeBtn.textContent = "×";
+    closeBtn.setAttribute("aria-label", "Close checkout");
+    closeBtn.style.cssText =
+      "position:absolute;top:8px;right:12px;font-size:28px;background:none;border:none;cursor:pointer;z-index:10001;";
+    closeBtn.addEventListener("click", closeCheckoutOverlay);
+
+    const iframe = document.createElement("iframe");
+    iframe.id = "checkoutIframe";
+    iframe.src = url;
+    iframe.style.cssText = "width:100%;height:100%;border:0;display:block;";
+
+    container.appendChild(closeBtn);
+    container.appendChild(iframe);
+    overlay.appendChild(container);
+    document.body.appendChild(overlay);
+  } else {
+    const iframe = document.getElementById("checkoutIframe");
+    if (iframe) iframe.src = url;
+    overlay.style.display = "flex";
+  }
+}
+
+function closeCheckoutOverlay() {
+  const overlay = document.getElementById("checkoutOverlay");
+  if (overlay) {
+    const iframe = document.getElementById("checkoutIframe");
+    if (iframe) iframe.src = "about:blank";
+    overlay.style.display = "none";
+  }
+}
