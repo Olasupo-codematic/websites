@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DAPRIM COMPANY LIMITED - Social Media Marketing Kits</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --font-heading: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto,
+          Arial;
+        --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+          Arial;
+        --fs-h1: clamp(2rem, 1.5rem + 1.5vw, 3rem);
+        --fs-h2: clamp(1.5rem, 1.2rem + 1vw, 2.2rem);
+        --fs-h3: clamp(1.2rem, 1rem + 0.7vw, 1.8rem);
+        --fs-body: clamp(0.9rem, 0.8rem + 0.3vw, 1.1rem);
+        --fs-small: clamp(0.8rem, 0.7rem + 0.3vw, 0.95rem);
+
+        --primary: #0ea5a4;
+        --primary-dark: #0d9494;
+        --accent: #7c3aed;
+        --accent-dark: #6d28d9;
+        --background: #f8fafc;
+        --surface: #ffffff;
+        --text: #0f172a;
+        --text-light: #64748b;
+        --border: #e2e8f0;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+        --radius: 8px;
+        --radius-lg: 12px;
+        --transition: all 0.3s ease;
+
+        --max-width: 1120px;
+        --spacing: 20px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        font-size: var(--fs-body);
+        line-height: 1.6;
+        color: var(--text);
+        background-color: var(--background);
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: var(--font-heading);
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: var(--spacing);
+      }
+
+      h1 {
+        font-size: var(--fs-h1);
+      }
+
+      h2 {
+        font-size: var(--fs-h2);
+      }
+
+      h3 {
+        font-size: var(--fs-h3);
+      }
+
+      p {
+        margin-bottom: var(--spacing);
+      }
+
+      a {
+        color: var(--primary);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      a:hover {
+        color: var(--primary-dark);
+      }
+
+      .container {
+        width: 100%;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 calc(var(--spacing) / 2);
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        border-radius: var(--radius);
+        font-family: var(--font-heading);
+        font-weight: 600;
+        font-size: var(--fs-body);
+        cursor: pointer;
+        transition: var(--transition);
+        text-align: center;
+      }
+
+      .btn:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .btn-accent {
+        background-color: var(--accent);
+      }
+
+      .btn-accent:hover {
+        background-color: var(--accent-dark);
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border: 2px solid var(--primary);
+        color: var(--primary);
+      }
+
+      .btn-outline:hover {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .section {
+        padding: calc(var(--spacing) * 3) 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: calc(var(--spacing) * 2);
+      }
+
+      .section-title p {
+        max-width: 600px;
+        margin: 0 auto;
+        color: var(--text-light);
+      }
+
+      /* Header Styles */
+      header {
+        background-color: var(--surface);
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--spacing) 0;
+      }
+
+      .logo {
+        font-family: var(--font-heading);
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--text);
+      }
+
+      .logo span {
+        color: var(--primary);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: calc(var(--spacing) * 1.5);
+      }
+
+      .nav-links a {
+        color: var(--text);
+        font-weight: 500;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--text);
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--accent) 100%
+        );
+        color: white;
+        padding: calc(var(--spacing) * 4) 0;
+        text-align: center;
+      }
+
+      .hero h1 {
+        color: white;
+        margin-bottom: calc(var(--spacing) * 1.5);
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto calc(var(--spacing) * 2);
+        opacity: 0.9;
+      }
+
+      .hero-btns {
+        display: flex;
+        gap: var(--spacing);
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      /* Products Section */
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: calc(var(--spacing) * 1.5);
+      }
+
+      .product-card {
+        background-color: var(--surface);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .product-image {
+        height: 180px;
+        background-color: var(--primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2.5rem;
+      }
+
+      .product-content {
+        padding: var(--spacing);
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .product-title {
+        font-size: 1.2rem;
+        margin-bottom: calc(var(--spacing) / 2);
+      }
+
+      .product-description {
+        color: var(--text-light);
+        margin-bottom: var(--spacing);
+        flex-grow: 1;
+      }
+
+      .product-price {
+        font-family: var(--font-heading);
+        font-weight: 700;
+        font-size: 1.3rem;
+        color: var(--primary);
+        margin-bottom: var(--spacing);
+      }
+
+      /* How It Works Section */
+      .steps-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: calc(var(--spacing) * 2);
+        margin-top: calc(var(--spacing) * 2);
+      }
+
+      .step {
+        text-align: center;
+        padding: calc(var(--spacing) * 1.5);
+        background-color: var(--surface);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow);
+      }
+
+      .step-icon {
+        width: 70px;
+        height: 70px;
+        background-color: var(--primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto var(--spacing);
+        color: white;
+        font-size: 1.8rem;
+      }
+
+      /* Benefits Section */
+      .benefits-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: calc(var(--spacing) * 1.5);
+        margin-top: calc(var(--spacing) * 2);
+      }
+
+      .benefit {
+        text-align: center;
+        padding: var(--spacing);
+      }
+
+      .benefit-icon {
+        width: 60px;
+        height: 60px;
+        background-color: var(--accent);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto var(--spacing);
+        color: white;
+        font-size: 1.5rem;
+      }
+
+      /* Contact Section */
+      .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: var(--surface);
+        padding: calc(var(--spacing) * 2);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow);
+      }
+
+      .form-group {
+        margin-bottom: var(--spacing);
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        font-family: var(--font-body);
+        font-size: var(--fs-body);
+        transition: var(--transition);
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(14, 165, 164, 0.2);
+      }
+
+      textarea.form-control {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--text);
+        color: white;
+        padding: calc(var(--spacing) * 2) 0;
+        margin-top: calc(var(--spacing) * 3);
+      }
+
+      .footer-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing);
+        text-align: center;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: var(--spacing);
+      }
+
+      .footer-links a {
+        color: white;
+        opacity: 0.8;
+      }
+
+      .footer-links a:hover {
+        opacity: 1;
+      }
+
+      /* Modal Styles */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .modal.active {
+        display: flex;
+        opacity: 1;
+      }
+
+      .modal-content {
+        background-color: var(--surface);
+        border-radius: var(--radius-lg);
+        padding: calc(var(--spacing) * 2);
+        max-width: 500px;
+        width: 90%;
+        box-shadow: var(--shadow-hover);
+        transform: scale(0.9);
+        transition: transform 0.3s ease;
+      }
+
+      .modal.active .modal-content {
+        transform: scale(1);
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--spacing);
+      }
+
+      .modal-close {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--text-light);
+      }
+
+      .modal-close:hover {
+        color: var(--text);
+      }
+
+      /* Filter Section */
+      .filter-container {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing);
+        margin-bottom: calc(var(--spacing) * 2);
+        flex-wrap: wrap;
+      }
+
+      .filter-btn {
+        padding: 8px 16px;
+        background-color: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .filter-btn.active,
+      .filter-btn:hover {
+        background-color: var(--primary);
+        color: white;
+        border-color: var(--primary);
+      }
+
+      /* Search Bar */
+      .search-container {
+        max-width: 500px;
+        margin: 0 auto calc(var(--spacing) * 2);
+        position: relative;
+      }
+
+      .search-input {
+        width: 100%;
+        padding: 12px 16px 12px 45px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        font-family: var(--font-body);
+        font-size: var(--fs-body);
+        transition: var(--transition);
+      }
+
+      .search-input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(14, 165, 164, 0.2);
+      }
+
+      .search-icon {
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-light);
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background-color: var(--surface);
+          flex-direction: column;
+          padding: var(--spacing);
+          box-shadow: var(--shadow);
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .mobile-menu-btn {
+          display: block;
+        }
+
+        .hero-btns {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .hero-btns .btn {
+          width: 100%;
+          max-width: 300px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .section {
+          padding: calc(var(--spacing) * 2) 0;
+        }
+
+        .products-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .steps-container,
+        .benefits-container {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container header-container">
+        <div class="logo">DAPRIM <span>COMPANY</span></div>
+        <nav>
+          <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+          <div class="nav-links" id="navLinks">
+            <a href="#products">Products</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#benefits">Benefits</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <h1>Instant Digital Solutions for Social Media Success</h1>
+        <p>
+          Browse, buy, and receive your social media marketing kits instantly
+          via email. No waiting, no subscriptions.
+        </p>
+        <div class="hero-btns">
+          <a href="#products" class="btn">View Products</a>
+          <a href="#how-it-works" class="btn btn-outline">How It Works</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section" id="products">
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Social Media Marketing Kits</h2>
+          <p>
+            Professionally designed templates and resources to boost your social
+            media presence
+          </p>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+          <div class="search-icon">🔍</div>
+          <input
+            type="text"
+            class="search-input"
+            id="searchInput"
+            placeholder="Search products..."
+          />
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="filter-container">
+          <button class="filter-btn active" data-filter="all">
+            All Products
+          </button>
+          <button class="filter-btn" data-filter="instagram">Instagram</button>
+          <button class="filter-btn" data-filter="tiktok">TikTok</button>
+          <button class="filter-btn" data-filter="templates">Templates</button>
+          <button class="filter-btn" data-filter="tools">Tools</button>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-grid" id="productsGrid">
+          <!-- Products will be dynamically inserted here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section
+      class="section"
+      id="how-it-works"
+      style="background-color: var(--surface)"
+    >
+      <div class="container">
+        <div class="section-title">
+          <h2>How It Works</h2>
+          <p>Get your digital products in just three simple steps</p>
+        </div>
+        <div class="steps-container">
+          <div class="step">
+            <div class="step-icon">1</div>
+            <h3>Choose a Product</h3>
+            <p>
+              Browse our collection and select the social media marketing kit
+              that fits your needs.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-icon">2</div>
+            <h3>Pay Securely</h3>
+            <p>
+              Complete your purchase with our secure payment system. No hidden
+              fees.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-icon">3</div>
+            <h3>Receive Instantly</h3>
+            <p>
+              Get immediate access to your digital product via email. No waiting
+              required.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section" id="benefits">
+      <div class="container">
+        <div class="section-title">
+          <h2>Why Choose Our Digital Products</h2>
+          <p>
+            We're committed to providing value that helps grow your social media
+            presence
+          </p>
+        </div>
+        <div class="benefits-container">
+          <div class="benefit">
+            <div class="benefit-icon">⚡</div>
+            <h3>Instant Access</h3>
+            <p>
+              Receive your digital products immediately after purchase, no
+              waiting required.
+            </p>
+          </div>
+          <div class="benefit">
+            <div class="benefit-icon">💰</div>
+            <h3>No Recurring Fees</h3>
+            <p>
+              One-time payment for lifetime access to your purchased products.
+            </p>
+          </div>
+          <div class="benefit">
+            <div class="benefit-icon">📧</div>
+            <h3>Email Delivery</h3>
+            <p>
+              All products are delivered directly to your email for easy access.
+            </p>
+          </div>
+          <div class="benefit">
+            <div class="benefit-icon">🌙</div>
+            <h3>24/7 Availability</h3>
+            <p>Shop and download anytime, from anywhere in the world.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Get In Touch</h2>
+          <p>
+            Have questions? We're here to help with your social media marketing
+            needs
+          </p>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" class="form-control" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-accent" style="width: 100%">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container footer-container">
+        <div class="logo">DAPRIM <span>COMPANY</span></div>
+        <p>hello@daprimcompany.com</p>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms-of-service.html">Terms of Service</a>
+        </div>
+        <p>&copy; 2023 DAPRIM COMPANY LIMITED. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Thank You Modal -->
+    <div class="modal" id="thankYouModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Thank You!</h3>
+          <button class="modal-close" id="closeThankYouModal">&times;</button>
+        </div>
+        <p>
+          Your message has been sent successfully. We'll get back to you as soon
+          as possible.
+        </p>
+        <button
+          class="btn"
+          style="margin-top: var(--spacing)"
+          id="closeThankYouBtn"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+
+    <!-- Purchase Modal -->
+    <div class="modal" id="purchaseModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="purchaseModalTitle">Complete Your Purchase</h3>
+          <button class="modal-close" id="closePurchaseModal">&times;</button>
+        </div>
+        <p id="purchaseModalDescription">You're about to purchase:</p>
+        <div class="form-group">
+          <label for="purchaseEmail">Your Email</label>
+          <input
+            type="email"
+            id="purchaseEmail"
+            class="form-control"
+            placeholder="Enter your email for delivery"
+            required
+          />
+        </div>
+        <button
+          class="btn btn-accent"
+          style="width: 100%; margin-top: var(--spacing)"
+          id="confirmPurchase"
+        >
+          Complete Purchase
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // Product Data
+      const products = [
+        {
+          id: 1,
+          title: "Instagram Post Kit",
+          description: "30 ready-made templates for your Instagram posts",
+          price: "7,800",
+          category: "instagram",
+          shortDesc: "Editable Canva + PNG pack for 30 posts",
+        },
+        {
+          id: 2,
+          title: "Reels Templates Pack",
+          description: "15 animated scripts and assets for engaging Reels",
+          price: "7,550",
+          category: "instagram",
+          shortDesc: "Hook-to-CTA short-form video templates and captions",
+        },
+        {
+          id: 3,
+          title: "30-Day Content Calendar",
+          description: "Complete posting schedule with captions for 30 days",
+          price: "7,250",
+          category: "templates",
+          shortDesc: "Post schedule + caption bank tailored for brands",
+        },
+        {
+          id: 4,
+          title: "Hashtag & Caption Research Sheet",
+          description:
+            "Niche-specific hashtag clusters and proven caption formulas",
+          price: "6,800",
+          category: "tools",
+          shortDesc: "Niche hashtag clusters + tested caption formulas",
+        },
+        {
+          id: 5,
+          title: "Instagram Ads Creative Pack",
+          description: "5 ad variants optimized for maximum conversions",
+          price: "7,600",
+          category: "instagram",
+          shortDesc: "Ad creatives + copy optimized for conversions",
+        },
+        {
+          id: 6,
+          title: "Influencer Outreach Template + Tracker",
+          description: "Complete outreach system with emails and tracking",
+          price: "6,950",
+          category: "tools",
+          shortDesc: "Outreach emails, negotiation checklist, and tracker CSV",
+        },
+        {
+          id: 7,
+          title: "Social Analytics Dashboard Template",
+          description: "Track and visualize your social media performance",
+          price: "7,450",
+          category: "tools",
+          shortDesc: "Track reach, engagement, CPC metrics with visualization",
+        },
+        {
+          id: 8,
+          title: "TikTok Hook & Script Pack",
+          description: "20 attention-grabbing hooks and posting cues",
+          price: "7,100",
+          category: "tiktok",
+          shortDesc: "Short-form video hooks and posting cues",
+        },
+      ];
+
+      // DOM Elements
+      const productsGrid = document.getElementById("productsGrid");
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const searchInput = document.getElementById("searchInput");
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const navLinks = document.getElementById("navLinks");
+      const contactForm = document.getElementById("contactForm");
+      const thankYouModal = document.getElementById("thankYouModal");
+      const closeThankYouModal = document.getElementById("closeThankYouModal");
+      const closeThankYouBtn = document.getElementById("closeThankYouBtn");
+      const purchaseModal = document.getElementById("purchaseModal");
+      const closePurchaseModal = document.getElementById("closePurchaseModal");
+      const purchaseModalTitle = document.getElementById("purchaseModalTitle");
+      const purchaseModalDescription = document.getElementById(
+        "purchaseModalDescription"
+      );
+      const confirmPurchase = document.getElementById("confirmPurchase");
+
+      // Current filter and search state
+      let currentFilter = "all";
+      let currentSearch = "";
+
+      // Initialize the page
+      document.addEventListener("DOMContentLoaded", function () {
+        renderProducts();
+        setupEventListeners();
+      });
+
+      // Render products based on current filter and search
+      function renderProducts() {
+        productsGrid.innerHTML = "";
+
+        const filteredProducts = products.filter((product) => {
+          const matchesFilter =
+            currentFilter === "all" || product.category === currentFilter;
+          const matchesSearch =
+            product.title.toLowerCase().includes(currentSearch.toLowerCase()) ||
+            product.description
+              .toLowerCase()
+              .includes(currentSearch.toLowerCase());
+
+          return matchesFilter && matchesSearch;
+        });
+
+        if (filteredProducts.length === 0) {
+          productsGrid.innerHTML =
+            '<p style="grid-column: 1 / -1; text-align: center; padding: 40px;">No products found matching your criteria.</p>';
+          return;
+        }
+
+        filteredProducts.forEach((product) => {
+          const productCard = document.createElement("div");
+          productCard.className = "product-card";
+          productCard.dataset.category = product.category;
+
+          // Generate a simple icon based on category
+          let icon = "📱";
+          if (product.category === "instagram") icon = "📸";
+          if (product.category === "tiktok") icon = "🎵";
+          if (product.category === "templates") icon = "📋";
+          if (product.category === "tools") icon = "🛠️";
+
+          productCard.innerHTML = `
+                    <div class="product-image">
+                        ${icon}
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">${product.title}</h3>
+                        <p class="product-description">${product.shortDesc}</p>
+                        <div class="product-price">${product.price} KES</div>
+                        <button class="btn btn-accent buy-now-btn" data-id="${product.id}">Buy Now</button>
+                    </div>
+                `;
+
+          productsGrid.appendChild(productCard);
+        });
+
+        // Add event listeners to buy buttons
+        document.querySelectorAll(".buy-now-btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const productId = parseInt(this.dataset.id);
+            openPurchaseModal(productId);
+          });
+        });
+      }
+
+      // Setup event listeners
+      function setupEventListeners() {
+        // Filter buttons
+        filterBtns.forEach((btn) => {
+          btn.addEventListener("click", function () {
+            // Update active button
+            filterBtns.forEach((b) => b.classList.remove("active"));
+            this.classList.add("active");
+
+            // Update filter and render products
+            currentFilter = this.dataset.filter;
+            renderProducts();
+          });
+        });
+
+        // Search input
+        searchInput.addEventListener("input", function () {
+          currentSearch = this.value;
+          renderProducts();
+        });
+
+        // Mobile menu
+        mobileMenuBtn.addEventListener("click", function () {
+          navLinks.classList.toggle("active");
+        });
+
+        // Contact form
+        contactForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // In a real implementation, you would send the form data to a server
+          // For this demo, we'll just show the thank you modal
+
+          // Reset form
+          contactForm.reset();
+
+          // Show thank you modal
+          thankYouModal.classList.add("active");
+        });
+
+        // Modal close buttons
+        closeThankYouModal.addEventListener("click", function () {
+          thankYouModal.classList.remove("active");
+        });
+
+        closeThankYouBtn.addEventListener("click", function () {
+          thankYouModal.classList.remove("active");
+        });
+
+        closePurchaseModal.addEventListener("click", function () {
+          purchaseModal.classList.remove("active");
+        });
+
+        // Confirm purchase button
+        confirmPurchase.addEventListener("click", function () {
+          const email = document.getElementById("purchaseEmail").value;
+
+          if (!email) {
+            alert("Please enter your email address");
+            return;
+          }
+
+          // In a real implementation, you would process the payment
+          // For this demo, we'll just show an alert and close the modal
+
+          alert(
+            `Thank you for your purchase! Your product will be sent to ${email}`
+          );
+          purchaseModal.classList.remove("active");
+          document.getElementById("purchaseEmail").value = "";
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener("click", function (e) {
+          if (e.target === thankYouModal) {
+            thankYouModal.classList.remove("active");
+          }
+          if (e.target === purchaseModal) {
+            purchaseModal.classList.remove("active");
+          }
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll(".nav-links a").forEach((link) => {
+          link.addEventListener("click", function () {
+            navLinks.classList.remove("active");
+          });
+        });
+      }
+
+      // Open purchase modal for a specific product
+      function openPurchaseModal(productId) {
+        const product = products.find((p) => p.id === productId);
+
+        if (product) {
+          purchaseModalTitle.textContent = `Purchase: ${product.title}`;
+          purchaseModalDescription.textContent = product.shortDesc;
+          purchaseModal.classList.add("active");
+
+          // Store the product ID for the purchase confirmation
+          confirmPurchase.dataset.productId = productId;
+        }
+      }
+    </script>
+  </body>
+</html>

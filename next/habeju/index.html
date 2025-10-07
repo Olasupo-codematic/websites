@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HABEJU LIMITED - Instant Digital Downloads</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700&family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Custom CSS Tokens and Base Styles */
+      :root {
+        --font-heading: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto,
+          Arial;
+        --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+          Arial;
+        --fs-h1: clamp(1.6rem, 1.3rem + 2vw, 2.6rem);
+        --fs-body: clamp(0.95rem, 0.85rem + 0.3vw, 1.05rem);
+        --space: 20px;
+        --max-w: 1120px;
+        --radius: 12px;
+        --primary: #006d5b; /* deep teal */
+        --accent: #ffb84d; /* warm gold */
+        --bg: #f7faf8; /* very light neutral */
+        --text: #0f1720; /* near-black */
+      }
+
+      body {
+        font-family: var(--font-body);
+        color: var(--text);
+        background-color: var(--bg);
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: var(--font-heading);
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      /* Utility Classes for Custom Variables */
+      .bg-primary {
+        background-color: var(--primary);
+      }
+      .text-primary {
+        color: var(--primary);
+      }
+      .bg-accent {
+        background-color: var(--accent);
+      }
+      .text-accent {
+        color: var(--accent);
+      }
+      .text-text {
+        color: var(--text);
+      }
+      .bg-bg {
+        background-color: var(--bg);
+      }
+      .p-space {
+        padding: var(--space);
+      }
+      .m-space {
+        margin: var(--space);
+      }
+      .max-w-content {
+        max-width: var(--max-w);
+      }
+      .rounded-main {
+        border-radius: var(--radius);
+      }
+
+      /* Heading Font Size */
+      .text-h1 {
+        font-size: var(--fs-h1);
+      }
+
+      /* Custom Button Styling */
+      .btn {
+        padding: 12px 24px;
+        border-radius: var(--radius);
+        font-weight: 600;
+        transition: all 0.2s ease-in-out;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -2px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-primary {
+        background-color: var(--primary);
+        color: var(--bg);
+      }
+      .btn-primary:hover {
+        box-shadow: 0 6px 12px -3px rgba(0, 109, 91, 0.4),
+          0 3px 6px -4px rgba(0, 109, 91, 0.2);
+        transform: translateY(-1px);
+      }
+
+      /* Modal Transitions */
+      .modal-overlay {
+        transition: opacity 0.3s ease-out;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .modal-overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .modal-content {
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        transform: scale(0.9);
+      }
+      .modal-overlay.active .modal-content {
+        transform: scale(1);
+      }
+
+      /* Product Card Hover Effect */
+      .product-card {
+        transition: all 0.3s ease-in-out;
+      }
+      .product-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+    </style>
+  </head>
+  <body class="bg-bg">
+    <!-- Header & Navigation -->
+    <header
+      class="sticky top-0 z-10 bg-bg/95 backdrop-blur-sm border-b border-primary/10"
+    >
+      <div class="max-w-content mx-auto p-4 flex justify-between items-center">
+        <h1 class="text-xl font-bold text-primary">HABEJU LIMITED</h1>
+        <nav>
+          <a
+            href="#products"
+            class="text-text hover:text-primary transition mx-3 font-medium"
+            >Products</a
+          >
+          <a
+            href="#contact"
+            class="text-text hover:text-primary transition mx-3 font-medium"
+            >Contact</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="max-w-content mx-auto p-space pt-16 pb-24 text-center">
+      <h2 class="text-h1 mb-4 leading-tight">
+        Instant Digital Solutions for
+        <span class="text-accent">HABEJU LIMITED</span> Customers
+      </h2>
+      <p class="text-xl text-text/70 mb-8 max-w-3xl mx-auto">
+        Browse, buy, and receive your digital gift files instantly via email.
+        Creative, professional, and ready-to-use.
+      </p>
+      <a href="#products" class="btn btn-primary inline-block">View Products</a>
+    </section>
+
+    <!-- Product Grid Section -->
+    <section id="products" class="max-w-content mx-auto p-space pt-8 pb-24">
+      <h2 class="text-3xl font-bold text-center mb-12">
+        Our Instant Downloads
+      </h2>
+
+      <!-- Product Cards Container -->
+      <!-- Responsive Grid: 1 column on mobile, 2 on small screens, 3 on medium screens and up -->
+      <div
+        id="product-grid"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-space"
+      >
+        <!-- Product cards will be injected here by JavaScript -->
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="bg-primary/5 py-20">
+      <div class="max-w-content mx-auto p-space text-center">
+        <h2 class="text-3xl font-bold mb-12 text-primary">
+          How It Works: Instant Delight in 3 Steps
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-space">
+          <!-- Step 1 -->
+          <div class="p-8 bg-bg rounded-main shadow-lg">
+            <div class="text-4xl text-accent mb-4">1.</div>
+            <h3 class="text-xl font-semibold mb-2 text-text">
+              Choose a Product
+            </h3>
+            <p class="text-sm text-text/70">
+              Browse our selection of beautiful templates and digital gifts.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="p-8 bg-bg rounded-main shadow-lg">
+            <div class="text-4xl text-accent mb-4">2.</div>
+            <h3 class="text-xl font-semibold mb-2 text-text">
+              Pay Securely Online
+            </h3>
+            <p class="text-sm text-text/70">
+              Complete your purchase quickly using our simple, secure checkout.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="p-8 bg-bg rounded-main shadow-lg">
+            <div class="text-4xl text-accent mb-4">3.</div>
+            <h3 class="text-xl font-semibold mb-2 text-text">
+              Receive Instantly
+            </h3>
+            <p class="text-sm text-text/70">
+              Your download link and receipt are sent to your email immediately.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Block -->
+    <section class="max-w-content mx-auto p-space pt-24 pb-20">
+      <h2 class="text-3xl font-bold text-center mb-12 text-primary">
+        Why Choose HABEJU?
+      </h2>
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-space text-center"
+      >
+        <div class="p-4">
+          <div class="text-4xl text-accent mb-3">⚡</div>
+          <h3 class="font-semibold text-lg text-text">Instant Access</h3>
+          <p class="text-sm text-text/70">
+            No waiting. Start using your files immediately after purchase.
+          </p>
+        </div>
+
+        <div class="p-4">
+          <div class="text-4xl text-accent mb-3">✅</div>
+          <h3 class="font-semibold text-lg text-text">No Recurring Fees</h3>
+          <p class="text-sm text-text/70">
+            Buy once, own forever. Simple, single-payment pricing.
+          </p>
+        </div>
+
+        <div class="p-4">
+          <div class="text-4xl text-accent mb-3">📧</div>
+          <h3 class="font-semibold text-lg text-text">Email Delivery</h3>
+          <p class="text-sm text-text/70">
+            Receipt and download links secured via email instantly.
+          </p>
+        </div>
+
+        <div class="p-4">
+          <div class="text-4xl text-accent mb-3">🕰️</div>
+          <h3 class="font-semibold text-lg text-text">24/7 Availability</h3>
+          <p class="text-sm text-text/70">
+            Purchase and download templates anytime, day or night.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="bg-primary py-24">
+      <div class="max-w-md mx-auto p-space">
+        <h2 class="text-3xl font-bold text-center mb-8 text-bg">
+          Need Support?
+        </h2>
+        <p class="text-center text-bg/80 mb-8">
+          We're here to help. Send us a message and we'll get back to you
+          quickly.
+        </p>
+
+        <form
+          id="contact-form"
+          class="space-y-4 p-6 bg-bg rounded-main shadow-2xl"
+        >
+          <div>
+            <label
+              for="contact-name"
+              class="block text-sm font-medium text-text mb-1"
+              >Your Name</label
+            >
+            <input
+              type="text"
+              id="contact-name"
+              name="name"
+              required
+              class="w-full p-3 border border-primary/20 rounded-main focus:ring-accent focus:border-accent"
+            />
+          </div>
+          <div>
+            <label
+              for="contact-email"
+              class="block text-sm font-medium text-text mb-1"
+              >Email Address</label
+            >
+            <input
+              type="email"
+              id="contact-email"
+              name="email"
+              required
+              class="w-full p-3 border border-primary/20 rounded-main focus:ring-accent focus:border-accent"
+            />
+          </div>
+          <div>
+            <label
+              for="contact-message"
+              class="block text-sm font-medium text-text mb-1"
+              >Your Message</label
+            >
+            <textarea
+              id="contact-message"
+              name="message"
+              rows="4"
+              required
+              class="w-full p-3 border border-primary/20 rounded-main focus:ring-accent focus:border-accent"
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="btn bg-accent text-text w-full hover:bg-accent/80 transition"
+            aria-label="Send Message to HABEJU LIMITED"
+          >
+            Send Message
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-text py-10">
+      <div class="max-w-content mx-auto p-space text-center text-bg/70 text-sm">
+        <p class="mb-4">&copy; 2024 HABEJU LIMITED. All Rights Reserved.</p>
+        <div class="space-x-4">
+          <a href="./terms-of-service.html" class="hover:text-bg transition"
+            >Terms of Service</a
+          >
+          <a href="./privacy.html" class="hover:text-bg transition"
+            >Privacy Policy</a
+          >
+        </div>
+        <p class="mt-4">Contact: HABEJU LIMITED</p>
+      </div>
+    </footer>
+
+    <!-- MODALS -->
+
+    <!-- 1. Checkout Modal (Initial step) -->
+    <div
+      id="checkout-modal"
+      class="modal-overlay fixed inset-0 flex items-center justify-center bg-text/80 z-50"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="checkout-title"
+      tabindex="-1"
+    >
+      <div
+        class="modal-content bg-bg rounded-main p-8 w-full max-w-lg shadow-2xl"
+        role="document"
+      >
+        <h3 id="checkout-title" class="text-2xl font-bold mb-4 text-primary">
+          Checkout
+        </h3>
+        <p class="mb-6 text-text/70">
+          You are buying: <strong id="modal-product-title"></strong>
+        </p>
+
+        <form id="checkout-form" class="space-y-4">
+          <input type="hidden" id="checkout-product-id" />
+
+          <div>
+            <label
+              for="buyer-name"
+              class="block text-sm font-medium text-text mb-1"
+              >Your Name</label
+            >
+            <input
+              type="text"
+              id="buyer-name"
+              required
+              class="w-full p-3 border border-primary/20 rounded-main focus:ring-accent focus:border-accent"
+              autocomplete="name"
+            />
+          </div>
+          <div>
+            <label
+              for="buyer-email"
+              class="block text-sm font-medium text-text mb-1"
+              >Email Address (for instant download)</label
+            >
+            <input
+              type="email"
+              id="buyer-email"
+              required
+              class="w-full p-3 border border-primary/20 rounded-main focus:ring-accent focus:border-accent"
+              autocomplete="email"
+            />
+          </div>
+
+          <div
+            class="flex justify-between items-center pt-4 border-t border-primary/10"
+          >
+            <p class="text-lg font-semibold text-text">
+              Price: <span id="modal-product-price" class="text-primary"></span>
+            </p>
+            <!-- Payment simulation button -->
+            <button
+              type="submit"
+              class="btn bg-accent text-text hover:bg-accent/80"
+              aria-label="Simulate Payment and Complete Purchase"
+            >
+              Pay Now & Get Instantly
+            </button>
+          </div>
+          <button
+            type="button"
+            onclick="closeModal('checkout-modal')"
+            class="text-sm text-text/50 hover:text-text transition mt-2 w-full text-center"
+          >
+            Cancel
+          </button>
+        </form>
+        <p class="mt-4 text-xs text-text/50">
+          Payment gateway integration hook here (e.g., Stripe, Flutterwave)
+          would replace the 'Pay Now' button's functionality.
+        </p>
+      </div>
+    </div>
+
+    <!-- 2. Success Modal (After simulated payment/contact) -->
+    <div
+      id="success-modal"
+      class="modal-overlay fixed inset-0 flex items-center justify-center bg-text/80 z-50"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="success-title"
+      tabindex="-1"
+    >
+      <div
+        class="modal-content bg-bg rounded-main p-8 w-full max-w-lg shadow-2xl text-center"
+        role="document"
+      >
+        <h3 id="success-title" class="text-2xl font-bold mb-4 text-primary">
+          Purchase Complete! 🎉
+        </h3>
+        <p class="text-text/80 mb-6">
+          Your payment was successful. Find your download link below, and a full
+          receipt has been sent to your email.
+        </p>
+
+        <div
+          class="border border-primary/30 bg-primary/5 p-4 rounded-main mb-6"
+        >
+          <p class="font-bold mb-2">Instant Download Link:</p>
+          <a
+            id="download-link"
+            href="#"
+            target="_blank"
+            class="text-accent underline font-semibold text-lg break-all"
+            >Click to Download Your File</a
+          >
+        </div>
+
+        <p class="text-sm text-text/60">
+          Email receipt sent to <strong id="receipt-email"></strong>.
+        </p>
+
+        <button
+          type="button"
+          onclick="closeModal('success-modal')"
+          class="btn btn-primary mt-6"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+
+    <!-- 3. Contact Success Modal -->
+    <div
+      id="contact-success-modal"
+      class="modal-overlay fixed inset-0 flex items-center justify-center bg-text/80 z-50"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="contact-success-title"
+      tabindex="-1"
+    >
+      <div
+        class="modal-content bg-bg rounded-main p-8 w-full max-w-sm shadow-2xl text-center"
+        role="document"
+      >
+        <h3
+          id="contact-success-title"
+          class="text-2xl font-bold mb-4 text-primary"
+        >
+          Message Sent! 📧
+        </h3>
+        <p class="text-text/80 mb-6">
+          Thank you for reaching out to HABEJU LIMITED. We have received your
+          message and will be in touch shortly.
+        </p>
+        <button
+          type="button"
+          onclick="closeModal('contact-success-modal')"
+          class="btn btn-primary mt-4"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // --- PRODUCT DATA & JS LOGIC ---
+
+      const PRODUCTS = [
+        {
+          id: "p1",
+          title: "Printable Greeting Card Pack — Celebration Set",
+          description:
+            "High-res printable designs for birthdays & anniversaries.",
+          price: 7200,
+          imageUrl: "https://placehold.co/300x200/006D5B/F7FAF8?text=Card+Pack",
+          downloadUrl: "mock-download-p1.zip",
+        },
+        {
+          id: "p2",
+          title: "Customizable Canva Gift Voucher Template",
+          description:
+            "Editable Canva voucher to gift experiences — easy to personalize & send.",
+          price: 6800,
+          imageUrl:
+            "https://placehold.co/300x200/FFB84D/0F1720?text=Voucher+Template",
+          downloadUrl: "mock-download-p2.zip",
+        },
+        {
+          id: "p3",
+          title: "E-Book Template — Small Business Launch Kit",
+          description:
+            "Fully structured eBook template (InDesign + editable PDF) — launch-ready.",
+          price: 7500,
+          imageUrl:
+            "https://placehold.co/300x200/006D5B/F7FAF8?text=Ebook+Template",
+          downloadUrl: "mock-download-p3.zip",
+        },
+        {
+          id: "p4",
+          title: "Social Media Gift Kit — Instagram Pack",
+          description:
+            "10 carousel templates + captions — easily edit in Canva or Photoshop.",
+          price: 6900,
+          imageUrl:
+            "https://placehold.co/300x200/F7FAF8/0F1720?text=Social+Kit",
+          downloadUrl: "mock-download-p4.zip",
+        },
+        {
+          id: "p5",
+          title: "Printable Wall Art — Inspirational Quotes (3-pack)",
+          description: "3 high-res poster prints (A4/A3) for instant download.",
+          price: 7300,
+          imageUrl: "https://placehold.co/300x200/FFB84D/0F1720?text=Wall+Art",
+          downloadUrl: "mock-download-p5.zip",
+        },
+        {
+          id: "p6",
+          title: "Editable Invitation Suite — Wedding/Party",
+          description:
+            "Complete invite + RSVP card templates — easy to edit and print.",
+          price: 7800,
+          imageUrl:
+            "https://placehold.co/300x200/006D5B/F7FAF8?text=Invite+Suite",
+          downloadUrl: "mock-download-p6.zip",
+        },
+      ];
+
+      // --- DOM Elements ---
+      const productGrid = document.getElementById("product-grid");
+      const checkoutModal = document.getElementById("checkout-modal");
+      const successModal = document.getElementById("success-modal");
+      const contactSuccessModal = document.getElementById(
+        "contact-success-modal"
+      );
+      const checkoutForm = document.getElementById("checkout-form");
+      const contactForm = document.getElementById("contact-form");
+
+      // --- Modal Control ---
+      function openModal(modalId, productId = null) {
+        const modal = document.getElementById(modalId);
+        modal.classList.add("active");
+        modal.focus(); // Focus for accessibility/ESC key
+
+        if (modalId === "checkout-modal" && productId) {
+          const product = PRODUCTS.find((p) => p.id === productId);
+          if (product) {
+            document.getElementById("checkout-product-id").value = product.id;
+            document.getElementById("modal-product-title").textContent =
+              product.title;
+            document.getElementById(
+              "modal-product-price"
+            ).textContent = `KES ${product.price.toLocaleString("en-KE")}`;
+          }
+        }
+      }
+
+      function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.classList.remove("active");
+        // Clear inputs in checkout form when closed
+        if (modalId === "checkout-modal") {
+          checkoutForm.reset();
+        }
+      }
+
+      // Close modal on ESC key press
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          if (checkoutModal.classList.contains("active"))
+            closeModal("checkout-modal");
+          if (successModal.classList.contains("active"))
+            closeModal("success-modal");
+          if (contactSuccessModal.classList.contains("active"))
+            closeModal("contact-success-modal");
+        }
+      });
+
+      // Close modal on outside click
+      document.querySelectorAll(".modal-overlay").forEach((overlay) => {
+        overlay.addEventListener("click", (e) => {
+          if (e.target === overlay) {
+            closeModal(overlay.id);
+          }
+        });
+      });
+
+      // --- Dynamic Product Rendering ---
+      function renderProducts() {
+        productGrid.innerHTML = "";
+        PRODUCTS.forEach((product) => {
+          const card = document.createElement("div");
+          card.className =
+            "product-card bg-bg rounded-main shadow-lg overflow-hidden border border-primary/10 flex flex-col";
+          card.innerHTML = `
+                    <!-- Product Image Mockup -->
+                    <img src="${product.imageUrl}" 
+                         alt="Mockup for ${product.title}" 
+                         class="w-full h-40 object-cover" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/300x200/F7FAF8/0F1720?text=Digital+Product';"
+                    >
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="text-xl font-semibold mb-2 text-text">${
+                          product.title
+                        }</h3>
+                        <p class="text-sm text-text/70 mb-4 flex-grow">${
+                          product.description
+                        }</p>
+                        
+                        <div class="mt-auto pt-3 border-t border-primary/10 flex justify-between items-center">
+                            <span class="text-lg font-bold text-primary">KES ${product.price.toLocaleString(
+                              "en-KE"
+                            )}</span>
+                            <button 
+                                data-product-id="${product.id}" 
+                                class="btn bg-accent text-text text-sm py-2 px-4 hover:bg-accent/80 transition buy-btn"
+                                aria-label="Buy ${product.title} instantly"
+                            >
+                                Buy Now — Get Instantly
+                            </button>
+                        </div>
+                    </div>
+                `;
+          productGrid.appendChild(card);
+        });
+
+        // Attach event listeners to the new 'Buy Now' buttons
+        document.querySelectorAll(".buy-btn").forEach((button) => {
+          button.addEventListener("click", (e) => {
+            const productId = e.currentTarget.getAttribute("data-product-id");
+            openModal("checkout-modal", productId);
+          });
+        });
+      }
+
+      // --- Checkout Flow Mock ---
+      checkoutForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const productId = document.getElementById("checkout-product-id").value;
+        const buyerName = document.getElementById("buyer-name").value;
+        const buyerEmail = document.getElementById("buyer-email").value;
+
+        // Simple validation check (client-side)
+        if (!buyerName || !buyerEmail) {
+          console.error("Please fill in all required fields.");
+          return;
+        }
+
+        const product = PRODUCTS.find((p) => p.id === productId);
+        if (!product) {
+          console.error("Product not found.");
+          return;
+        }
+
+        closeModal("checkout-modal");
+
+        // 1. Simulate POST AJAX request (e.g., to a serverless function)
+        console.log(
+          `Simulating order submission for ${product.title} by ${buyerName} (${buyerEmail})`
+        );
+
+        // In a real application, this would be an async fetch call to your payment backend.
+        // await fetch('/api/process-payment', { method: 'POST', body: JSON.stringify({ productId, name: buyerName, email: buyerEmail }) });
+
+        // 2. Mock Success state
+        // Update success modal content
+        document.getElementById("download-link").href = product.downloadUrl;
+        document.getElementById(
+          "download-link"
+        ).textContent = `Download: ${product.title}`;
+        document.getElementById("receipt-email").textContent = buyerEmail;
+
+        // Show success modal
+        openModal("success-modal");
+
+        // 3. Clear form
+        checkoutForm.reset();
+      });
+
+      // --- Contact Form Mock (AJAX Submission) ---
+      contactForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById("contact-name").value;
+        const email = document.getElementById("contact-email").value;
+        const message = document.getElementById("contact-message").value;
+
+        if (!name || !email || !message) {
+          console.error("Please fill out all contact fields.");
+          return;
+        }
+
+        console.log(
+          `Simulating contact submission from ${name} (${email}): ${message.substring(
+            0,
+            30
+          )}...`
+        );
+
+        // 1. Simulate AJAX POST
+        // In a real app: await fetch('/api/contact', { method: 'POST', body: JSON.stringify({ name, email, message }) });
+
+        // 2. Show Success
+        openModal("contact-success-modal");
+
+        // 3. Clear form
+        contactForm.reset();
+      });
+
+      // Initialize the page
+      document.addEventListener("DOMContentLoaded", renderProducts);
+    </script>
+  </body>
+</html>

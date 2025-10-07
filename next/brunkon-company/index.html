@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BRUKNON COMPANY - Building Software that Powers Tomorrow</title>
+    <meta
+      name="description"
+      content="BRUKNON COMPANY creates world-class online products designed to scale your business effortlessly. SaaS solutions, APIs, and custom web apps."
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Manrope:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+      /* ===== CSS Variables ===== */
+      :root {
+        --primary-color: #005bff;
+        --accent-color: #00ffc6;
+        --bg-color: #0a0f1c;
+        --text-color: #f5f7fa;
+        --text-secondary: #a0a8b8;
+
+        --font-heading: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto,
+          Arial, sans-serif;
+        --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+          Arial, sans-serif;
+
+        --fs-1: clamp(2rem, 1.6rem + 2vw, 3.5rem);
+        --fs-2: clamp(1.5rem, 1.2rem + 1.5vw, 2.2rem);
+        --fs-3: clamp(1.2rem, 1rem + 1vw, 1.8rem);
+        --fs-base: clamp(1rem, 0.9rem + 0.5vw, 1.15rem);
+        --fs-small: clamp(0.875rem, 0.8rem + 0.3vw, 1rem);
+
+        --spacing: 20px;
+        --max-width: 1120px;
+
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* ===== Reset ===== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        overflow-x: hidden;
+        font-size: var(--fs-base);
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: var(--font-heading);
+        font-weight: 700;
+        line-height: 1.2;
+        color: var(--text-color);
+      }
+
+      h1 {
+        font-size: var(--fs-1);
+      }
+      h2 {
+        font-size: var(--fs-2);
+      }
+      h3 {
+        font-size: var(--fs-3);
+      }
+
+      a {
+        color: var(--accent-color);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      a:hover {
+        color: var(--primary-color);
+      }
+
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 var(--spacing);
+      }
+
+      /* ===== Header ===== */
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background: rgba(10, 15, 28, 0.95);
+        backdrop-filter: blur(10px);
+        padding: calc(var(--spacing) * 0.75) 0;
+        transition: var(--transition);
+      }
+
+      header.scrolled {
+        box-shadow: 0 4px 20px rgba(0, 91, 255, 0.1);
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-family: var(--font-heading);
+        font-size: 1.5rem;
+        font-weight: 800;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--accent-color)
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: calc(var(--spacing) * 1.5);
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: var(--text-color);
+        font-weight: 500;
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent-color);
+        transition: width 0.3s;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .mobile-menu {
+        display: none;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
+      }
+
+      .mobile-menu span {
+        width: 25px;
+        height: 2px;
+        background: var(--text-color);
+        transition: var(--transition);
+      }
+
+      /* ===== Hero Section ===== */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: calc(var(--spacing) * 5) 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            circle at 20% 50%,
+            rgba(0, 91, 255, 0.2) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 50%,
+            rgba(0, 255, 198, 0.15) 0%,
+            transparent 50%
+          );
+        z-index: -1;
+      }
+
+      .floating-elements {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      .float-el {
+        position: absolute;
+        border: 2px solid rgba(0, 255, 198, 0.3);
+        border-radius: 10px;
+        background: rgba(0, 91, 255, 0.05);
+      }
+
+      .hero-content {
+        text-align: center;
+        z-index: 1;
+      }
+
+      .hero h1 {
+        margin-bottom: calc(var(--spacing) * 1.5);
+        background: linear-gradient(
+          135deg,
+          var(--text-color),
+          var(--accent-color)
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero-subtitle {
+        font-size: var(--fs-3);
+        color: var(--text-secondary);
+        margin-bottom: calc(var(--spacing) * 2);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .btn-group {
+        display: flex;
+        gap: var(--spacing);
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 15px 35px;
+        border-radius: 50px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        border: none;
+        font-size: var(--fs-base);
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-primary {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--accent-color)
+        );
+        color: var(--bg-color);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--text-color);
+        border: 2px solid var(--primary-color);
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 91, 255, 0.3);
+      }
+
+      /* ===== Products Section ===== */
+      .products {
+        padding: calc(var(--spacing) * 4) 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: calc(var(--spacing) * 3);
+      }
+
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: calc(var(--spacing) * 1.5);
+        margin-top: calc(var(--spacing) * 2);
+      }
+
+      .product-card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(0, 255, 198, 0.1);
+        border-radius: 15px;
+        padding: calc(var(--spacing) * 2);
+        text-align: center;
+        transition: var(--transition);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .product-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at center,
+          rgba(0, 255, 198, 0.1) 0%,
+          transparent 70%
+        );
+        transform: scale(0);
+        transition: transform 0.5s;
+      }
+
+      .product-card:hover::before {
+        transform: scale(1);
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-color);
+        box-shadow: 0 15px 40px rgba(0, 255, 198, 0.15);
+      }
+
+      .product-icon {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto calc(var(--spacing) * 1.5);
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--accent-color)
+        );
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+      }
+
+      .product-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: calc(var(--spacing) * 0.5);
+      }
+
+      .product-card p {
+        color: var(--text-secondary);
+        font-size: var(--fs-small);
+      }
+
+      /* ===== How It Works ===== */
+      .how-it-works {
+        padding: calc(var(--spacing) * 4) 0;
+        background: rgba(0, 91, 255, 0.03);
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: calc(var(--spacing) * 2);
+        margin-top: calc(var(--spacing) * 3);
+        position: relative;
+      }
+
+      .step {
+        text-align: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .step-number {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto calc(var(--spacing) * 1.5);
+        background: var(--bg-color);
+        border: 3px solid var(--accent-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--accent-color);
+      }
+
+      .step h3 {
+        margin-bottom: calc(var(--spacing) * 0.5);
+      }
+
+      .step p {
+        color: var(--text-secondary);
+      }
+
+      .step-line {
+        position: absolute;
+        top: 30px;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--accent-color),
+          transparent
+        );
+        z-index: 0;
+      }
+
+      /* ===== Benefits ===== */
+      .benefits {
+        padding: calc(var(--spacing) * 4) 0;
+      }
+
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: calc(var(--spacing) * 2);
+        margin-top: calc(var(--spacing) * 3);
+      }
+
+      .benefit {
+        display: flex;
+        gap: var(--spacing);
+        align-items: start;
+      }
+
+      .benefit-icon {
+        width: 50px;
+        height: 50px;
+        background: rgba(0, 255, 198, 0.1);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent-color);
+        font-size: 1.5rem;
+        flex-shrink: 0;
+      }
+
+      .benefit-content h3 {
+        margin-bottom: calc(var(--spacing) * 0.5);
+        font-size: 1.2rem;
+      }
+
+      .benefit-content p {
+        color: var(--text-secondary);
+        font-size: var(--fs-small);
+      }
+
+      /* ===== Pricing ===== */
+      .pricing {
+        padding: calc(var(--spacing) * 4) 0;
+        background: rgba(0, 91, 255, 0.03);
+      }
+
+      .pricing-card {
+        max-width: 400px;
+        margin: calc(var(--spacing) * 3) auto;
+        background: rgba(255, 255, 255, 0.03);
+        border: 2px solid var(--primary-color);
+        border-radius: 20px;
+        padding: calc(var(--spacing) * 2);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .pricing-card::before {
+        content: "PREMIUM";
+        position: absolute;
+        top: 20px;
+        right: -30px;
+        background: var(--accent-color);
+        color: var(--bg-color);
+        padding: 5px 40px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        transform: rotate(45deg);
+      }
+
+      .price-range {
+        font-size: var(--fs-2);
+        margin: calc(var(--spacing) * 1.5) 0;
+        font-weight: 700;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--accent-color)
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .price-label {
+        color: var(--text-secondary);
+        font-size: var(--fs-small);
+        margin-bottom: calc(var(--spacing) * 2);
+      }
+
+      /* ===== CTA Section ===== */
+      .cta {
+        padding: calc(var(--spacing) * 4) 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta h2 {
+        margin-bottom: calc(var(--spacing) * 2);
+      }
+
+      .terminal-bg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        max-width: 800px;
+        height: 300px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        padding: 20px;
+        font-family: "Courier New", monospace;
+        color: var(--accent-color);
+        z-index: -1;
+        font-size: 0.9rem;
+        overflow: hidden;
+      }
+
+      .terminal-line {
+        margin: 10px 0;
+      }
+
+      /* ===== Contact ===== */
+      .contact {
+        padding: calc(var(--spacing) * 4) 0;
+        background: rgba(0, 91, 255, 0.03);
+      }
+
+      .contact-form {
+        max-width: 600px;
+        margin: calc(var(--spacing) * 3) auto;
+      }
+
+      .form-group {
+        margin-bottom: calc(var(--spacing) * 1.5);
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: calc(var(--spacing) * 0.5);
+        font-weight: 500;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(0, 255, 198, 0.2);
+        border-radius: 10px;
+        color: var(--text-color);
+        font-family: var(--font-body);
+        font-size: var(--fs-base);
+        transition: var(--transition);
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--accent-color);
+        box-shadow: 0 0 20px rgba(0, 255, 198, 0.2);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      /* ===== Success Modal ===== */
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(10, 15, 28, 0.95);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+      }
+
+      .modal.active {
+        display: flex;
+      }
+
+      .modal-content {
+        background: var(--bg-color);
+        border: 2px solid var(--accent-color);
+        border-radius: 20px;
+        padding: calc(var(--spacing) * 2);
+        text-align: center;
+        max-width: 500px;
+        width: 90%;
+        transform: translateY(100vh);
+      }
+
+      .modal-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto calc(var(--spacing) * 1.5);
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--accent-color)
+        );
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+      }
+
+      /* ===== Footer ===== */
+      footer {
+        padding: calc(var(--spacing) * 2) 0;
+        border-top: 1px solid rgba(0, 255, 198, 0.1);
+        text-align: center;
+      }
+
+      .footer-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing);
+        align-items: center;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: calc(var(--spacing) * 1.5);
+      }
+
+      .footer-links a {
+        color: var(--text-secondary);
+      }
+
+      .footer-links a:hover {
+        color: var(--accent-color);
+      }
+
+      /* ===== Status Indicator ===== */
+      .status-indicator {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: rgba(10, 15, 28, 0.95);
+        border: 1px solid var(--accent-color);
+        border-radius: 50px;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        backdrop-filter: blur(10px);
+        z-index: 999;
+      }
+
+      .status-dot {
+        width: 10px;
+        height: 10px;
+        background: var(--accent-color);
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.2);
+          opacity: 0.7;
+        }
+      }
+
+      /* ===== Responsive ===== */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .mobile-menu {
+          display: flex;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.1rem;
+        }
+
+        .btn-group {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .btn {
+          width: 200px;
+        }
+
+        .products-grid,
+        .benefits-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .steps {
+          grid-template-columns: 1fr;
+        }
+
+        .step-line {
+          display: none;
+        }
+
+        .status-indicator {
+          bottom: 10px;
+          right: 10px;
+          font-size: 0.875rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        :root {
+          --spacing: 15px;
+        }
+
+        .hero {
+          min-height: 80vh;
+        }
+
+        .pricing-card {
+          padding: calc(var(--spacing) * 1.5);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="header">
+      <nav class="container">
+        <div class="logo">BRUKNON</div>
+        <ul class="nav-links">
+          <li><a href="#products">Products</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="mobile-menu" id="mobileMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="floating-elements">
+        <div
+          class="float-el"
+          style="width: 100px; height: 100px; top: 10%; left: 10%"
+        ></div>
+        <div
+          class="float-el"
+          style="width: 150px; height: 80px; top: 60%; right: 15%"
+        ></div>
+        <div
+          class="float-el"
+          style="width: 80px; height: 120px; bottom: 20%; left: 20%"
+        ></div>
+      </div>
+      <div class="container">
+        <div class="hero-content">
+          <h1>Building Software that Powers Tomorrow.</h1>
+          <p class="hero-subtitle">
+            BRUKNON COMPANY creates world-class online products designed to
+            scale your business effortlessly.
+          </p>
+          <div class="btn-group">
+            <a href="#contact" class="btn btn-primary">Get Started</a>
+            <a href="#products" class="btn btn-secondary">View Products</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Product Categories</h2>
+          <p>Innovative solutions for modern businesses</p>
+        </div>
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-icon">💻</div>
+            <h3>SaaS Solutions</h3>
+            <p>Scalable cloud-based software for seamless operations</p>
+          </div>
+          <div class="product-card">
+            <div class="product-icon">🔌</div>
+            <h3>API Integrations</h3>
+            <p>Powerful APIs to connect your entire tech stack</p>
+          </div>
+          <div class="product-card">
+            <div class="product-icon">🌐</div>
+            <h3>Custom Web Apps</h3>
+            <p>Tailored applications built for your unique needs</p>
+          </div>
+          <div class="product-card">
+            <div class="product-icon">🤖</div>
+            <h3>AI Tools</h3>
+            <p>Intelligent automation and machine learning solutions</p>
+          </div>
+          <div class="product-card">
+            <div class="product-icon">☁️</div>
+            <h3>Cloud Infrastructure</h3>
+            <p>Robust and secure cloud hosting services</p>
+          </div>
+          <div class="product-card">
+            <div class="product-icon">📊</div>
+            <h3>Data & Analytics</h3>
+            <p>Transform data into actionable insights</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+      <div class="container">
+        <div class="section-title">
+          <h2>How It Works</h2>
+          <p>Simple steps to transform your business</p>
+        </div>
+        <div class="steps">
+          <div class="step-line"></div>
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Choose Your Product</h3>
+            <p>Select from our range of innovative software solutions</p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>Customize Your Plan</h3>
+            <p>Tailor features and pricing to match your needs</p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Deploy Instantly</h3>
+            <p>Get up and running in minutes with our seamless setup</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="benefits">
+      <div class="container">
+        <div class="section-title">
+          <h2>Why Choose BRUKNON</h2>
+          <p>Built for reliability, designed for growth</p>
+        </div>
+        <div class="benefits-grid">
+          <div class="benefit">
+            <div class="benefit-icon">⚡</div>
+            <div class="benefit-content">
+              <h3>24/7 Uptime</h3>
+              <p>Enterprise-grade reliability with 99.9% uptime guarantee</p>
+            </div>
+          </div>
+          <div class="benefit">
+            <div class="benefit-icon">💎</div>
+            <div class="benefit-content">
+              <h3>Transparent Pricing</h3>
+              <p>No hidden fees, clear pricing that scales with you</p>
+            </div>
+          </div>
+          <div class="benefit">
+            <div class="benefit-icon">🚀</div>
+            <div class="benefit-content">
+              <h3>Scalable Solutions</h3>
+              <p>Grow from startup to enterprise without changing platforms</p>
+            </div>
+          </div>
+          <div class="benefit">
+            <div class="benefit-icon">🌍</div>
+            <div class="benefit-content">
+              <h3>Trusted by Innovators</h3>
+              <p>Powering Africa's next generation of tech leaders</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+      <div class="container">
+        <div class="section-title">
+          <h2>Premium Yet Accessible</h2>
+          <p>Investment in your digital transformation</p>
+        </div>
+        <div class="pricing-card">
+          <h3>Professional Package</h3>
+          <div class="price-range">KSh 6,475 - 7,500</div>
+          <p class="price-label">
+            Starting price for premium software solutions
+          </p>
+          <ul
+            style="
+              list-style: none;
+              padding: 0;
+              text-align: left;
+              margin: 20px 0;
+            "
+          >
+            <li
+              style="
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+              "
+            ></li>
+          </ul>
+          <a
+            class="btn btn-primary"
+            href="mailto:info@bruknoncompany.com?subject=Purchase%20Professional%20Package"
+            style="margin-top: 10px"
+            >Buy Now</a
+          >
+        </div>
+
+        <!-- Additional Packages -->
+        <div class="pricing-card">
+          <h3>Starter Package</h3>
+          <div class="price-range">KSh 6,475</div>
+          <p class="price-label">Perfect for trying us out</p>
+          <a
+            class="btn btn-primary"
+            href="mailto:info@bruknoncompany.com?subject=Purchase%20Starter%20Package"
+            style="margin-top: 10px"
+            >Buy Now</a
+          >
+        </div>
+
+        <div class="pricing-card">
+          <h3>Growth Package</h3>
+          <div class="price-range">KSh 6,950</div>
+          <p class="price-label">Best value for growing teams</p>
+          <a
+            class="btn btn-primary"
+            href="mailto:info@bruknoncompany.com?subject=Purchase%20Growth%20Package"
+            style="margin-top: 10px"
+            >Buy Now</a
+          >
+        </div>
+
+        <div class="pricing-card">
+          <h3>Scale Package</h3>
+          <div class="price-range">KSh 7,200</div>
+          <p class="price-label">Advanced features for scaling</p>
+          <a
+            class="btn btn-primary"
+            href="mailto:info@bruknoncompany.com?subject=Purchase%20Scale%20Package"
+            style="margin-top: 10px"
+            >Buy Now</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products (with pricing) -->
+    <section class="products" id="featured-products">
+      <div class="container">
+        <div class="section-title">
+          <h2>Featured Products</h2>
+          <p>Launch-ready tools with transparent pricing</p>
+        </div>
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-icon">🚀</div>
+            <h3>LaunchPad CMS</h3>
+            <p>Modern headless CMS for fast content delivery</p>
+            <p style="margin-top: 10px; font-weight: 700">
+              Starting at KSh 6,475
+            </p>
+          </div>
+          <div class="product-card">
+            <div class="product-icon">🔗</div>
+            <h3>FlowSync API</h3>
+            <p>Unified API gateway for your integrations</p>
+            <p style="margin-top: 10px; font-weight: 700">
+              Starting at KSh 6,950
+            </p>
+          </div>
+          <div class="product-card">
+            <div class="product-icon">📈</div>
+            <h3>Pulse Analytics</h3>
+            <p>Real-time dashboards and product metrics</p>
+            <p style="margin-top: 10px; font-weight: 700">
+              Starting at KSh 7,200
+            </p>
+          </div>
+          <div class="product-card">
+            <div class="product-icon">✅</div>
+            <h3>TaskOrbit</h3>
+            <p>Lightweight project & sprint management</p>
+            <p style="margin-top: 10px; font-weight: 700">
+              Starting at KSh 6,800
+            </p>
+          </div>
+          <div class="product-card">
+            <div class="product-icon">✉️</div>
+            <h3>MailForge</h3>
+            <p>Transactional emails with webhooks & logs</p>
+            <p style="margin-top: 10px; font-weight: 700">
+              Starting at KSh 7,300
+            </p>
+          </div>
+          <div class="product-card">
+            <div class="product-icon">☁️</div>
+            <h3>CloudEdge Deploy</h3>
+            <p>Zero-downtime deploys across regions</p>
+            <p style="margin-top: 10px; font-weight: 700">
+              Starting at KSh 7,500
+            </p>
+          </div>
+          <div class="product-card">
+            <div class="product-icon">🗃️</div>
+            <h3>InsightDB</h3>
+            <p>Managed analytics database for teams</p>
+            <p style="margin-top: 10px; font-weight: 700">
+              Starting at KSh 6,600
+            </p>
+          </div>
+          <div class="product-card">
+            <div class="product-icon">🤖</div>
+            <h3>SupportBot AI</h3>
+            <p>AI-powered helpdesk with instant answers</p>
+            <p style="margin-top: 10px; font-weight: 700">
+              Starting at KSh 7,100
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div><strong>BRUKNON COMPANY</strong> · info@bruknoncompany.com</div>
+          <div class="footer-links">
+            <a href="terms-of-service.html">Terms of Service</a>
+            <a href="privacy.html">Privacy Policy</a>
+          </div>
+          <div style="color: var(--text-secondary); font-size: var(--fs-small)">
+            © <span id="year"></span> BRUKNON COMPANY. All rights reserved.
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Header shadow on scroll
+      const header = document.getElementById("header");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 10) header.classList.add("scrolled");
+        else header.classList.remove("scrolled");
+      });
+
+      // Current year in footer
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // GSAP animations
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Safety sweep: clear any inline hidden states before setting up animations
+      function clearInlineHidden(selectors) {
+        const list = Array.isArray(selectors) ? selectors : [selectors];
+        list.forEach((sel) => {
+          document.querySelectorAll(sel).forEach((el) => {
+            el.style.opacity = "";
+            el.style.transform = "";
+            el.style.visibility = "";
+          });
+        });
+      }
+
+      clearInlineHidden([
+        ".products .product-card",
+        ".how-it-works .step",
+        "footer",
+      ]);
+
+      gsap.from(".hero h1", { y: 30, opacity: 0, duration: 0.8 });
+      gsap.from(".hero .hero-subtitle", {
+        y: 20,
+        opacity: 0,
+        delay: 0.2,
+        duration: 0.8,
+      });
+      gsap.from(".btn-group .btn", {
+        y: 20,
+        opacity: 0,
+        stagger: 0.1,
+        delay: 0.35,
+        duration: 0.6,
+      });
+
+      gsap.from(".products .product-card", {
+        scrollTrigger: { trigger: ".products", start: "top 80%" },
+        y: 30,
+        opacity: 0,
+        stagger: 0.08,
+        duration: 0.6,
+        immediateRender: false,
+      });
+
+      gsap.from(".how-it-works .step", {
+        scrollTrigger: { trigger: ".how-it-works", start: "top 80%" },
+        y: 30,
+        opacity: 0,
+        stagger: 0.12,
+        duration: 0.6,
+        immediateRender: false,
+      });
+
+      gsap.from("footer", {
+        scrollTrigger: { trigger: "footer", start: "top 95%" },
+        y: 20,
+        opacity: 0,
+        duration: 0.6,
+        immediateRender: false,
+      });
+
+      // In case elements were affected before ScrollTrigger attaches, refresh shortly after load
+      setTimeout(() => {
+        clearInlineHidden([
+          ".products .product-card",
+          ".how-it-works .step",
+          "footer",
+        ]);
+        if (window.ScrollTrigger) ScrollTrigger.refresh();
+      }, 50);
+    </script>
+  </body>
+</html>

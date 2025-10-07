@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy — BRUKNON COMPANY</title>
+    <meta name="description" content="Privacy Policy for BRUKNON COMPANY" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Manrope:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --primary-color: #005bff;
+        --accent-color: #00ffc6;
+        --bg-color: #0a0f1c;
+        --text-color: #f5f7fa;
+        --text-secondary: #a0a8b8;
+        --font-heading: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto,
+          Arial, sans-serif;
+        --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+          Arial, sans-serif;
+        --fs-1: clamp(2rem, 1.6rem + 2vw, 3rem);
+        --fs-2: clamp(1.5rem, 1.2rem + 1.5vw, 2.2rem);
+        --fs-3: clamp(1.2rem, 1rem + 1vw, 1.6rem);
+        --fs-base: clamp(1rem, 0.9rem + 0.5vw, 1.15rem);
+        --fs-small: clamp(0.875rem, 0.8rem + 0.3vw, 1rem);
+        --spacing: 20px;
+        --max-width: 900px;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: var(--font-body);
+        background: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.7;
+      }
+      a {
+        color: var(--accent-color);
+        text-decoration: none;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        background: rgba(10, 15, 28, 0.9);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(0, 255, 198, 0.12);
+      }
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 var(--spacing);
+      }
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 0;
+      }
+      .logo {
+        font-family: var(--font-heading);
+        font-weight: 800;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--accent-color)
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      main {
+        padding: calc(var(--spacing) * 2) 0;
+      }
+      h1 {
+        font-family: var(--font-heading);
+        font-size: var(--fs-1);
+        margin-bottom: var(--spacing);
+      }
+      h2 {
+        font-family: var(--font-heading);
+        font-size: var(--fs-2);
+        margin-top: calc(var(--spacing) * 2);
+        margin-bottom: calc(var(--spacing) * 0.75);
+      }
+      p,
+      li {
+        font-size: var(--fs-base);
+        color: var(--text-secondary);
+      }
+      ul {
+        margin-left: 1.2rem;
+      }
+      section {
+        margin-bottom: calc(var(--spacing) * 1.5);
+      }
+      .card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(0, 255, 198, 0.12);
+        border-radius: 16px;
+        padding: calc(var(--spacing) * 1.2);
+      }
+      footer {
+        padding: calc(var(--spacing) * 2) 0;
+        border-top: 1px solid rgba(0, 255, 198, 0.12);
+        text-align: center;
+      }
+      .footer-links {
+        display: flex;
+        gap: 18px;
+        justify-content: center;
+        margin-top: 8px;
+      }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="container topbar">
+        <div class="logo">BRUKNON</div>
+        <nav><a href="index.html">Back to Home</a></nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <h1>Privacy Policy</h1>
+      <p style="margin-bottom: 14px">
+        Last updated: <span id="updated"></span>
+      </p>
+
+      <section class="card">
+        <p>
+          BRUKNON COMPANY ("we", "our", or "us") respects your privacy. This
+          policy explains how we collect, use, and protect your information when
+          you use our websites, APIs, SaaS products, and related services
+          (collectively, the "Services").
+        </p>
+      </section>
+
+      <section>
+        <h2>Information We Collect</h2>
+        <ul>
+          <li>Account data: name, email, organization details.</li>
+          <li>Usage data: feature usage, diagnostics, performance logs.</li>
+          <li>Technical data: device/browser type, IP address, cookies.</li>
+          <li>Payment data: processed via secure third‑party providers.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>How We Use Information</h2>
+        <ul>
+          <li>Provide, maintain, and improve the Services.</li>
+          <li>Personalize experiences and product recommendations.</li>
+          <li>Communicate about updates, billing, and security.</li>
+          <li>Comply with legal obligations and prevent fraud.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Data Sharing</h2>
+        <p>We do not sell personal data. We may share limited data with:</p>
+        <ul>
+          <li>
+            Service providers (cloud hosting, analytics, payments) under
+            contract;
+          </li>
+          <li>Legal authorities when required by law;</li>
+          <li>Successors in case of merger, acquisition, or asset transfer.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Data Security</h2>
+        <p>
+          We use industry‑standard security controls, encryption in transit, and
+          access controls to protect your data. No system is 100% secure; we
+          continually improve safeguards.
+        </p>
+      </section>
+
+      <section>
+        <h2>Your Choices</h2>
+        <ul>
+          <li>
+            Access, correct, or delete your data by contacting us at
+            info@bruknoncompany.com.
+          </li>
+          <li>
+            Opt out of non‑essential communications via unsubscribe links.
+          </li>
+          <li>Manage cookie preferences in your browser settings.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>International Transfers</h2>
+        <p>
+          Your information may be transferred and processed outside your
+          country. We implement safeguards consistent with applicable data
+          protection laws.
+        </p>
+      </section>
+
+      <section>
+        <h2>Contact</h2>
+        <p>
+          For privacy questions, contact:
+          <a href="mailto:info@bruknoncompany.com">info@bruknoncompany.com</a>
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div>© <span id="year"></span> BRUKNON COMPANY.</div>
+        <div class="footer-links">
+          <a href="terms-of-service.html">Terms of Service</a>
+          <a href="privacy.html">Privacy Policy</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+      document.getElementById("updated").textContent =
+        new Date().toLocaleDateString();
+      gsap.from("main h1", { y: 20, opacity: 0, duration: 0.6 });
+      gsap.from("section", { y: 20, opacity: 0, duration: 0.5, stagger: 0.08 });
+    </script>
+  </body>
+</html>

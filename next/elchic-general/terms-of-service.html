@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms of Service — ELCHIC GENERAL WORKS LIMITED</title>
+    <meta
+      name="description"
+      content="Terms of Service for ELCHIC GENERAL WORKS LIMITED"
+    />
+
+    <!-- Fonts (match index) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Inter:wght@300;400;600&family=Space+Grotesk:wght@500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --color-primary: #0078ff;
+        --color-accent: #00d1b2;
+        --color-background: #f5f7fa;
+        --color-text: #1a1a1a;
+        --color-light-text: #f5f7fa;
+        --color-shadow: rgba(0, 0, 0, 0.08);
+
+        --font-heading: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto,
+          Arial;
+        --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+          Arial;
+        --font-accent: "Space Grotesk", system-ui, -apple-system, "Segoe UI",
+          Roboto, Arial;
+
+        --fs-1: clamp(2rem, 1.6rem + 2vw, 3rem);
+        --fs-2: clamp(1.6rem, 1.2rem + 1.6vw, 2rem);
+        --fs-base: clamp(0.95rem, 0.8rem + 0.4vw, 1.125rem);
+
+        --space-unit: 20px;
+        --space-m: var(--space-unit);
+        --space-l: calc(var(--space-unit) * 1.5);
+        --space-xl: calc(var(--space-unit) * 2.5);
+        --max-width: 1120px;
+        --transition-time: 0.3s;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: var(--font-body);
+        font-size: var(--fs-base);
+        line-height: 1.6;
+        color: var(--color-text);
+        background-color: var(--color-background);
+        min-height: 100vh;
+      }
+
+      h1,
+      h2 {
+        font-family: var(--font-heading);
+        font-weight: 800;
+        line-height: 1.2;
+      }
+      h1 {
+        font-size: var(--fs-1);
+      }
+      h2 {
+        font-size: var(--fs-2);
+        margin-bottom: var(--space-l);
+      }
+      p,
+      li {
+        font-family: var(--font-body);
+      }
+      a {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+      a:hover {
+        color: var(--color-accent);
+      }
+
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: var(--space-xl) var(--space-m);
+      }
+
+      /* Header */
+      header {
+        background-color: #ffffff;
+        padding: var(--space-m) var(--space-m);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px var(--color-shadow);
+      }
+      .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: var(--max-width);
+        margin: 0 auto;
+      }
+      .logo {
+        font-family: var(--font-accent);
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: var(--color-primary);
+        text-decoration: none;
+        letter-spacing: -0.5px;
+      }
+      .nav-links a {
+        margin-left: 16px;
+        color: var(--color-text);
+        font-weight: 600;
+      }
+      .nav-links a:hover {
+        color: var(--color-accent);
+      }
+
+      /* Card */
+      .policy-card {
+        background: #ffffff;
+        padding: var(--space-xl);
+        border-radius: var(--space-m);
+        box-shadow: 0 8px 20px var(--color-shadow);
+      }
+      .meta {
+        color: #4a4a4a;
+        opacity: 0.85;
+        margin: 8px 0 var(--space-l);
+        font-size: 0.95rem;
+      }
+      .list {
+        padding-left: 1.25rem;
+      }
+      .list li {
+        margin-bottom: 8px;
+      }
+      .divider {
+        height: 1px;
+        background: #e6eaf0;
+        margin: var(--space-l) 0;
+      }
+      /* Buttons (match index) */
+      .btn {
+        display: inline-block;
+        padding: 12px 28px;
+        border: none;
+        border-radius: 999px;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color var(--transition-time),
+          transform var(--transition-time);
+        box-shadow: 0 4px 10px rgba(0, 120, 255, 0.2);
+        font-size: var(--fs-base);
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+      .btn-primary {
+        background-color: var(--color-primary);
+        color: var(--color-light-text);
+      }
+      .btn-secondary {
+        background-color: transparent;
+        color: var(--color-primary);
+        border: 2px solid var(--color-primary);
+        box-shadow: none;
+      }
+      .btn-secondary:hover {
+        border-color: var(--color-accent);
+        color: var(--color-accent);
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--color-text);
+        color: var(--color-light-text);
+        padding: var(--space-xl) var(--space-m);
+        text-align: center;
+      }
+      .footer-content {
+        max-width: var(--max-width);
+        margin: 0 auto;
+      }
+      .footer-links a {
+        color: var(--color-accent);
+        margin: 0 var(--space-m);
+      }
+      .footer-links a:hover {
+        color: var(--color-primary);
+      }
+      .footer-info {
+        margin-bottom: var(--space-m);
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="nav-content">
+        <a href="index.html#hero" class="logo">ELCHIC</a>
+        <div class="nav-links">
+          <a href="index.html#solutions">Products</a>
+          <a href="index.html#how-it-works">How It Works</a>
+          <a href="index.html#benefits">Benefits</a>
+          <a href="index.html#contact">Contact</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms-of-service.html">Terms</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main>
+      <section class="container">
+        <div class="policy-card">
+          <h1>Terms of Service</h1>
+          <p class="meta">Effective date: <span id="effectiveDate"></span></p>
+
+          <p>
+            These Terms of Service ("Terms") govern your access to and use of
+            the website and digital products provided by ELCHIC GENERAL WORKS
+            LIMITED ("ELCHIC"). By using our Services, you agree to be bound by
+            these Terms.
+          </p>
+
+          <h2>1. Eligibility and Accounts</h2>
+          <p>
+            You must be 18 or older and able to enter a legally binding
+            contract. You are responsible for the accuracy of details you
+            provide and for safeguarding your account.
+          </p>
+
+          <h2>2. Digital Product License</h2>
+          <p>
+            Upon purchase, you receive a non‑exclusive, non‑transferable license
+            to use the product for your personal or internal business purposes.
+            Redistribution or resale of product files is prohibited.
+          </p>
+
+          <h2>3. Pricing, Payments, and Taxes</h2>
+          <p>
+            Prices are listed in Kenyan Shillings (KSh) unless stated otherwise
+            and may change without notice. Payments are processed by secure
+            third‑party providers. You are responsible for any taxes or fees.
+          </p>
+
+          <h2>4. Delivery</h2>
+          <p>
+            Digital products are delivered to the email address you provide
+            after successful payment. If you don’t receive your files, contact
+            support for help.
+          </p>
+
+          <h2>5. Refunds</h2>
+          <p>
+            Due to the nature of digital products, all sales are final. Refunds
+            are only considered for technical issues preventing access or
+            delivery and must be requested within seven (7) days of purchase.
+          </p>
+
+          <h2>6. Acceptable Use</h2>
+          <ul class="list">
+            <li>No illegal or unauthorized use.</li>
+            <li>No disrupting, reverse engineering, or unauthorized access.</li>
+            <li>Respect intellectual property and applicable laws.</li>
+          </ul>
+
+          <h2>7. Intellectual Property</h2>
+          <p>
+            All content and materials are owned by ELCHIC or its licensors and
+            protected by intellectual property laws. These Terms do not grant
+            rights to use our marks or materials except as expressly permitted.
+          </p>
+
+          <h2>8. Privacy</h2>
+          <p>
+            Our <a href="privacy.html">Privacy Policy</a> describes how we
+            collect and process personal data in connection with the Services.
+          </p>
+
+          <h2>9. Disclaimers and Limitation of Liability</h2>
+          <p>
+            The Services are provided “as is” without warranties. To the extent
+            permitted by law, ELCHIC is not liable for indirect, incidental, or
+            consequential damages.
+          </p>
+
+          <h2>10. Changes to These Terms</h2>
+          <p>
+            We may update these Terms from time to time. Continued use of the
+            Services after updates constitutes acceptance of the revised Terms.
+          </p>
+
+          <h2>11. Contact</h2>
+          <p>
+            Questions about these Terms? Contact us at
+            <a href="mailto:support@elchic.com">support@elchic.com</a>.
+          </p>
+
+          <div class="divider"></div>
+          <p>
+            <a class="btn btn-secondary" href="index.html">← Back to Home</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-info">
+          © <span id="year"></span> ELCHIC GENERAL WORKS LIMITED. All rights
+          reserved.
+        </div>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms-of-service.html">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+      document.getElementById("effectiveDate").textContent =
+        new Date().toLocaleDateString();
+    </script>
+  </body>
+</html>

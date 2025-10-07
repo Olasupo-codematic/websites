@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELCHIC General Works Limited | Digital Innovation Products</title>
+    <!-- Dynamic Fonts Setup -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Inter:wght@300;400;600&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+        /* CSS Design Tokens (Dynamic v2) */
+        :root {
+            /* Colors */
+            --color-primary: #0078FF; /* Tech Blue */
+            --color-accent: #00D1B2; /* Neo-Mint */
+            --color-background: #F5F7FA; /* Soft Gray-White */
+            --color-text: #1A1A1A; /* Deep Neutral Gray */
+            --color-light-text: #F5F7FA;
+            --color-shadow: rgba(0, 0, 0, 0.08);
+
+            /* Typography */
+            --font-heading: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+            --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+            --font-accent: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+
+            --fs-1: clamp(2rem, 1.6rem + 2vw, 3rem); /* H1 */
+            --fs-2: clamp(1.6rem, 1.2rem + 1.6vw, 2rem); /* H2 */
+            --fs-base: clamp(0.95rem, 0.8rem + 0.4vw, 1.125rem); /* Body */
+
+            /* Spacing */
+            --space-unit: 20px;
+            --space-m: var(--space-unit);
+            --space-l: calc(var(--space-unit) * 1.5);
+            --space-xl: calc(var(--space-unit) * 2.5);
+            --max-width: 1120px;
+
+            /* Transitions */
+            --transition-time: 0.3s;
+        }
+
+        /* Base & Reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: var(--fs-base);
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-background);
+            min-height: 100vh;
+        }
+
+        /* Typography Application */
+        h1, h2 { font-family: var(--font-heading); font-weight: 800; line-height: 1.2; }
+        h1 { font-size: var(--fs-1); }
+        h2 { font-size: var(--fs-2); margin-bottom: var(--space-xl); text-align: center;}
+        p, input, button { font-family: var(--font-body); }
+        strong, .highlight { font-family: var(--font-accent); font-weight: 500; color: var(--color-primary); }
+
+        /* Layout & Utilities */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: var(--space-xl) var(--space-m);
+        }
+        
+        section:nth-child(even) {
+            background-color: #ffffff;
+        }
+
+        /* Header */
+        header {
+            background-color: #ffffff;
+            padding: var(--space-m) var(--space-m);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px var(--color-shadow);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: var(--font-accent);
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 999px; /* Rounded-pill */
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color var(--transition-time), transform var(--transition-time);
+            box-shadow: 0 4px 10px rgba(0, 120, 255, 0.2);
+            font-size: var(--fs-base);
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: var(--color-light-text);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+            box-shadow: none;
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        /* Hero Section */
+        #hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--color-background) 0%, #E6EAF0 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero-subtext {
+            font-weight: 300;
+            margin: var(--space-m) 0 var(--space-xl) 0;
+            color: #4A4A4A;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: var(--space-m);
+        }
+
+        /* Floating Tech Icons for Hero (Subtle Motion Graphics) */
+        .floating-icon {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            color: var(--color-accent);
+            opacity: 0.1;
+            z-index: 1;
+            /* Placeholder SVG Icons */
+        }
+        .floating-icon.i1 { top: 10%; left: 5%; transform: scale(1.5); }
+        .floating-icon.i2 { bottom: 5%; right: 15%; }
+        .floating-icon.i3 { top: 50%; right: 5%; transform: scale(0.8); }
+        .floating-icon.i4 { bottom: 15%; left: 30%; transform: scale(1.2); }
+
+        /* Digital Products Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-m);
+        }
+
+        .product-card {
+            background-color: #ffffff;
+            padding: var(--space-l);
+            border-radius: var(--space-m);
+            box-shadow: 0 8px 20px var(--color-shadow);
+            border-bottom: 4px solid transparent;
+            transition: border-color var(--transition-time);
+            min-height: 250px;
+        }
+        .product-card h3 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            margin: var(--space-m) 0 8px 0;
+            font-size: 1.25rem;
+        }
+        .product-card .price {
+            display: block;
+            font-family: var(--font-accent);
+            color: var(--color-accent);
+            font-weight: 600;
+            margin-bottom: var(--space-m);
+        }
+
+        .product-card .icon {
+            width: 40px;
+            height: 40px;
+            color: var(--color-primary);
+            fill: currentColor;
+            transition: color var(--transition-time), transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Card Hover Effect */
+        .product-card:hover {
+            border-color: var(--color-accent);
+            box-shadow: 0 12px 30px rgba(0, 120, 255, 0.15);
+        }
+        .product-card:hover .icon {
+            color: var(--color-accent);
+            transform: translateY(-5px);
+        }
+
+        /* How It Works */
+        #how-it-works {
+            text-align: center;
+        }
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xl);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            gap: var(--space-l);
+            align-items: center;
+            text-align: left;
+        }
+        .step-number {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--color-primary), var(--color-accent));
+            color: var(--color-light-text);
+            font-family: var(--font-accent);
+            font-size: 1.5rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .step-content {
+            border-left: 2px solid var(--color-primary);
+            padding-left: var(--space-m);
+        }
+        .step h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        /* Benefits */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-l);
+        }
+
+        .benefit-item {
+            display: flex;
+            gap: var(--space-m);
+            align-items: flex-start;
+        }
+        .benefit-item .icon {
+            width: 32px;
+            height: 32px;
+            color: var(--color-accent);
+            flex-shrink: 0;
+        }
+
+        .benefit-item h4 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+        
+        /* CTA Section */
+        #cta {
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+            color: var(--color-light-text);
+            padding: var(--space-xl) var(--space-m);
+            text-align: center;
+            border-radius: var(--space-m);
+        }
+        #cta h2 {
+            color: var(--color-light-text);
+            margin-bottom: var(--space-m);
+            font-weight: 600;
+        }
+
+        /* Contact Section & Form */
+        #contact .form-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: var(--space-m);
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #ffffff;
+            font-size: var(--fs-base);
+            transition: box-shadow 0.3s, border-color 0.3s;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 6px var(--color-accent); /* Glowing border on focus */
+        }
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        /* CTA Sticky Bar (Optional Feature) */
+        .sticky-quote-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(26, 26, 26, 0.95);
+            color: var(--color-light-text);
+            padding: 10px 0;
+            z-index: 900;
+            transform: translateY(100%); /* Initial state: off-screen */
+            transition: transform 0.5s ease-out;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+            font-size: 0.9rem;
+        }
+        .sticky-quote-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 var(--space-m);
+        }
+        .sticky-quote-bar .btn {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Success Modal */
+        #success-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            visibility: hidden; /* Use visibility instead of display: none */
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end; /* Slide up from bottom */
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            padding: var(--space-xl);
+            border-top-left-radius: var(--space-m);
+            border-top-right-radius: var(--space-m);
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            transform: translateY(100%); /* Initial GSAP position */
+            box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-content h3 {
+            color: var(--color-accent);
+            margin-bottom: var(--space-m);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--color-text);
+            color: var(--color-light-text);
+            padding: var(--space-xl) var(--space-m);
+            text-align: center;
+            opacity: 0; /* GSAP initial state */
+        }
+        .footer-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .footer-links a {
+            color: var(--color-accent);
+            text-decoration: none;
+            margin: 0 var(--space-m);
+            transition: color var(--transition-time);
+        }
+        .footer-links a:hover {
+            color: var(--color-primary);
+        }
+        .footer-info {
+            margin-bottom: var(--space-m);
+            font-size: 0.9rem;
+        }
+        .project-counter {
+            font-family: var(--font-accent);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 10px;
+            color: var(--color-primary);
+        }
+
+
+        /* Media Queries (Mobile-First Scaling) */
+        /* Tablet (768px) */
+        @media (min-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .benefits-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .steps-container {
+                gap: calc(var(--space-xl) * 2);
+            }
+            .step:nth-child(even) {
+                flex-direction: row-reverse;
+                text-align: right;
+            }
+            .step:nth-child(even) .step-content {
+                border-left: none;
+                border-right: 2px solid var(--color-primary);
+                padding-left: 0;
+                padding-right: var(--space-m);
+            }
+            .step-number {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Desktop (992px) */
+        @media (min-width: 992px) {
+            .hero-content {
+                max-width: 55%;
+            }
+            #hero .container {
+                display: flex;
+                align-items: center;
+                min-height: 80vh;
+            }
+            .hero-ctas {
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-content">
+            <a href="#hero" class="logo">ELCHIC</a>
+            <div class="nav-links">
+                <!-- Simple navigation for SPA -->
+            </div>
+        </div>
+    </header>
+
+    <!-- 🏠 Hero Section -->
+    <section id="hero" class="container">
+        <div class="hero-content">
+            <h1 class="hero-headline">Innovate. Evolve. <strong class="highlight">Excel.</strong></h1>
+            <p class="hero-subtext">ELCHIC GENERAL WORKS LIMITED delivers immediate value through powerful **digital products** and online innovation tools. Get started today.</p>
+            <div class="hero-ctas">
+                <a href="#solutions" class="btn btn-primary hero-cta-btn" data-cta-label="View Products">View Products</a>
+                <a href="#contact" class="btn btn-secondary hero-cta-btn" data-cta-label="Contact Us">Contact Us</a>
+            </div>
+        </div>
+        <!-- Floating Icons (Placeholder for GSAP motion) -->
+        <div class="floating-icon i1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+        </div>
+        <div class="floating-icon i2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+        </div>
+    </section>
+
+    <!-- 🧭 Digital Products -->
+    <section id="solutions" class="container">
+        <h2>Our <strong class="highlight">Digital Products</strong> (Instant Access)</h2>
+        <div class="product-grid">
+            <div class="product-card" data-card-index="0">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2L2 21h20L12 2zm0 3.48L19.26 19H4.74L12 5.48z"/></svg>
+                </div>
+                <h3>AI Strategy Blueprint</h3>
+                <span class="price">KES 7,500</span>
+                <p>A comprehensive, downloadable guide and template for integrating AI models into your core business operations.</p>
+            </div>
+            <div class="product-card" data-card-index="1">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                </div>
+                <h3>SaaS Product Audit Kit</h3>
+                <span class="price">KES 6,950</span>
+                <p>An interactive checklist and reporting tool to help evaluate the performance and cost-efficiency of your existing software subscriptions.</p>
+            </div>
+            <div class="product-card" data-card-index="2">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 4h-2V2h-2v2H9V2H7v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V8h14v12zM7 10h5v5H7z"/></svg>
+                </div>
+                <h3>Cloud Migration Readiness Tool</h3>
+                <span class="price">KES 7,200</span>
+                <p>A smart online assessment that analyzes your current infrastructure and generates a personalized cloud migration readiness report.</p>
+            </div>
+            <div class="product-card" data-card-index="3">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 12c.55 0 1-.45 1-1V5c0-.55-.45-1-1-1s-1 .45-1 1v6c0 .55.45 1 1 1zm-4 8c.55 0 1-.45 1-1V14c0-.55-.45-1-1-1s-1 .45-1 1v5c0 .55.45 1 1 1zm8 0c.55 0 1-.45 1-1V17c0-.55-.45-1-1-1s-1 .45-1 1v2c0 .55.45 1 1 1z"/></svg>
+                </div>
+                <h3>Security Policy Generator</h3>
+                <span class="price">KES 6,475</span>
+                <p>A web application that guides you through generating custom, GDPR/CCPA-compliant digital security policies for your startup or SME.</p>
+            </div>
+            <div class="product-card" data-card-index="4">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 10H3V8h18v8zM6 14h2v-4H6v4z"/></svg>
+                </div>
+                <h3>Digital Marketing Accelerator</h3>
+                <span class="price">KES 6,800</span>
+                <p>A premium downloadable template kit including high-converting copy, scripts, and campaign structures for tech product launches.</p>
+            </div>
+            <div class="product-card" data-card-index="5">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                </div>
+                <h3>IoT Network Design Planner</h3>
+                <span class="price">KES 7,050</span>
+                <p>A step-by-step interactive workbook and checklist for planning, budgeting, and deploying a secure, small-scale IoT environment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ⚙️ How It Works -->
+    <section id="how-it-works" class="container">
+        <h2 class="section-title">Getting Started in <strong class="highlight">3 Steps</strong></h2>
+        <div class="steps-container">
+            <div class="step" data-step-index="0">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Choose Your Digital Product</h3>
+                    <p>Select the immediate online tool or digital asset that best solves your current business challenge.</p>
+                </div>
+            </div>
+            <div class="step" data-step-index="1">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Purchase Online</h3>
+                    <p>Securely complete your purchase online. All products are priced between <strong class="highlight">KES 6,475</strong> and <strong class="highlight">KES 7,500</strong>.</p>
+                </div>
+            </div>
+            <div class="step" data-step-index="2">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Download & Implement</h3>
+                    <p>Gain instant access to your asset or tool and start implementing the solution immediately to scale your business.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🌟 Benefits -->
+    <section id="benefits" class="container">
+        <h2>Why Choose <strong class="highlight">ELCHIC</strong> Products?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-item" data-benefit-index="0">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm0-4h-2V7h2v8z"/></svg>
+                </div>
+                <div>
+                    <h4>Immediate Access</h4>
+                    <p>All products are digital, providing instant download and utility right after purchase.</p>
+                </div>
+            </div>
+            <div class="benefit-item" data-benefit-index="1">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2L4 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-8-3zm-1 15h2v-2h-2v2zm0-4h2V7h-2v6z"/></svg>
+                </div>
+                <div>
+                    <h4>Smart Automation</h4>
+                    <p>Our tools are designed to automate planning, assessment, and policy creation, saving you time.</p>
+                </div>
+            </div>
+            <div class="benefit-item" data-benefit-index="2">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5h-7.17L10.5 3H4c-1.1 0-1.99.9-1.99 2L2 19c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zM4 19V7h16l.01 12H4z"/></svg>
+                </div>
+                <div>
+                    <h4>Tested Frameworks</h4>
+                    <p>Our products are based on successful technology and innovation frameworks used by our experts.</p>
+                </div>
+            </div>
+            <div class="benefit-item" data-benefit-index="3">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+                <div>
+                    <h4>Affordable Innovation</h4>
+                    <p>Access high-level strategy and planning without the high cost of traditional consultation services.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 📱 CTA Section -->
+    <section id="cta" class="container">
+        <h2>Secure your innovation tools with <strong class="highlight">ELCHIC</strong> today.</h2>
+        <p>Browse our catalog of digital products for instant business optimization.</p>
+        <div class="hero-ctas" style="justify-content: center; margin-top: var(--space-l);">
+            <a href="#solutions" class="btn btn-secondary hero-cta-btn" data-cta-label="View Catalog" style="color: var(--color-light-text); background-color: var(--color-primary);">View Catalog</a>
+            <a href="#contact" class="btn btn-secondary hero-cta-btn" data-cta-label="Ask a Question" style="color: var(--color-text); background-color: var(--color-light-text);">Ask a Question</a>
+        </div>
+    </section>
+
+    <!-- 📩 Contact Section -->
+    <section id="contact" class="container">
+        <h2>Get in <strong class="highlight">Touch</strong></h2>
+        <div class="form-wrapper">
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="you@company.com">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required placeholder="I have a question about the Security Policy Generator..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" id="submit-btn" data-cta-label="Send Message">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ⚖️ Footer -->
+    <footer>
+        <div class="footer-content">
+            <p class="footer-info">ELCHIC GENERAL WORKS LIMITED | Innovation & Digital Products</p>
+            <p class="project-counter">Innovations Delivered: <span id="project-count">0</span>+</p>
+            <div class="footer-links">
+                <a href="terms-of-service.html">Terms of Service</a> | 
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+            <p style="margin-top: 10px; font-size: 0.8rem;">&copy; <span id="current-year"></span> ELCHIC GENERAL WORKS LIMITED. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- GSAP Success Modal -->
+    <div id="success-modal">
+        <div class="modal-content">
+            <h3>Success!</h3>
+            <p style="margin-bottom: var(--space-m);">Thanks! Our innovation team will reach out shortly to discuss your question.</p>
+            <button id="modal-close-btn" class="btn btn-primary">Close</button>
+        </div>
+    </div>
+    
+    <!-- Sticky Quote Bar -->
+    <div class="sticky-quote-bar" id="sticky-bar">
+        <div class="sticky-quote-content">
+            <span>Ready to innovate? Products from KES 6,475.</span>
+            <a href="#solutions" class="btn btn-primary" data-cta-label="View Products">View Products</a>
+        </div>
+    </div>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        const G = {
+            primary: '#0078FF',
+            accent: '#00D1B2',
+            text: '#1A1A1A',
+            light: '#F5F7FA'
+        };
+
+        // --- Utility Functions ---
+
+        /**
+         * Simulates an API call delay.
+         * @returns {Promise} A promise that resolves after a delay.
+         */
+        function fakeApiCall() {
+            return new Promise(resolve => setTimeout(resolve, 1500));
+        }
+
+        // --- GSAP Animation Definitions ---
+
+        /**
+         * Defines the GSAP timeline for button hover state.
+         * @param {HTMLElement} btn - The button element.
+         */
+        function setupButtonHover(btn) {
+            const isPrimary = btn.classList.contains('btn-primary');
+            
+            // Determine background color based on primary/secondary style
+            let initialBg = isPrimary ? G.primary : 'transparent';
+            let initialColor = isPrimary ? G.light : G.primary;
+            
+            // Adjust for CTA Section buttons which override default colors
+            if (btn.closest('#cta') && btn.classList.contains('btn-secondary')) {
+                if (btn.style.backgroundColor === G.primary) {
+                    initialBg = G.primary;
+                    initialColor = G.light;
+                } else if (btn.style.backgroundColor === G.light) {
+                    initialBg = G.light;
+                    initialColor = G.text;
+                }
+            }
+
+
+            const hoverProps = {
+                scale: 1.05,
+                boxShadow: "0 8px 25px rgba(0, 120, 255, 0.4)",
+                backgroundColor: G.accent,
+                duration: 0.3,
+                ease: "power2.out",
+                color: G.light // Ensure text is light on accent background
+            };
+
+            const resetProps = {
+                scale: 1,
+                boxShadow: isPrimary ? "0 4px 10px rgba(0, 120, 255, 0.2)" : "none",
+                backgroundColor: initialBg,
+                duration: 0.3,
+                ease: "power2.out",
+                color: initialColor
+            };
+            
+            // Secondary buttons need explicit color reset if they had a specific initial color
+            if (!isPrimary && !btn.closest('#cta')) {
+                gsap.set(btn, { color: initialColor, borderColor: G.primary });
+                hoverProps.borderColor = G.accent;
+                resetProps.borderColor = G.primary;
+            } else if (btn.closest('#cta')) {
+                 // For CTA buttons, ensure color returns correctly
+                 gsap.set(btn, { color: initialColor, borderColor: initialColor === G.text ? G.primary : G.light });
+                 hoverProps.borderColor = G.accent;
+                 resetProps.borderColor = initialColor === G.text ? G.primary : G.light;
+            } else {
+                 gsap.set(btn, { color: initialColor });
+            }
+
+
+            const hoverTL = gsap.timeline({ paused: true });
+            hoverTL.to(btn, hoverProps);
+
+            btn.addEventListener('mouseenter', () => hoverTL.play());
+            btn.addEventListener('mouseleave', () => hoverTL.reverse());
+        }
+
+        /**
+         * Defines the GSAP timeline for the success modal (slide-up/spring).
+         */
+        const modalTL = gsap.timeline({ paused: true, onReverseComplete: () => {
+            document.getElementById('success-modal').style.visibility = 'hidden';
+        }});
+        modalTL
+            .set('#success-modal', { visibility: 'visible', pointerEvents: 'auto' })
+            .fromTo('.modal-content', 
+                { y: '100%' }, 
+                { y: '0%', duration: 0.6, ease: "elastic.out(1, 0.5)" }
+            )
+            .fromTo('#success-modal', 
+                { opacity: 0 },
+                { opacity: 1, duration: 0.3 },
+                "<0.1"
+            );
+
+        /**
+         * Initializes all GSAP animations for the page.
+         */
+        function initGSAPAnimations() {
+            // 1. Initial Page Load Animation (Header & Hero)
+            gsap.from('header, .hero-headline, .hero-subtext', { 
+                y: -20, 
+                opacity: 0, 
+                duration: 1, 
+                stagger: 0.2, 
+                ease: "power3.out" 
+            });
+
+            // 2. Floating Tech Icons Motion
+            gsap.to('.floating-icon.i1', { 
+                y: 15, x: 10, rotation: 5, duration: 8, ease: "sine.inOut", repeat: -1, yoyo: true 
+            });
+            gsap.to('.floating-icon.i2', { 
+                y: -10, x: -15, rotation: -8, duration: 10, ease: "power1.inOut", repeat: -1, yoyo: true 
+            });
+            gsap.to('.floating-icon.i3', { 
+                y: 10, x: 5, rotation: 10, duration: 12, ease: "none", repeat: -1, yoyo: true 
+            });
+
+            // 3. Digital Products (Staggered Pop-in)
+            gsap.from('.product-card', {
+                y: 50,
+                opacity: 0,
+                scale: 0.9,
+                duration: 0.8,
+                stagger: 0.1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: '#solutions',
+                    start: 'top 80%',
+                }
+            });
+
+            // 4. How It Works (Staggered Fade + Slide-up)
+            gsap.from('.step', {
+                y: 30,
+                opacity: 0,
+                duration: 0.7,
+                stagger: 0.3,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: '#how-it-works',
+                    start: 'top 80%',
+                }
+            });
+
+            // 5. Benefits (Fade-up Bounce)
+            gsap.from('.benefit-item', {
+                y: 40,
+                opacity: 0,
+                duration: 0.6,
+                stagger: 0.15,
+                ease: "back.out(1.7)", // Bounce effect
+                scrollTrigger: {
+                    trigger: '#benefits',
+                    start: 'top 80%',
+                }
+            });
+
+            // 6. Footer Fade-in on Scroll End
+            gsap.to('footer', {
+                opacity: 1,
+                duration: 1,
+                ease: "power1.out",
+                scrollTrigger: {
+                    trigger: 'footer',
+                    start: 'top 95%',
+                }
+            });
+
+            // 7. Sticky Quote Bar (Optional Feature)
+            ScrollTrigger.create({
+                trigger: 'footer', // Show when footer is coming into view
+                start: 'top bottom',
+                end: 'bottom bottom',
+                onEnter: () => gsap.to('#sticky-bar', { y: '0%', duration: 0.5, ease: 'power2.out' }),
+                onLeaveBack: () => gsap.to('#sticky-bar', { y: '100%', duration: 0.5, ease: 'power2.out' }),
+                
+            });
+            
+            // 8. Apply hover animation to all buttons
+            document.querySelectorAll('.btn').forEach(setupButtonHover);
+        }
+
+        // --- Form and Modal Handling ---
+        
+        const form = document.getElementById('contact-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const modal = document.getElementById('success-modal');
+        const modalCloseBtn = document.getElementById('modal-close-btn');
+
+        /**
+         * Handles the AJAX form submission.
+         * @param {Event} e - The form submit event.
+         */
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            console.log("Submitting Data:", data);
+
+            // Simulate AJAX post request
+            try {
+                // In a real application, you would use:
+                // const response = await fetch('/api/contact', { 
+                //     method: 'POST', 
+                //     headers: { 'Content-Type': 'application/json' },
+                //     body: JSON.stringify(data)
+                // });
+                // if (!response.ok) throw new Error('Network response was not ok');
+
+                await fakeApiCall(); // Use the simulated API call
+
+                console.log("Form submission successful.");
+
+                // Show success modal via GSAP
+                modalTL.play(0); 
+
+                // Reset form
+                form.reset();
+
+            } catch (error) {
+                console.error("Submission Error:", error);
+                // Handle error visually 
+                console.error('An error occurred during submission. Please try again.');
+            } finally {
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.textContent = submitBtn.dataset.ctaLabel || 'Send Message';
+            }
+        }
+
+        /**
+         * Closes the success modal via GSAP reverse timeline.
+         */
+        function closeModal() {
+            modalTL.reverse();
+        }
+
+        // --- Initialization on Window Load ---
+
+        window.onload = function() {
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            // Set initial project count
+            document.getElementById('project-count').textContent = '1024';
+            
+            // Start the animations
+            initGSAPAnimations();
+            
+            // Attach event listeners
+            form.addEventListener('submit', handleFormSubmit);
+            modalCloseBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal(); // Dismiss on click-outside
+                }
+            });
+        };
+    </script>
+</body>
+</html>

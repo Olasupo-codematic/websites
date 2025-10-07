@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JAMUNET COMPANY LIMITED - Instant Digital Marketing Solutions</title>
+    <!-- Load Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "primary-blue": "#007bff",
+              "accent-cyan": "#17a2b8",
+              "light-bg": "#f8f9fa",
+              "dark-text": "#212529",
+            },
+            fontFamily: {
+              heading: ["Manrope", "sans-serif"],
+              body: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* CSS Variables for Typography */
+      :root {
+        --fs-h1: clamp(2.5rem, 1.5rem + 2.5vw, 4rem);
+        --fs-h2: clamp(1.8rem, 1.2rem + 1.8vw, 3rem);
+        --fs-body: clamp(0.95rem, 0.85rem + 0.2vw, 1.1rem);
+      }
+
+      h1 {
+        font-size: var(--fs-h1);
+      }
+      h2 {
+        font-size: var(--fs-h2);
+      }
+      body {
+        font-size: var(--fs-body);
+      }
+
+      body {
+        font-family: var(--font-body);
+        color: var(--dark-text);
+        background-color: var(--light-bg);
+        transition: background-color 0.3s ease;
+      }
+
+      /* Custom Styles for Components and Animations */
+      .btn-primary {
+        @apply inline-flex items-center justify-center px-6 py-3 font-semibold rounded-lg shadow-lg transition-all duration-300 ease-in-out
+                   bg-primary-blue text-white hover:bg-accent-cyan transform hover:scale-[1.03] active:scale-95;
+      }
+
+      .product-card {
+        @apply bg-white p-6 rounded-xl shadow-lg border border-gray-100 transition-all duration-300 ease-in-out;
+      }
+      .product-card:hover {
+        @apply transform -translate-y-1 shadow-2xl;
+      }
+
+      /* Form Input Styling */
+      .form-input {
+        @apply w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-primary-blue outline-none transition duration-200;
+      }
+
+      /* Modal specific styles */
+      .modal-overlay {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s, opacity 0.3s ease;
+      }
+      .modal-overlay.open {
+        visibility: visible;
+        opacity: 1;
+        backdrop-filter: blur(4px);
+      }
+      .modal-content {
+        transform: scale(0.9);
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      .modal-overlay.open .modal-content {
+        transform: scale(1);
+      }
+    </style>
+  </head>
+  <body class="font-body text-dark-text bg-light-bg">
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center"
+      >
+        <a
+          href="#hero"
+          class="text-2xl font-heading font-extrabold text-primary-blue"
+          >JAMUNET</a
+        >
+        <nav class="hidden md:block">
+          <a
+            href="#products"
+            class="text-dark-text hover:text-primary-blue px-3 py-2 rounded-md font-medium transition-colors"
+            >Products</a
+          >
+          <a
+            href="#how-it-works"
+            class="text-dark-text hover:text-primary-blue px-3 py-2 rounded-md font-medium transition-colors"
+            >How It Works</a
+          >
+          <a
+            href="#contact"
+            class="text-dark-text hover:text-primary-blue px-3 py-2 rounded-md font-medium transition-colors"
+            >Support</a
+          >
+        </nav>
+        <button
+          class="md:hidden text-dark-text hover:text-primary-blue text-2xl"
+          aria-label="Menu"
+        >
+          ☰
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section
+        id="hero"
+        class="relative overflow-hidden py-16 md:py-24 bg-gradient-to-br from-light-bg to-white"
+      >
+        <!-- Decorative blurred orbs -->
+        <div
+          class="pointer-events-none absolute -top-24 -right-24 w-96 h-96 rounded-full bg-accent-cyan/20 blur-3xl"
+        ></div>
+        <div
+          class="pointer-events-none absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-primary-blue/15 blur-3xl"
+        ></div>
+        <div
+          class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        >
+          <h1
+            class="font-heading font-extrabold leading-tight mb-4 text-dark-text"
+          >
+            Instant Digital Solutions for
+            <span class="text-primary-blue">JAMUNET COMPANY LIMITED</span>
+            Customers
+          </h1>
+          <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            Browse, buy, and receive your cutting-edge digital marketing files
+            instantly via email. Unlock rapid growth today.
+          </p>
+          <div
+            class="flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <a
+              href="#products"
+              class="inline-flex items-center justify-center px-8 py-4 rounded-xl font-semibold bg-primary-blue text-white shadow-lg hover:bg-accent-cyan transition transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue"
+            >
+              View Products
+            </a>
+            <a
+              href="#contact"
+              class="inline-flex items-center justify-center px-8 py-4 rounded-xl font-semibold border-2 border-primary-blue text-primary-blue hover:border-accent-cyan hover:text-accent-cyan transition"
+            >
+              Contact Support
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Product Grid Section -->
+      <section id="products" class="py-16 md:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="font-heading font-bold text-center mb-12 text-dark-text">
+            Our Digital Product Library
+          </h2>
+
+          <div
+            id="product-list"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            <!-- Products will be dynamically generated or hardcoded here -->
+
+            <!-- Product 1: Social Media Growth Kit -->
+            <div
+              class="product-card group bg-white p-6 rounded-2xl shadow-lg border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-2xl ring-1 ring-transparent hover:ring-accent-cyan/30"
+            >
+              <div
+                class="h-32 bg-accent-cyan/20 rounded-2xl flex items-center justify-center mb-4 ring-1 ring-inset ring-gray-100 group-hover:ring-accent-cyan/30 transition"
+              >
+                <span class="text-4xl text-accent-cyan">🚀</span>
+              </div>
+              <h3 class="text-xl font-heading font-semibold mb-2">
+                Social Media Growth Kit
+              </h3>
+              <p class="text-gray-500 text-sm mb-4">
+                100+ templates and strategy guides for explosive social
+                presence.
+              </p>
+              <div class="flex justify-between items-center mt-4">
+                <span
+                  class="text-2xl font-heading font-extrabold text-primary-blue"
+                  >KES 6,800</span
+                >
+                <button
+                  class="inline-flex items-center justify-center text-sm px-4 py-2 rounded-lg font-semibold bg-primary-blue text-white shadow-md hover:bg-accent-cyan transition transform hover:scale-[1.02] active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue"
+                  onclick="openPaymentModal('Social Media Growth Kit', '6800')"
+                >
+                  Buy Now
+                </button>
+              </div>
+            </div>
+
+            <!-- Product 2: Digital Marketing Strategy Template -->
+            <div
+              class="product-card group bg-white p-6 rounded-2xl shadow-lg border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-2xl ring-1 ring-transparent hover:ring-accent-cyan/30"
+            >
+              <div
+                class="h-32 bg-primary-blue/20 rounded-2xl flex items-center justify-center mb-4 ring-1 ring-inset ring-gray-100 group-hover:ring-primary-blue/40 transition"
+              >
+                <span class="text-4xl text-primary-blue">💡</span>
+              </div>
+              <h3 class="text-xl font-heading font-semibold mb-2">
+                Digital Marketing Strategy Template
+              </h3>
+              <p class="text-gray-500 text-sm mb-4">
+                A comprehensive, 50-page framework for Q4 planning and
+                execution.
+              </p>
+              <div class="flex justify-between items-center mt-4">
+                <span
+                  class="text-2xl font-heading font-extrabold text-primary-blue"
+                  >KES 7,000</span
+                >
+                <button
+                  class="inline-flex items-center justify-center text-sm px-4 py-2 rounded-lg font-semibold bg-primary-blue text-white shadow-md hover:bg-accent-cyan transition transform hover:scale-[1.02] active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue"
+                  onclick="openPaymentModal('Digital Marketing Strategy Template', '7000')"
+                >
+                  Buy Now
+                </button>
+              </div>
+            </div>
+
+            <!-- Product 3: Brand Content Calendar Pack -->
+            <div
+              class="product-card group bg-white p-6 rounded-2xl shadow-lg border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-2xl ring-1 ring-transparent hover:ring-accent-cyan/30"
+            >
+              <div
+                class="h-32 bg-primary-blue/10 rounded-2xl flex items-center justify-center mb-4 ring-1 ring-inset ring-gray-100 group-hover:ring-primary-blue/30 transition"
+              >
+                <span class="text-4xl text-primary-blue">📅</span>
+              </div>
+              <h3 class="text-xl font-heading font-semibold mb-2">
+                Brand Content Calendar Pack
+              </h3>
+              <p class="text-gray-500 text-sm mb-4">
+                Yearly content planner with platform-specific content ideas.
+              </p>
+              <div class="flex justify-between items-center mt-4">
+                <span
+                  class="text-2xl font-heading font-extrabold text-primary-blue"
+                  >KES 7,200</span
+                >
+                <button
+                  class="inline-flex items-center justify-center text-sm px-4 py-2 rounded-lg font-semibold bg-primary-blue text-white shadow-md hover:bg-accent-cyan transition transform hover:scale-[1.02] active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue"
+                  onclick="openPaymentModal('Brand Content Calendar Pack', '7200')"
+                >
+                  Buy Now
+                </button>
+              </div>
+            </div>
+
+            <!-- Product 4: Ads Copywriting Template Bundle -->
+            <div
+              class="product-card group bg-white p-6 rounded-2xl shadow-lg border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-2xl ring-1 ring-transparent hover:ring-accent-cyan/30"
+            >
+              <div
+                class="h-32 bg-accent-cyan/10 rounded-2xl flex items-center justify-center mb-4 ring-1 ring-inset ring-gray-100 group-hover:ring-accent-cyan/40 transition"
+              >
+                <span class="text-4xl text-accent-cyan">✍️</span>
+              </div>
+              <h3 class="text-xl font-heading font-semibold mb-2">
+                Ads Copywriting Template Bundle
+              </h3>
+              <p class="text-gray-500 text-sm mb-4">
+                High-converting copy templates for Google, Facebook, and TikTok
+                Ads.
+              </p>
+              <div class="flex justify-between items-center mt-4">
+                <span
+                  class="text-2xl font-heading font-extrabold text-primary-blue"
+                  >KES 7,800</span
+                >
+                <button
+                  class="inline-flex items-center justify-center text-sm px-4 py-2 rounded-lg font-semibold bg-primary-blue text-white shadow-md hover:bg-accent-cyan transition transform hover:scale-[1.02] active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue"
+                  onclick="openPaymentModal('Ads Copywriting Template Bundle', '7800')"
+                >
+                  Buy Now
+                </button>
+              </div>
+            </div>
+
+            <!-- Product 5: Influencer Outreach Email Kit -->
+            <div
+              class="product-card group bg-white p-6 rounded-2xl shadow-lg border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-2xl ring-1 ring-transparent hover:ring-accent-cyan/30"
+            >
+              <div
+                class="h-32 bg-primary-blue/5 rounded-2xl flex items-center justify-center mb-4 ring-1 ring-inset ring-gray-100 group-hover:ring-primary-blue/25 transition"
+              >
+                <span class="text-4xl text-primary-blue">🤝</span>
+              </div>
+              <h3 class="text-xl font-heading font-semibold mb-2">
+                Influencer Outreach Email Kit
+              </h3>
+              <p class="text-gray-500 text-sm mb-4">
+                Pre-written email sequences to partner with top-tier
+                influencers.
+              </p>
+              <div class="flex justify-between items-center mt-4">
+                <span
+                  class="text-2xl font-heading font-extrabold text-primary-blue"
+                  >KES 6,900</span
+                >
+                <button
+                  class="inline-flex items-center justify-center text-sm px-4 py-2 rounded-lg font-semibold bg-primary-blue text-white shadow-md hover:bg-accent-cyan transition transform hover:scale-[1.02] active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue"
+                  onclick="openPaymentModal('Influencer Outreach Email Kit', '6900')"
+                >
+                  Buy Now
+                </button>
+              </div>
+            </div>
+
+            <!-- Product 6: SEO Checklist and Keyword Planner -->
+            <div
+              class="product-card group bg-white p-6 rounded-2xl shadow-lg border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-2xl ring-1 ring-transparent hover:ring-accent-cyan/30"
+            >
+              <div
+                class="h-32 bg-accent-cyan/5 rounded-2xl flex items-center justify-center mb-4 ring-1 ring-inset ring-gray-100 group-hover:ring-accent-cyan/25 transition"
+              >
+                <span class="text-4xl text-accent-cyan">✅</span>
+              </div>
+              <h3 class="text-xl font-heading font-semibold mb-2">
+                SEO Checklist and Keyword Planner
+              </h3>
+              <p class="text-gray-500 text-sm mb-4">
+                200-point checklist and advanced keyword research spreadsheet.
+              </p>
+              <div class="flex justify-between items-center mt-4">
+                <span
+                  class="text-2xl font-heading font-extrabold text-primary-blue"
+                  >KES 7,500</span
+                >
+                <button
+                  class="inline-flex items-center justify-center text-sm px-4 py-2 rounded-lg font-semibold bg-primary-blue text-white shadow-md hover:bg-accent-cyan transition transform hover:scale-[1.02] active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue"
+                  onclick="openPaymentModal('SEO Checklist and Keyword Planner', '7500')"
+                >
+                  Buy Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works & Benefits Section -->
+      <section id="how-it-works" class="bg-primary-blue/10 py-16 md:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="font-heading font-bold text-center mb-12 text-dark-text">
+            How It Works & What You Get
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <!-- How It Works -->
+            <div>
+              <h3
+                class="text-2xl font-heading font-bold mb-6 text-primary-blue"
+              >
+                3 Simple Steps
+              </h3>
+              <ol class="space-y-6 list-decimal list-inside text-lg">
+                <li class="pl-2">
+                  <span class="font-semibold text-dark-text"
+                    >Choose a Product:</span
+                  >
+                  Select the digital solution that best fits your marketing
+                  needs.
+                </li>
+                <li class="pl-2">
+                  <span class="font-semibold text-dark-text"
+                    >Pay Securely Online:</span
+                  >
+                  Complete your purchase using our secure, one-time payment
+                  gateway.
+                </li>
+                <li class="pl-2">
+                  <span class="font-semibold text-dark-text"
+                    >Receive Instantly:</span
+                  >
+                  Your download link or file will be delivered to your email
+                  inbox within seconds.
+                </li>
+              </ol>
+            </div>
+
+            <!-- Benefits -->
+            <div>
+              <h3 class="text-2xl font-heading font-bold mb-6 text-accent-cyan">
+                Key Benefits
+              </h3>
+              <ul class="space-y-4 text-lg">
+                <li class="flex items-start">
+                  <span class="text-primary-blue mr-3 text-xl">✓</span>
+                  <span class="font-semibold">Instant Access:</span> No waiting
+                  periods. Get to work immediately.
+                </li>
+                <li class="flex items-start">
+                  <span class="text-primary-blue mr-3 text-xl">✓</span>
+                  <span class="font-semibold">No Recurring Fees:</span> Pay
+                  once, own the product forever.
+                </li>
+                <li class="flex items-start">
+                  <span class="text-primary-blue mr-3 text-xl">✓</span>
+                  <span class="font-semibold">Email Delivery:</span> Files
+                  securely and reliably delivered straight to your inbox.
+                </li>
+                <li class="flex items-start">
+                  <span class="text-primary-blue mr-3 text-xl">✓</span>
+                  <span class="font-semibold">24/7 Availability:</span> Purchase
+                  and download anytime, anywhere.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact / Support Section -->
+      <section
+        id="contact"
+        class="py-16 md:py-20 bg-gradient-to-br from-white to-light-bg"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="font-heading font-bold text-center mb-12 text-dark-text">
+            Need Assistance? Contact Us.
+          </h2>
+
+          <div
+            class="max-w-2xl mx-auto bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-gray-100 ring-1 ring-transparent hover:ring-accent-cyan/20 transition"
+          >
+            <form id="contact-form" class="space-y-4">
+              <div>
+                <label
+                  for="name"
+                  class="block text-sm font-medium text-gray-700 mb-1"
+                  >Name</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  class="form-input w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-primary-blue outline-none transition duration-200 bg-white/90"
+                  placeholder="Your Full Name"
+                />
+              </div>
+              <div>
+                <label
+                  for="email"
+                  class="block text-sm font-medium text-gray-700 mb-1"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="form-input w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-primary-blue outline-none transition duration-200 bg-white/90"
+                  placeholder="info@example.com"
+                />
+              </div>
+              <div>
+                <label
+                  for="message"
+                  class="block text-sm font-medium text-gray-700 mb-1"
+                  >Message</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  required
+                  class="form-input w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-primary-blue outline-none transition duration-200 bg-white/90"
+                  placeholder="How can we help you today?"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="w-full mt-4 inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold bg-primary-blue text-white shadow-lg hover:bg-accent-cyan transition transform hover:scale-[1.02] active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Removed in-page Privacy and Terms sections; see standalone pages privacy.html and terms-of-service.html -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-text text-white py-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="mb-4">
+          &copy; 2025 JAMUNET COMPANY LIMITED. All rights reserved.
+        </p>
+        <p class="mb-4">
+          Contact:
+          <a
+            href="mailto:info@jamunetcompany.com"
+            class="text-accent-cyan hover:text-primary-blue transition-colors"
+            >info@jamunetcompany.com</a
+          >
+        </p>
+        <div class="space-x-4">
+          <a
+            href="terms-of-service.html"
+            class="text-white hover:text-accent-cyan transition-colors font-medium"
+            >Terms of Service</a
+          >
+          <span class="text-gray-500">|</span>
+          <a
+            href="privacy.html"
+            class="text-white hover:text-accent-cyan transition-colors font-medium"
+            >Privacy Policy</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- Payment Modal (Hidden by default) -->
+    <div
+      id="payment-modal"
+      class="modal-overlay fixed inset-0 z-[100] flex items-center justify-center bg-dark-text/70 p-4"
+      onclick="closeModal(event, 'payment-modal')"
+    >
+      <div
+        class="modal-content bg-white w-full max-w-lg p-8 rounded-xl shadow-2xl"
+        role="dialog"
+        aria-modal="true"
+      >
+        <div class="flex justify-between items-start mb-4">
+          <h3 class="text-2xl font-heading font-bold text-primary-blue">
+            Confirm Purchase
+          </h3>
+          <button
+            class="text-gray-400 hover:text-dark-text text-3xl leading-none"
+            onclick="closeModal(event, 'payment-modal')"
+          >
+            &times;
+          </button>
+        </div>
+        <p class="text-lg mb-4">
+          You are about to purchase the
+          <span
+            id="modal-product-title"
+            class="font-semibold text-accent-cyan"
+          ></span
+          >.
+        </p>
+        <p class="text-xl font-heading font-extrabold mb-6">
+          Price: <span id="modal-product-price"></span>
+        </p>
+
+        <p class="mb-6 text-sm text-gray-600">
+          (This is a simulated checkout. In a live environment, this button
+          would redirect to a secure payment gateway.)
+        </p>
+
+        <button
+          class="w-full inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold bg-primary-blue text-white shadow-lg hover:bg-accent-cyan transition transform hover:scale-[1.02] active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue"
+          onclick="simulatePayment(event)"
+        >
+          Proceed to Secure Checkout
+        </button>
+      </div>
+    </div>
+
+    <!-- Thank You Modal (Hidden by default) -->
+    <div
+      id="thank-you-modal"
+      class="modal-overlay fixed inset-0 z-[100] flex items-center justify-center bg-dark-text/70 p-4"
+      onclick="closeModal(event, 'thank-you-modal')"
+    >
+      <div
+        class="modal-content bg-white w-full max-w-lg p-8 rounded-xl shadow-2xl text-center"
+        role="dialog"
+        aria-modal="true"
+      >
+        <div class="flex justify-end">
+          <button
+            class="text-gray-400 hover:text-dark-text text-3xl leading-none"
+            onclick="closeModal(event, 'thank-you-modal')"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="text-6xl text-primary-blue mb-4">🎉</div>
+        <h3 class="text-2xl font-heading font-bold mb-4 text-dark-text">
+          Thank You!
+        </h3>
+        <p id="thank-you-message" class="text-gray-600"></p>
+        <button
+          class="mt-6 inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold bg-primary-blue text-white shadow-lg hover:bg-accent-cyan transition transform hover:scale-[1.02] active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue"
+          onclick="closeModal(event, 'thank-you-modal')"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // --- Core Modal Functionality ---
+      const paymentModal = document.getElementById("payment-modal");
+      const thankYouModal = document.getElementById("thank-you-modal");
+      const modalProductTitle = document.getElementById("modal-product-title");
+      const modalProductPrice = document.getElementById("modal-product-price");
+      const thankYouMessage = document.getElementById("thank-you-message");
+      let currentProduct = {}; // Store product details for payment simulation
+
+      // Function to open a specific modal
+      function openModal(modal) {
+        modal.classList.add("open");
+        document.body.style.overflow = "hidden"; // Prevent background scrolling
+      }
+
+      // Function to close a specific modal, checking if the click was on the overlay
+      function closeModal(event, modalId) {
+        const modal = document.getElementById(modalId);
+        // Only close if the event target is the overlay or the close button
+        if (event.target === modal || event.target.closest("button.text-3xl")) {
+          modal.classList.remove("open");
+          document.body.style.overflow = ""; // Restore scrolling
+        }
+      }
+
+      // Close modal on ESC key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          if (paymentModal.classList.contains("open")) {
+            paymentModal.classList.remove("open");
+            document.body.style.overflow = "";
+          }
+          if (thankYouModal.classList.contains("open")) {
+            thankYouModal.classList.remove("open");
+            document.body.style.overflow = "";
+          }
+        }
+      });
+
+      // --- Product Purchase Logic ---
+      function openPaymentModal(title, price) {
+        currentProduct = { title, price };
+        modalProductTitle.textContent = title;
+        modalProductPrice.textContent = `KES ${price}`;
+        openModal(paymentModal);
+      }
+
+      function simulatePayment(event) {
+        event.preventDefault();
+        // Close the payment modal
+        closeModal({ target: paymentModal }, "payment-modal");
+
+        // Simulate the payment and instant delivery
+        const { title, price } = currentProduct;
+
+        // Set success message based on transaction
+        thankYouMessage.innerHTML = `Your simulated payment for <strong>${title} (KES ${price})</strong> was successful.<br>A download link has been sent instantly to your email.`;
+
+        // Open the thank you modal
+        openModal(thankYouModal);
+      }
+
+      // --- Contact Form AJAX Submission ---
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const form = e.target;
+          const formData = new FormData(form);
+          const name = formData.get("name");
+          const email = formData.get("email");
+          const message = formData.get("message");
+
+          // Simulate AJAX request latency (e.g., 500ms)
+          setTimeout(() => {
+            // In a real application, you would make a fetch request here:
+            /*
+                fetch('/api/contact', {
+                    method: 'POST',
+                    body: JSON.stringify({ name, email, message }),
+                    headers: { 'Content-Type': 'application/json' }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Success handling
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+                */
+
+            // Form reset and Thank You message update
+            form.reset();
+            thankYouMessage.innerHTML = `Thanks for reaching out, <strong>${name}</strong>! We have received your message and will reply to <strong>${email}</strong> shortly.`;
+
+            // Open the Thank You modal
+            openModal(thankYouModal);
+          }, 500); // Wait for 500ms to simulate network request
+        });
+    </script>
+  </body>
+</html>

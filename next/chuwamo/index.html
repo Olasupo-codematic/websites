@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CHUWAMO COMPANY LIMITED | Instant Digital Solutions</title>
+    <!-- Google Fonts for Manrope (Heading) and Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Load Phosphor Icons for simple, modern iconography -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+
+    <!-- Tailwind CSS with Custom Configuration -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "primary-indigo": "#1F3A93", // Trustworthy, tech-forward
+              "accent-teal": "#1FB6A7", // Action color for CTAs
+              "bg-warm": "#F6F7F9", // Off-white / Warm Gray
+              "text-charcoal": "#22262A", // Dark Charcoal
+              "surface-white": "#FFFFFF",
+            },
+            fontFamily: {
+              heading: [
+                "Manrope",
+                "system-ui",
+                "-apple-system",
+                "Segoe UI",
+                "Roboto",
+                "Arial",
+                "sans-serif",
+              ],
+              body: [
+                "Inter",
+                "system-ui",
+                "-apple-system",
+                "Segoe UI",
+                "Roboto",
+                "Arial",
+                "sans-serif",
+              ],
+            },
+            fontSize: {
+              // Fluid scale implementation using clamp() via CSS variables
+              "h1-fluid": "var(--fs-h1)",
+              "h2-fluid": "var(--fs-h2)",
+              "body-fluid": "var(--fs-body)",
+            },
+          },
+        },
+      };
+    </script>
+    <!-- Custom CSS for fluid typography and hover effects -->
+    <style>
+      /* CSS Variables for Fluid Typography Scale */
+      :root {
+        --font-heading: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto,
+          Arial, sans-serif;
+        --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+          Arial, sans-serif;
+
+        /* Fluid Scale (clamp(min, preferred, max)) */
+        --fs-h1: clamp(
+          2.2rem,
+          1.8rem + 2.5vw,
+          3.8rem
+        ); /* Adjusted for slightly bigger hero title */
+        --fs-h2: clamp(1.7rem, 1.5rem + 1.5vw, 2.5rem);
+        --fs-body: clamp(0.95rem, 0.85rem + 0.3vw, 1.05rem);
+
+        /* Spacing unit conversion for consistency: 20px */
+        --spacing-unit: 1.25rem;
+      }
+
+      body {
+        font-family: var(--font-body);
+        color: var(--text-charcoal);
+        background-color: var(--bg-warm);
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: var(--font-heading);
+        font-weight: 800; /* Extra bold for geometric headings */
+      }
+
+      .h1-style {
+        font-size: var(--fs-h1);
+      }
+      .h2-style {
+        font-size: var(--fs-h2);
+      }
+      .body-style {
+        font-size: var(--fs-body);
+      }
+
+      /* Custom Card Hover Effect */
+      .product-card {
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        border-radius: 10px; /* Soft corner radius */
+      }
+      .product-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 25px -5px rgba(31, 58, 147, 0.1),
+          0 10px 10px -5px rgba(31, 58, 147, 0.04);
+      }
+
+      /* Custom Button Hover Effect */
+      .cta-button {
+        transition: all 0.2s ease-in-out;
+        border-radius: 8px;
+      }
+      .cta-button:hover {
+        transform: scale(1.02);
+        box-shadow: 0 6px 15px -3px rgba(31, 182, 167, 0.4);
+      }
+
+      /* Input Focus Glow */
+      input:focus,
+      textarea:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(31, 182, 167, 0.5);
+        border-color: var(--accent-teal);
+      }
+
+      /* Modal Transitions */
+      .modal-bg-enter-active,
+      .modal-bg-leave-active {
+        transition: opacity 0.3s ease;
+      }
+      .modal-bg-enter-from,
+      .modal-bg-leave-to {
+        opacity: 0;
+      }
+      .modal-content-enter-active,
+      .modal-content-leave-active {
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+      .modal-content-enter-from,
+      .modal-content-leave-to {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      .policy-content {
+        min-height: 80vh; /* Ensure policy pages are substantial */
+      }
+    </style>
+  </head>
+  <body class="body-style">
+    <!-- Primary Application Container -->
+    <div id="app-container" class="min-h-screen flex flex-col">
+      <!-- Header/Navigation -->
+      <header class="sticky top-0 z-10 bg-surface-white shadow-sm">
+        <div
+          class="max-w-[1120px] mx-auto px-5 py-4 flex justify-between items-center"
+        >
+          <!-- Logo/Brand Name -->
+          <a
+            href="#home"
+            id="logo-link"
+            class="h2-style font-black text-primary-indigo tracking-tight"
+            onclick="showView('storefront')"
+          >
+            CHUWAMO
+          </a>
+          <!-- Nav Links -->
+          <nav
+            class="flex space-x-5 text-sm font-semibold text-text-charcoal/80"
+          >
+            <a
+              href="#products"
+              class="hover:text-accent-teal transition duration-150 hidden sm:inline"
+              onclick="showView('storefront')"
+              >Products</a
+            >
+            <a
+              href="#how-it-works"
+              class="hover:text-accent-teal transition duration-150 hidden sm:inline"
+              onclick="showView('storefront')"
+              >Process</a
+            >
+            <a
+              href="#contact"
+              class="hover:text-accent-teal transition duration-150"
+              onclick="showView('storefront')"
+              >Support</a
+            >
+          </nav>
+        </div>
+      </header>
+
+      <!-- Main Content (Storefront View) -->
+      <main id="storefront-view" class="flex-grow">
+        <!-- Hero Section -->
+        <section
+          id="hero"
+          class="bg-primary-indigo text-surface-white pt-16 pb-20 sm:pt-24 sm:pb-32"
+        >
+          <div class="max-w-[1120px] mx-auto px-5">
+            <h1 class="h1-style font-extrabold mb-5 leading-tight">
+              Instant Digital Solutions for <br class="hidden sm:block" />Modern
+              Businesses
+            </h1>
+            <p class="text-xl sm:text-2xl font-body mb-8 opacity-90 max-w-3xl">
+              Browse, buy, and receive your expert-crafted, product-first
+              digital consultancy packages instantly via email. Trusted advice,
+              immediate delivery.
+            </p>
+            <a
+              href="#products"
+              class="cta-button inline-flex items-center justify-center bg-accent-teal text-surface-white px-8 py-4 font-bold text-lg hover:bg-opacity-90 shadow-lg"
+              onclick="scrollToElement('products')"
+            >
+              <i class="ph-bold ph-arrow-down-right mr-2"></i> View Products
+            </a>
+          </div>
+        </section>
+
+        <!-- Product Grid Section -->
+        <section id="products" class="py-20 bg-bg-warm">
+          <div class="max-w-[1120px] mx-auto px-5">
+            <h2
+              class="h2-style font-extrabold text-text-charcoal mb-12 text-center"
+            >
+              Our Product Packages
+            </h2>
+            <div
+              id="product-grid"
+              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              <!-- Product Cards will be injected here by JavaScript -->
+            </div>
+          </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="py-20">
+          <div class="max-w-[1120px] mx-auto px-5">
+            <h2
+              class="h2-style font-extrabold text-text-charcoal mb-12 text-center"
+            >
+              Our Instant Process
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+              <!-- Step 1: Choose -->
+              <div class="p-6 rounded-xl bg-surface-white shadow-md">
+                <i
+                  class="ph-bold ph-shopping-bag text-5xl text-primary-indigo mb-4"
+                ></i>
+                <h3 class="text-xl font-heading font-bold mb-2">1. Choose</h3>
+                <p class="text-gray-600">
+                  Select the consultancy package that perfectly addresses your
+                  current business challenge.
+                </p>
+              </div>
+              <!-- Step 2: Pay -->
+              <div class="p-6 rounded-xl bg-surface-white shadow-md">
+                <i
+                  class="ph-bold ph-credit-card text-5xl text-primary-indigo mb-4"
+                ></i>
+                <h3 class="text-xl font-heading font-bold mb-2">2. Pay</h3>
+                <p class="text-gray-600">
+                  Complete your secure one-time payment in Kenyan Shillings
+                  (KSh) via our trusted provider.
+                </p>
+              </div>
+              <!-- Step 3: Receive -->
+              <div class="p-6 rounded-xl bg-surface-white shadow-md">
+                <i
+                  class="ph-bold ph-envelope-simple text-5xl text-primary-indigo mb-4"
+                ></i>
+                <h3 class="text-xl font-heading font-bold mb-2">3. Receive</h3>
+                <p class="text-gray-600">
+                  Your digital assets and files are instantly delivered to your
+                  email inbox.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section
+          id="benefits"
+          class="py-20 bg-primary-indigo text-surface-white/90"
+        >
+          <div class="max-w-[1120px] mx-auto px-5">
+            <h2 class="h2-style font-extrabold mb-12 text-center">
+              The CHUWAMO Advantage
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+              <div class="p-4">
+                <p class="font-bold text-xl">
+                  <i
+                    class="ph-bold ph-clock-countdown text-accent-teal mr-2"
+                  ></i>
+                  Instant Access
+                </p>
+              </div>
+              <div class="p-4">
+                <p class="font-bold text-xl">
+                  <i class="ph-bold ph-tag-simple text-accent-teal mr-2"></i> No
+                  Recurring Fees
+                </p>
+              </div>
+              <div class="p-4">
+                <p class="font-bold text-xl">
+                  <i class="ph-bold ph-package text-accent-teal mr-2"></i> Email
+                  Delivery
+                </p>
+              </div>
+              <div class="p-4">
+                <p class="font-bold text-xl">
+                  <i
+                    class="ph-bold ph-globe-hemisphere-east text-accent-teal mr-2"
+                  ></i>
+                  24/7 Availability
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact/Support Form -->
+        <section id="contact" class="py-20 bg-bg-warm">
+          <div class="max-w-xl mx-auto px-5">
+            <h2
+              class="h2-style font-extrabold text-text-charcoal mb-8 text-center"
+            >
+              Need Support?
+            </h2>
+            <div class="bg-surface-white p-8 rounded-xl shadow-lg">
+              <form id="contact-form" class="space-y-5">
+                <div>
+                  <label
+                    for="contact-name"
+                    class="block text-sm font-medium text-gray-700 mb-1"
+                    >Name</label
+                  >
+                  <input
+                    type="text"
+                    id="contact-name"
+                    required
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-accent-teal focus:border-accent-teal"
+                  />
+                  <p
+                    id="contact-name-error"
+                    class="text-red-500 text-sm mt-1 hidden"
+                  ></p>
+                </div>
+                <div>
+                  <label
+                    for="contact-email"
+                    class="block text-sm font-medium text-gray-700 mb-1"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    id="contact-email"
+                    required
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-accent-teal focus:border-accent-teal"
+                  />
+                  <p
+                    id="contact-email-error"
+                    class="text-red-500 text-sm mt-1 hidden"
+                  ></p>
+                </div>
+                <div>
+                  <label
+                    for="contact-message"
+                    class="block text-sm font-medium text-gray-700 mb-1"
+                    >Message</label
+                  >
+                  <textarea
+                    id="contact-message"
+                    rows="4"
+                    required
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-accent-teal focus:border-accent-teal"
+                  ></textarea>
+                  <p
+                    id="contact-message-error"
+                    class="text-red-500 text-sm mt-1 hidden"
+                  ></p>
+                </div>
+                <button
+                  type="submit"
+                  class="cta-button w-full bg-accent-teal text-surface-white px-6 py-3 font-bold text-lg hover:bg-opacity-90"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Policy Content Views (Hidden by default) -->
+      <section id="privacy-view" class="flex-grow hidden policy-content py-20">
+        <div
+          class="max-w-[800px] mx-auto px-5 bg-surface-white p-8 rounded-xl shadow-lg"
+        >
+          <h2 class="h2-style font-extrabold text-text-charcoal mb-6">
+            Privacy Policy
+          </h2>
+          <p class="mb-4">
+            This Privacy Policy governs the manner in which CHUWAMO COMPANY
+            LIMITED collects, uses, maintains, and discloses information
+            collected from users (each, a "User") of the digital consultancy
+            website.
+          </p>
+          <h3 class="text-xl font-heading font-bold mt-6 mb-3">
+            Personal Identification Information
+          </h3>
+          <p class="mb-4">
+            We collect personal identification information from Users in a
+            variety of ways, including, but not limited to, when Users visit our
+            site, register for a product, place an order, and in connection with
+            other activities, services, features, or resources we make
+            available. Users may be asked for, as appropriate, name and email
+            address. We will collect personal identification information from
+            Users only if they voluntarily submit such information to us. This
+            information is primarily used for product delivery and subsequent
+            support.
+          </p>
+          <h3 class="text-xl font-heading font-bold mt-6 mb-3">
+            Email Delivery and Data Retention
+          </h3>
+          <p class="mb-4">
+            Your email address is required to instantly deliver the digital
+            product files you purchase. We retain customer data (name, email,
+            product purchased) for a period of five (5) years to facilitate
+            resending receipts and ensuring product access, or as required by
+            law.
+          </p>
+          <h3 class="text-xl font-heading font-bold mt-6 mb-3">
+            Payment Processing
+          </h3>
+          <p class="mb-4">
+            We do not store sensitive payment information such as credit card
+            numbers on our servers. All payment transactions are processed
+            directly by secure, third-party payment providers (e.g., Stripe,
+            PayPal, or local providers). Your use of their services is governed
+            by their privacy policies. We only receive confirmation of payment
+            success or failure.
+          </p>
+          <button
+            onclick="showView('storefront')"
+            class="mt-6 cta-button inline-block bg-primary-indigo text-surface-white px-6 py-3 hover:bg-opacity-90"
+          >
+            Back to Storefront
+          </button>
+        </div>
+      </section>
+
+      <section id="terms-view" class="flex-grow hidden policy-content py-20">
+        <div
+          class="max-w-[800px] mx-auto px-5 bg-surface-white p-8 rounded-xl shadow-lg"
+        >
+          <h2 class="h2-style font-extrabold text-text-charcoal mb-6">
+            Terms of Service
+          </h2>
+          <p class="mb-4">
+            By purchasing a digital package from CHUWAMO COMPANY LIMITED, you
+            agree to these Terms of Service.
+          </p>
+          <h3 class="text-xl font-heading font-bold mt-6 mb-3">
+            Digital Product License
+          </h3>
+          <p class="mb-4">
+            The purchase grants you a non-exclusive, non-transferable license to
+            use the product for your single business or personal purposes. You
+            may not resell, redistribute, or share the product files. The
+            products are intended to provide guidance and templates; results are
+            not guaranteed and depend on the user's implementation.
+          </p>
+          <h3 class="text-xl font-heading font-bold mt-6 mb-3">
+            Refund Policy (Instant Downloads)
+          </h3>
+          <p class="mb-4">
+            All products are delivered instantly by email after successful
+            payment. Due to the digital nature of these products, refunds are
+            only issued for technical delivery failures (e.g., file corruption,
+            delivery failure) and must be requested by contacting
+            <a
+              href="mailto:info@chuwamocompany.com"
+              class="text-accent-teal hover:underline"
+              >info@chuwamocompany.com</a
+            >
+            within seven (7) days of purchase. Change of mind or failure to
+            implement the advice provided does not constitute a technical
+            delivery failure.
+          </p>
+          <h3 class="text-xl font-heading font-bold mt-6 mb-3">
+            Pricing and Currency
+          </h3>
+          <p class="mb-4">
+            All prices are fixed and displayed in Kenyan Shillings (KSh). Prices
+            are subject to change without prior notice, but any change will not
+            affect orders already placed.
+          </p>
+          <button
+            onclick="showView('storefront')"
+            class="mt-6 cta-button inline-block bg-primary-indigo text-surface-white px-6 py-3 hover:bg-opacity-90"
+          >
+            Back to Storefront
+          </button>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="bg-text-charcoal text-surface-white/80 py-8 mt-auto">
+        <div
+          class="max-w-[1120px] mx-auto px-5 flex flex-col sm:flex-row justify-between items-center text-sm space-y-4 sm:space-y-0"
+        >
+          <p>
+            &copy; 2025 CHUWAMO COMPANY LIMITED |
+            <a
+              href="mailto:info@chuwamocompany.com"
+              class="hover:text-accent-teal transition duration-150"
+              >info@chuwamocompany.com</a
+            >
+          </p>
+          <div class="space-x-4">
+            <a
+              href="#terms"
+              class="hover:text-accent-teal transition duration-150"
+              onclick="showView('terms-view')"
+              >Terms of Service</a
+            >
+            <a
+              href="#privacy"
+              class="hover:text-accent-teal transition duration-150"
+              onclick="showView('privacy-view')"
+              >Privacy Policy</a
+            >
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Modal Background (Hidden by default) -->
+    <div
+      id="modal-backdrop"
+      class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden items-center justify-center modal-bg-enter-from"
+      aria-hidden="true"
+      onclick="closeModal()"
+    >
+      <!-- Checkout Modal Content -->
+      <div
+        id="checkout-modal"
+        class="modal-content-enter-from bg-surface-white w-full max-w-lg p-8 rounded-xl shadow-2xl mx-5"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+        onclick="event.stopPropagation()"
+      >
+        <!-- Title and Close Button -->
+        <div class="flex justify-between items-center mb-6">
+          <h3
+            id="modal-title"
+            class="text-2xl font-heading font-extrabold text-primary-indigo"
+          >
+            Product Checkout
+          </h3>
+          <button
+            class="text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-accent-teal rounded-full p-1"
+            onclick="closeModal()"
+          >
+            <i class="ph-bold ph-x text-2xl"></i>
+          </button>
+        </div>
+
+        <div
+          id="modal-product-summary"
+          class="mb-4 p-4 border border-gray-100 rounded-lg bg-bg-warm"
+        >
+          <!-- Product name and price injected here -->
+        </div>
+
+        <form id="checkout-form" class="space-y-5">
+          <input type="hidden" id="checkout-product-id" />
+          <div>
+            <label
+              for="checkout-name"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Your Full Name</label
+            >
+            <input
+              type="text"
+              id="checkout-name"
+              required
+              class="w-full p-3 border border-gray-300 rounded-lg"
+            />
+            <p
+              id="checkout-name-error"
+              class="text-red-500 text-sm mt-1 hidden"
+            ></p>
+          </div>
+          <div>
+            <label
+              for="checkout-email"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Delivery Email</label
+            >
+            <input
+              type="email"
+              id="checkout-email"
+              required
+              class="w-full p-3 border border-gray-300 rounded-lg"
+            />
+            <p
+              id="checkout-email-error"
+              class="text-red-500 text-sm mt-1 hidden"
+            ></p>
+          </div>
+          <!-- Payment Method Simulation -->
+          <div class="space-y-2 pt-2">
+            <p class="block text-sm font-medium text-gray-700">
+              Payment Method (Redirect Simulation)
+            </p>
+            <div
+              class="flex items-center space-x-3 p-3 bg-indigo-50 border border-indigo-200 rounded-lg text-sm text-primary-indigo"
+            >
+              <i class="ph-fill ph-lock-key text-xl"></i>
+              <p class="font-medium">
+                You will be securely redirected to our payment partner to
+                complete the KSh payment.
+              </p>
+            </div>
+          </div>
+
+          <div class="text-center pt-3">
+            <p class="text-sm text-gray-500 mb-4">
+              You are purchasing an instant digital product.
+              <a
+                href="#terms"
+                class="text-accent-teal hover:underline"
+                onclick="closeModal(); showView('terms-view')"
+                >Review refund terms.</a
+              >
+            </p>
+            <button
+              type="submit"
+              id="pay-button"
+              class="cta-button w-full bg-accent-teal text-surface-white px-6 py-4 font-bold text-xl hover:bg-opacity-90"
+            >
+              Pay KSh <span id="checkout-price-display">0</span>
+            </button>
+            <div id="checkout-loading" class="hidden mt-4">
+              <i
+                class="ph-bold ph-spinner text-3xl text-accent-teal animate-spin"
+              ></i>
+              <p class="text-sm text-gray-600 mt-2">Processing payment...</p>
+            </div>
+            <p id="checkout-error" class="text-red-500 text-sm mt-3 hidden"></p>
+          </div>
+        </form>
+      </div>
+
+      <!-- Thank You Modal Content (Hidden by default) -->
+      <div
+        id="thankyou-modal"
+        class="modal-content-enter-from bg-surface-white w-full max-w-sm p-8 rounded-xl shadow-2xl mx-5 text-center hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="thankyou-title"
+        onclick="event.stopPropagation()"
+      >
+        <i
+          class="ph-bold ph-check-circle text-6xl text-accent-teal mx-auto mb-4"
+        ></i>
+        <h3
+          id="thankyou-title"
+          class="text-2xl font-heading font-extrabold text-primary-indigo mb-3"
+        >
+          Thank You!
+        </h3>
+        <p class="mb-6 text-gray-700">
+          Your order is complete. Please check
+          <strong id="delivery-email-display">your email</strong> instantly for
+          your download link.
+        </p>
+        <button
+          class="cta-button bg-primary-indigo text-surface-white px-6 py-3 hover:bg-opacity-90 w-full"
+          onclick="closeModal()"
+        >
+          Close & View Products
+        </button>
+      </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+      // --- DATA ---
+      const products = [
+        {
+          id: 1,
+          name: "Startup Strategy Pack",
+          price: 6467,
+          description:
+            "One-page business strategy brief + 30-minute follow-up email consult. Delivered as PDF.",
+          icon: "rocket",
+        },
+        {
+          id: 2,
+          name: "MVP Roadmap & Prioritization",
+          price: 6900,
+          description:
+            "8-step MVP roadmap, prioritized feature list, and delivery timeline PDF.",
+          icon: "map-trifold",
+        },
+        {
+          id: 3,
+          name: "Product Positioning & Messaging Kit",
+          price: 7200,
+          description:
+            "Value proposition, 3 headline variants, 5 elevator pitch templates (doc + PDF).",
+          icon: "megaphone",
+        },
+        {
+          id: 4,
+          name: "Digital Ops Playbook",
+          price: 7467,
+          description:
+            "Checklist + SOP templates (email, onboarding, client intake) packaged as editable DOCX + PDF.",
+          icon: "gear",
+        },
+        {
+          id: 5,
+          name: "Go-to-Market Launch Checklist",
+          price: 6700,
+          description:
+            "20-point launch checklist with email copy swipes and a launch timeline.",
+          icon: "paper-plane-tilt",
+        },
+        {
+          id: 6,
+          name: "UX Quick Audit (Small Site)",
+          price: 6800,
+          description:
+            "1-page audit with 7 prioritized fixes + sample microcopy recommendations (PDF).",
+          icon: "cursor",
+        },
+      ];
+
+      // --- UTILITY FUNCTIONS ---
+
+      /** Formats number to KSh currency string */
+      const formatKsh = (price) => `KSh ${price.toLocaleString("en-KE")}`;
+
+      /** Scrolls smoothly to an element */
+      const scrollToElement = (id) => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      };
+
+      /** Toggles between storefront, privacy, and terms views */
+      const showView = (viewId) => {
+        document
+          .querySelectorAll('main, section[id$="-view"]')
+          .forEach((el) => {
+            if (
+              el.id === viewId ||
+              (viewId === "storefront" && el.id === "storefront-view")
+            ) {
+              el.classList.remove("hidden");
+              window.scrollTo(0, 0); // Scroll to top on view switch
+            } else {
+              el.classList.add("hidden");
+            }
+          });
+        // Update URL hash for simple routing
+        window.location.hash =
+          viewId === "storefront" ? "" : `#${viewId.replace("-view", "")}`;
+      };
+
+      // --- MODAL LOGIC ---
+
+      const backdrop = document.getElementById("modal-backdrop");
+      const checkoutModal = document.getElementById("checkout-modal");
+      const thankYouModal = document.getElementById("thankyou-modal");
+      let activeModalContent = checkoutModal; // Default to checkout
+
+      /** Opens the specified modal */
+      const openModal = (content) => {
+        activeModalContent = content;
+        backdrop.classList.remove("hidden");
+        backdrop.classList.add("flex", "modal-bg-enter-active");
+
+        // Set initial state for content transition
+        content.classList.remove("hidden");
+        content.classList.remove("modal-content-leave-to");
+        content.classList.add("modal-content-enter-active");
+
+        // Apply transition effects after a short delay
+        setTimeout(() => {
+          backdrop.classList.remove("modal-bg-enter-from");
+          content.classList.remove("modal-content-enter-from");
+        }, 10);
+
+        // Focus trap (simple implementation: focus on the modal content itself)
+        content.focus();
+      };
+
+      /** Closes the active modal */
+      const closeModal = () => {
+        backdrop.classList.add("modal-bg-leave-active", "modal-bg-leave-to");
+        activeModalContent.classList.add(
+          "modal-content-leave-active",
+          "modal-content-leave-to"
+        );
+
+        setTimeout(() => {
+          backdrop.classList.remove(
+            "flex",
+            "modal-bg-leave-active",
+            "modal-bg-leave-to",
+            "modal-bg-enter-active"
+          );
+          backdrop.classList.add("hidden", "modal-bg-enter-from");
+
+          activeModalContent.classList.add(
+            "hidden",
+            "modal-content-enter-from"
+          );
+          activeModalContent.classList.remove(
+            "modal-content-leave-active",
+            "modal-content-leave-to",
+            "modal-content-enter-active"
+          );
+
+          // Ensure both modal containers are hidden/reset
+          checkoutModal.classList.add("hidden");
+          thankYouModal.classList.add("hidden");
+        }, 300); // Wait for transition duration
+      };
+
+      // Close on ESC key press
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !backdrop.classList.contains("hidden")) {
+          closeModal();
+        }
+      });
+
+      // --- PRODUCT RENDERING ---
+
+      /** Renders a single product card HTML */
+      const createProductCard = (product) => {
+        return `
+                <div class="product-card bg-surface-white p-6 shadow-lg flex flex-col justify-between">
+                    <div>
+                        <div class="text-4xl text-accent-teal mb-4 flex items-center justify-center sm:justify-start">
+                            <i class="ph-fill ph-${product.icon}"></i>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-primary-indigo mb-2">${
+                          product.name
+                        }</h3>
+                        <p class="text-gray-600 h-12 mb-4">${
+                          product.description
+                        }</p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100 mt-4">
+                        <p class="text-2xl font-extrabold text-text-charcoal mb-4">${formatKsh(
+                          product.price
+                        )}</p>
+                        <button 
+                            class="cta-button w-full bg-accent-teal text-surface-white px-6 py-3 font-bold text-lg hover:bg-opacity-90"
+                            onclick="openCheckout(${product.id})"
+                        >
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+            `;
+      };
+
+      /** Renders all products to the grid */
+      const renderProducts = () => {
+        const grid = document.getElementById("product-grid");
+        if (grid) {
+          grid.innerHTML = products.map(createProductCard).join("");
+        }
+      };
+
+      // --- CHECKOUT LOGIC ---
+
+      let selectedProduct = null;
+
+      /** Prepares and opens the checkout modal */
+      const openCheckout = (productId) => {
+        selectedProduct = products.find((p) => p.id === productId);
+        if (!selectedProduct) return;
+
+        document.getElementById("checkout-product-id").value =
+          selectedProduct.id;
+        document.getElementById("modal-product-summary").innerHTML = `
+                <p class="text-lg font-heading font-bold text-primary-indigo">${
+                  selectedProduct.name
+                }</p>
+                <p class="text-3xl font-extrabold text-accent-teal">${formatKsh(
+                  selectedProduct.price
+                )}</p>
+            `;
+        document.getElementById("checkout-price-display").textContent =
+          selectedProduct.price.toLocaleString("en-KE");
+
+        // Reset forms and errors
+        document.getElementById("checkout-form").reset();
+        document.getElementById("checkout-error").classList.add("hidden");
+        document
+          .querySelectorAll("#checkout-form input")
+          .forEach((i) => i.classList.remove("border-red-500"));
+
+        openModal(checkoutModal);
+      };
+
+      /** Simulates the AJAX Checkout process */
+      const handleCheckoutSubmit = async (e) => {
+        e.preventDefault();
+
+        const form = e.target;
+        const name = form.elements["checkout-name"].value.trim();
+        const email = form.elements["checkout-email"].value.trim();
+        const payButton = document.getElementById("pay-button");
+        const loading = document.getElementById("checkout-loading");
+        const errorDisplay = document.getElementById("checkout-error");
+
+        errorDisplay.classList.add("hidden");
+
+        // Basic client-side validation
+        let isValid = true;
+        if (!name) {
+          document.getElementById("checkout-name-error").textContent =
+            "Name is required.";
+          document
+            .getElementById("checkout-name-error")
+            .classList.remove("hidden");
+          isValid = false;
+        } else {
+          document
+            .getElementById("checkout-name-error")
+            .classList.add("hidden");
+        }
+        if (!email || !email.includes("@")) {
+          document.getElementById("checkout-email-error").textContent =
+            "Valid email is required.";
+          document
+            .getElementById("checkout-email-error")
+            .classList.remove("hidden");
+          isValid = false;
+        } else {
+          document
+            .getElementById("checkout-email-error")
+            .classList.add("hidden");
+        }
+
+        if (!isValid) return;
+
+        // Start loading state
+        payButton.classList.add("hidden");
+        loading.classList.remove("hidden");
+
+        // --- SIMULATE API CALL & REDIRECT ---
+        // In a real scenario, this would involve sending the order data to your backend,
+        // which then redirects or provides a widget for the payment provider.
+        try {
+          // Simulate a 1.5 second network/payment processing delay
+          await new Promise((resolve) => setTimeout(resolve, 1500));
+
+          // Simulate successful payment completion (after hypothetical redirect/widget interaction)
+
+          // 1. Log or send order data to server (AJAX)
+          console.log(
+            `[AJAX] Simulating order for Product ID: ${selectedProduct.id}, Name: ${name}, Email: ${email}`
+          );
+
+          // 2. Server processes and triggers instant email delivery.
+
+          // 3. Show success modal to client
+          document.getElementById("delivery-email-display").textContent = email;
+          openModal(thankYouModal);
+          checkoutModal.classList.add("hidden");
+        } catch (error) {
+          console.error("Checkout simulation failed:", error);
+          errorDisplay.textContent =
+            "Payment failed. Please try again or contact support.";
+          errorDisplay.classList.remove("hidden");
+        } finally {
+          // End loading state
+          payButton.classList.remove("hidden");
+          loading.classList.add("hidden");
+        }
+      };
+
+      // --- CONTACT FORM LOGIC ---
+
+      /** Simulates the AJAX Contact Form submission */
+      const handleContactSubmit = async (e) => {
+        e.preventDefault();
+
+        const form = e.target;
+        const submitButton = form.querySelector('button[type="submit"]');
+
+        // Simple validation and error clearing
+        let isValid = true;
+        document
+          .querySelectorAll('#contact-form p[id$="-error"]')
+          .forEach((p) => p.classList.add("hidden"));
+
+        if (!form["contact-name"].value.trim()) {
+          document.getElementById("contact-name-error").textContent =
+            "Name is required.";
+          document
+            .getElementById("contact-name-error")
+            .classList.remove("hidden");
+          isValid = false;
+        }
+        if (!form["contact-email"].value.trim().includes("@")) {
+          document.getElementById("contact-email-error").textContent =
+            "Valid email is required.";
+          document
+            .getElementById("contact-email-error")
+            .classList.remove("hidden");
+          isValid = false;
+        }
+        if (!form["contact-message"].value.trim()) {
+          document.getElementById("contact-message-error").textContent =
+            "Message is required.";
+          document
+            .getElementById("contact-message-error")
+            .classList.remove("hidden");
+          isValid = false;
+        }
+
+        if (!isValid) return;
+
+        // Start loading state (optional: replace button text with spinner/loading)
+        const originalText = submitButton.textContent;
+        submitButton.disabled = true;
+        submitButton.textContent = "Sending...";
+
+        // --- SIMULATE API CALL ---
+        try {
+          await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate delay
+
+          console.log("[AJAX] Contact form submitted successfully.");
+
+          // Show successful submission message in a temporary modal
+          const tempModal = document.getElementById("thankyou-modal");
+          document.getElementById("thankyou-title").textContent =
+            "Message Sent!";
+          document.querySelector("#thankyou-modal p").textContent =
+            "Thank you for contacting us. We will respond to your inquiry shortly via email.";
+          document.querySelector("#thankyou-modal button").textContent =
+            "Close";
+
+          openModal(tempModal);
+
+          form.reset();
+        } catch (error) {
+          console.error("Contact form failed:", error);
+          // Show inline error if needed
+        } finally {
+          // End loading state
+          submitButton.textContent = originalText;
+          submitButton.disabled = false;
+
+          // Reset temporary modal content back to 'Thank You' (in case checkout is used later)
+          setTimeout(() => {
+            document.getElementById("thankyou-title").textContent =
+              "Thank You!";
+            document.querySelector("#thankyou-modal p").textContent =
+              "Your order is complete. Please check your email instantly for your download link.";
+            document.querySelector("#thankyou-modal button").textContent =
+              "Close & View Products";
+          }, 100);
+        }
+      };
+
+      // --- EVENT LISTENERS & INITIALIZATION ---
+
+      window.onload = () => {
+        renderProducts();
+
+        // Set up form submission handlers
+        document
+          .getElementById("checkout-form")
+          .addEventListener("submit", handleCheckoutSubmit);
+        document
+          .getElementById("contact-form")
+          .addEventListener("submit", handleContactSubmit);
+
+        // Handle URL hash on load (simple routing)
+        const hash = window.location.hash.substring(1);
+        if (hash === "privacy" || hash === "terms") {
+          showView(`${hash}-view`);
+        } else {
+          showView("storefront");
+        }
+      };
+
+      // Simple Hash Change Listener for Back/Forward Navigation
+      window.addEventListener("hashchange", () => {
+        const hash = window.location.hash.substring(1);
+        if (hash === "privacy" || hash === "terms") {
+          showView(`${hash}-view`);
+        } else {
+          showView("storefront");
+        }
+      });
+    </script>
+  </body>
+</html>

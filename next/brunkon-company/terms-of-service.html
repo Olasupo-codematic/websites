@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms of Service — BRUKNON COMPANY</title>
+    <meta name="description" content="Terms of Service for BRUKNON COMPANY" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Manrope:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --primary-color: #005bff;
+        --accent-color: #00ffc6;
+        --bg-color: #0a0f1c;
+        --text-color: #f5f7fa;
+        --text-secondary: #a0a8b8;
+        --font-heading: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto,
+          Arial, sans-serif;
+        --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+          Arial, sans-serif;
+        --fs-1: clamp(2rem, 1.6rem + 2vw, 3rem);
+        --fs-2: clamp(1.5rem, 1.2rem + 1.5vw, 2.2rem);
+        --fs-3: clamp(1.2rem, 1rem + 1vw, 1.6rem);
+        --fs-base: clamp(1rem, 0.9rem + 0.5vw, 1.15rem);
+        --fs-small: clamp(0.875rem, 0.8rem + 0.3vw, 1rem);
+        --spacing: 20px;
+        --max-width: 900px;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: var(--font-body);
+        background: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.7;
+      }
+      a {
+        color: var(--accent-color);
+        text-decoration: none;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        background: rgba(10, 15, 28, 0.9);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(0, 255, 198, 0.12);
+      }
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 var(--spacing);
+      }
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 0;
+      }
+      .logo {
+        font-family: var(--font-heading);
+        font-weight: 800;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--accent-color)
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      main {
+        padding: calc(var(--spacing) * 2) 0;
+      }
+      h1 {
+        font-family: var(--font-heading);
+        font-size: var(--fs-1);
+        margin-bottom: var(--spacing);
+      }
+      h2 {
+        font-family: var(--font-heading);
+        font-size: var(--fs-2);
+        margin-top: calc(var(--spacing) * 2);
+        margin-bottom: calc(var(--spacing) * 0.75);
+      }
+      p,
+      li {
+        font-size: var(--fs-base);
+        color: var(--text-secondary);
+      }
+      ul {
+        margin-left: 1.2rem;
+      }
+      section {
+        margin-bottom: calc(var(--spacing) * 1.5);
+      }
+      .card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(0, 255, 198, 0.12);
+        border-radius: 16px;
+        padding: calc(var(--spacing) * 1.2);
+      }
+      footer {
+        padding: calc(var(--spacing) * 2) 0;
+        border-top: 1px solid rgba(0, 255, 198, 0.12);
+        text-align: center;
+      }
+      .footer-links {
+        display: flex;
+        gap: 18px;
+        justify-content: center;
+        margin-top: 8px;
+      }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="container topbar">
+        <div class="logo">BRUKNON</div>
+        <nav><a href="index.html">Back to Home</a></nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <h1>Terms of Service</h1>
+      <p style="margin-bottom: 14px">Effective: <span id="effective"></span></p>
+
+      <section class="card">
+        <p>
+          Welcome to BRUKNON COMPANY ("BRUKNON"). These Terms govern your access
+          to and use of our websites, APIs, and software products and services
+          (the "Services"). By using the Services, you agree to these Terms.
+        </p>
+      </section>
+
+      <section>
+        <h2>1. Accounts</h2>
+        <p>
+          You must provide accurate information and keep your account secure.
+          You are responsible for all activities under your account.
+        </p>
+      </section>
+
+      <section>
+        <h2>2. Acceptable Use</h2>
+        <ul>
+          <li>No illegal, harmful, or abusive activities.</li>
+          <li>No attempts to disrupt, reverse engineer, or bypass security.</li>
+          <li>Respect intellectual property and privacy rights.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>3. Fees and Billing</h2>
+        <p>
+          Certain features are paid. Prices are listed in KSh and may change
+          with notice. Taxes and third‑party fees may apply. Failure to pay may
+          result in suspension or termination.
+        </p>
+      </section>
+
+      <section>
+        <h2>4. Intellectual Property</h2>
+        <p>
+          We retain all rights to the Services, including software, logos, and
+          content. You receive a limited, non‑exclusive, non‑transferable
+          license to use the Services as permitted by these Terms.
+        </p>
+      </section>
+
+      <section>
+        <h2>5. Confidentiality</h2>
+        <p>
+          If you access non‑public features or information, you must keep them
+          confidential and use them solely for the purpose intended.
+        </p>
+      </section>
+
+      <section>
+        <h2>6. Termination</h2>
+        <p>
+          You may stop using the Services at any time. We may suspend or
+          terminate access for violations of these Terms or to protect the
+          integrity of the Services.
+        </p>
+      </section>
+
+      <section>
+        <h2>7. Disclaimers and Limitation of Liability</h2>
+        <p>
+          The Services are provided "as is" without warranties of any kind. To
+          the maximum extent permitted by law, BRUKNON is not liable for
+          indirect, incidental, special, or consequential damages.
+        </p>
+      </section>
+
+      <section>
+        <h2>8. Changes</h2>
+        <p>
+          We may update these Terms. Continued use after changes means you
+          accept the updated Terms.
+        </p>
+      </section>
+
+      <section>
+        <h2>9. Contact</h2>
+        <p>
+          For questions about these Terms, contact:
+          <a href="mailto:info@bruknoncompany.com">info@bruknoncompany.com</a>
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div>© <span id="year"></span> BRUKNON COMPANY.</div>
+        <div class="footer-links">
+          <a href="terms-of-service.html">Terms of Service</a>
+          <a href="privacy.html">Privacy Policy</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+      document.getElementById("effective").textContent =
+        new Date().toLocaleDateString();
+      gsap.from("main h1", { y: 20, opacity: 0, duration: 0.6 });
+      gsap.from("section", { y: 20, opacity: 0, duration: 0.5, stagger: 0.08 });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy — ELCHIC GENERAL WORKS LIMITED</title>
+    <meta
+      name="description"
+      content="Privacy Policy for ELCHIC GENERAL WORKS LIMITED"
+    />
+
+    <!-- Fonts (match index) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Inter:wght@300;400;600&family=Space+Grotesk:wght@500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        /* Colors */
+        --color-primary: #0078ff;
+        --color-accent: #00d1b2;
+        --color-background: #f5f7fa;
+        --color-text: #1a1a1a;
+        --color-light-text: #f5f7fa;
+        --color-shadow: rgba(0, 0, 0, 0.08);
+
+        /* Typography */
+        --font-heading: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto,
+          Arial;
+        --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+          Arial;
+        --font-accent: "Space Grotesk", system-ui, -apple-system, "Segoe UI",
+          Roboto, Arial;
+
+        --fs-1: clamp(2rem, 1.6rem + 2vw, 3rem);
+        --fs-2: clamp(1.6rem, 1.2rem + 1.6vw, 2rem);
+        --fs-base: clamp(0.95rem, 0.8rem + 0.4vw, 1.125rem);
+
+        /* Spacing */
+        --space-unit: 20px;
+        --space-m: var(--space-unit);
+        --space-l: calc(var(--space-unit) * 1.5);
+        --space-xl: calc(var(--space-unit) * 2.5);
+        --max-width: 1120px;
+
+        /* Transitions */
+        --transition-time: 0.3s;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: var(--font-body);
+        font-size: var(--fs-base);
+        line-height: 1.6;
+        color: var(--color-text);
+        background-color: var(--color-background);
+        min-height: 100vh;
+      }
+
+      h1,
+      h2 {
+        font-family: var(--font-heading);
+        font-weight: 800;
+        line-height: 1.2;
+      }
+      h1 {
+        font-size: var(--fs-1);
+      }
+      h2 {
+        font-size: var(--fs-2);
+        margin-bottom: var(--space-l);
+      }
+      p,
+      li {
+        font-family: var(--font-body);
+      }
+      a {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+      a:hover {
+        color: var(--color-accent);
+      }
+
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: var(--space-xl) var(--space-m);
+      }
+
+      /* Header */
+      header {
+        background-color: #ffffff;
+        padding: var(--space-m) var(--space-m);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px var(--color-shadow);
+      }
+      .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: var(--max-width);
+        margin: 0 auto;
+      }
+      .logo {
+        font-family: var(--font-accent);
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: var(--color-primary);
+        text-decoration: none;
+        letter-spacing: -0.5px;
+      }
+      .nav-links a {
+        margin-left: 16px;
+        color: var(--color-text);
+        font-weight: 600;
+      }
+      .nav-links a:hover {
+        color: var(--color-accent);
+      }
+
+      /* Card */
+      .policy-card {
+        background: #ffffff;
+        padding: var(--space-xl);
+        border-radius: var(--space-m);
+        box-shadow: 0 8px 20px var(--color-shadow);
+      }
+      .meta {
+        color: #4a4a4a;
+        opacity: 0.85;
+        margin: 8px 0 var(--space-l);
+        font-size: 0.95rem;
+      }
+      .list {
+        padding-left: 1.25rem;
+      }
+      .list li {
+        margin-bottom: 8px;
+      }
+      .divider {
+        height: 1px;
+        background: #e6eaf0;
+        margin: var(--space-l) 0;
+      }
+      /* Buttons (match index) */
+      .btn {
+        display: inline-block;
+        padding: 12px 28px;
+        border: none;
+        border-radius: 999px;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color var(--transition-time),
+          transform var(--transition-time);
+        box-shadow: 0 4px 10px rgba(0, 120, 255, 0.2);
+        font-size: var(--fs-base);
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+      .btn-primary {
+        background-color: var(--color-primary);
+        color: var(--color-light-text);
+      }
+      .btn-secondary {
+        background-color: transparent;
+        color: var(--color-primary);
+        border: 2px solid var(--color-primary);
+        box-shadow: none;
+      }
+      .btn-secondary:hover {
+        border-color: var(--color-accent);
+        color: var(--color-accent);
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--color-text);
+        color: var(--color-light-text);
+        padding: var(--space-xl) var(--space-m);
+        text-align: center;
+      }
+      .footer-content {
+        max-width: var(--max-width);
+        margin: 0 auto;
+      }
+      .footer-links a {
+        color: var(--color-accent);
+        margin: 0 var(--space-m);
+      }
+      .footer-links a:hover {
+        color: var(--color-primary);
+      }
+      .footer-info {
+        margin-bottom: var(--space-m);
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="nav-content">
+        <a href="index.html#hero" class="logo">ELCHIC</a>
+        <div class="nav-links">
+          <a href="index.html#solutions">Products</a>
+          <a href="index.html#how-it-works">How It Works</a>
+          <a href="index.html#benefits">Benefits</a>
+          <a href="index.html#contact">Contact</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms-of-service.html">Terms</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main>
+      <section class="container">
+        <div class="policy-card">
+          <h1>Privacy Policy</h1>
+          <p class="meta">Last updated: <span id="updatedDate"></span></p>
+
+          <p>
+            ELCHIC GENERAL WORKS LIMITED ("ELCHIC", "we", "us") respects your
+            privacy. This Policy explains how we collect, use, share, and
+            protect information when you use our website and purchase our
+            digital products (the "Services").
+          </p>
+
+          <h2>Information We Collect</h2>
+          <ul class="list">
+            <li>
+              <strong>Contact details</strong> such as name and email when you
+              reach out or complete a purchase.
+            </li>
+            <li>
+              <strong>Order details</strong> including product purchased, price,
+              and transaction metadata from payment providers.
+            </li>
+            <li>
+              <strong>Usage data</strong> such as pages viewed, device/browser
+              information, and basic analytics.
+            </li>
+            <li>
+              <strong>Cookies</strong> and similar technologies to remember
+              preferences and improve the Services.
+            </li>
+          </ul>
+
+          <h2>How We Use Information</h2>
+          <ul class="list">
+            <li>To deliver digital products and provide customer support.</li>
+            <li>
+              To improve and personalize the Services and product content.
+            </li>
+            <li>
+              To send receipts, updates, and important service communications.
+            </li>
+            <li>
+              To protect the Services, prevent fraud, and enforce our Terms.
+            </li>
+          </ul>
+
+          <h2>Sharing and Transfers</h2>
+          <p>
+            We do not sell personal data. We may share limited information with
+            service providers (hosting, analytics, payment processors) under
+            contract, and with authorities when required by law. Your data may
+            be processed outside your country with appropriate safeguards.
+          </p>
+
+          <h2>Payments</h2>
+          <p>
+            Payments are processed by secure third‑party providers. We do not
+            store sensitive card details. We receive confirmation of payment
+            status to fulfill your order and deliver your files.
+          </p>
+
+          <h2>Data Retention</h2>
+          <p>
+            We retain necessary customer and order records for as long as needed
+            to provide the Services and meet legal obligations. Typically, order
+            records are kept for up to five (5) years.
+          </p>
+
+          <h2>Security</h2>
+          <p>
+            We use reasonable safeguards to protect information, including
+            encryption in transit and access controls. However, no method of
+            transmission or storage is 100% secure.
+          </p>
+
+          <h2>Your Choices</h2>
+          <ul class="list">
+            <li>
+              Request access to or deletion of your data, subject to applicable
+              laws.
+            </li>
+            <li>Update your information or preferences by contacting us.</li>
+            <li>Manage cookies in your browser settings.</li>
+          </ul>
+
+          <h2>Children’s Privacy</h2>
+          <p>
+            The Services are not directed to children under 13. We do not
+            knowingly collect personal information from children.
+          </p>
+
+          <h2>Changes to this Policy</h2>
+          <p>
+            We may update this Policy from time to time. The “Last updated” date
+            reflects the most recent changes.
+          </p>
+
+          <h2>Contact</h2>
+          <p>
+            Questions? Contact us at
+            <a href="mailto:support@elchic.com">support@elchic.com</a>.
+          </p>
+
+          <div class="divider"></div>
+          <p>
+            <a class="btn btn-secondary" href="index.html">← Back to Home</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-info">
+          © <span id="year"></span> ELCHIC GENERAL WORKS LIMITED. All rights
+          reserved.
+        </div>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms-of-service.html">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+      document.getElementById("updatedDate").textContent =
+        new Date().toLocaleDateString();
+    </script>
+  </body>
+</html>

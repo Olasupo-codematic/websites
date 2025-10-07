@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JANKA COMPANY LIMITED | Instant Digital Solutions</title>
+    <meta name="description" content="Browse and buy instant digital products like SaaS starter templates, UI kits, and architecture guides from JANKA COMPANY LIMITED.">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts: Manrope (Headings) and Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header (Fixed) -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">JANKA <span>CO.</span></a>
+            <nav aria-label="Main Navigation">
+                <a href="#products" class="btn btn-primary" id="header-products-cta">Products</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Hero Section -->
+        <section id="hero" class="section-padding">
+            <div class="container hero-content">
+                <h1 class="text-center">
+                    Instant Digital Solutions for <span class="text-primary">Technology & Innovation</span>
+                </h1>
+                <p class="text-center">
+                    Browse, buy, and receive your files instantly via email. We deliver high-quality templates, kits, and guides.
+                </p>
+                <a href="#products" id="hero-cta" class="btn btn-accent">View Products</a>
+            </div>
+        </section>
+
+        <!-- 2. Product Grid Section -->
+        <section id="products" class="section-padding">
+            <div class="container">
+                <h2 class="text-center">Our Product Catalog</h2>
+                <p class="text-center" style="max-width: 600px; margin: 0 auto 40px;">
+                    Accelerate your projects with our professional, developer-grade digital assets. Fixed price for immediate value.
+                </p>
+                <ul class="product-grid" id="product-grid" aria-label="Digital Products for Sale">
+                    <!-- Product cards are dynamically inserted here by script.js -->
+                </ul>
+            </div>
+        </section>
+
+        <!-- 3. How It Works Section -->
+        <section id="how-it-works" class="section-padding">
+            <div class="container text-center">
+                <h2>How It Works</h2>
+                <div class="grid-3-col">
+                    <div class="feature-card">
+                        <span class="feature-icon">1</span>
+                        <h3>Choose Product</h3>
+                        <p>Select the template, guide, or kit that perfectly fits your current project needs.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">2</span>
+                        <h3>Pay Securely Online</h3>
+                        <p>Complete your one-time purchase using our secure, KES-based checkout system.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">3</span>
+                        <h3>Receive Download Link</h3>
+                        <p>Your instant download links are automatically sent to your email immediately after payment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Key Benefits Section -->
+        <section id="benefits" class="section-padding" style="background-color: var(--color-surface);">
+            <div class="container text-center">
+                <h2>Why Choose JANKA CO.</h2>
+                <div class="grid-3-col">
+                    <div class="feature-card" style="border-color: var(--color-accent);">
+                        <h3>Instant Access</h3>
+                        <p>No waiting. Get started on your project immediately after purchase.</p>
+                    </div>
+                    <div class="feature-card" style="border-color: var(--color-primary);">
+                        <h3>One-Time Payment</h3>
+                        <p>Clear, fixed pricing in KES. No subscriptions, hidden fees, or recurring charges.</p>
+                    </div>
+                    <div class="feature-card" style="border-color: var(--color-accent);">
+                        <h3>24/7 Availability</h3>
+                        <p>Our digital library is always open, allowing you to buy anytime, anywhere.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Contact Form Section -->
+        <section id="contact" class="section-padding">
+            <div class="container">
+                <div class="contact-form-container">
+                    <h2 class="text-center">Get In Touch</h2>
+                    <p class="text-center">Have a question about a product or need support? Send us a message.</p>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="contact-name">Your Name</label>
+                            <input type="text" id="contact-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email Address</label>
+                            <input type="email" id="contact-email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">Message</label>
+                            <textarea id="contact-message" name="message" required></textarea>
+                        </div>
+
+                        <div class="loading-indicator">
+                            <div class="spinner"></div>
+                            <p>Sending message...</p>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: var(--spacing-unit);">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div>&copy; <span id="current-year">2024</span> JANKA COMPANY LIMITED.</div>
+            <address>Email: <a href="mailto:info@jankacompany.com">info@jankacompany.com</a></address>
+            <nav>
+                <a href="terms-of-service.html">Terms of Service</a> |
+                <a href="privacy.html">Privacy Policy</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- 6. Modals -->
+
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkout-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="checkout-title" aria-hidden="true">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h3 id="checkout-title">Secure Checkout</h3>
+                <button class="close-btn" aria-label="Close checkout modal">&times;</button>
+            </header>
+
+            <div class="checkout-details">
+                <p>Product: <strong id="checkout-product-title">Product Name Placeholder</strong></p>
+                <p>Price: <strong id="checkout-product-price">KES 7,500</strong> (One-time payment)</p>
+            </div>
+
+            <form id="checkout-form">
+                <input type="hidden" id="checkout-product-id-input" name="product_id" value="">
+                <input type="hidden" id="checkout-product-title-input" name="product_title" value="">
+
+                <div class="form-group">
+                    <label for="checkout-email">Delivery Email Address</label>
+                    <input type="email" id="checkout-email" name="email" placeholder="e.g. yourname@domain.com" required>
+                    <p style="font-size: var(--fs-small); margin-top: 5px; color: var(--color-primary);">
+                        Download link will be sent to this email.
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label for="payment-details">Simulated Payment Details</label>
+                    <input type="text" id="payment-details" placeholder="Enter '1234' to simulate successful payment" required>
+                </div>
+
+                <div class="loading-indicator">
+                    <div class="spinner"></div>
+                    <p>Processing payment securely...</p>
+                </div>
+
+                <button type="submit" class="btn btn-accent" style="width: 100%;">Complete Purchase</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Purchase Success Modal -->
+    <div class="modal-overlay" id="success-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="success-title" aria-hidden="true">
+        <div class="modal-content text-center">
+            <header class="modal-header" style="border: none; padding-bottom: 0;">
+                <h3 id="success-title" style="margin: 0 auto;">Purchase Successful!</h3>
+                <button class="close-btn" aria-label="Close success modal">&times;</button>
+            </header>
+
+            <div style="padding-top: var(--spacing-unit);">
+                <span class="success-icon">🎉</span>
+                <p style="font-size: 1.25rem; font-weight: 600;">Thank you for buying the <strong id="success-product-title">Product Name Placeholder</strong>!</p>
+                <p>
+                    Your download link has been automatically sent to:
+                    <br><strong class="text-primary" id="success-recipient-email"></strong>
+                </p>
+                <p style="font-size: var(--fs-small);">
+                    Check your inbox and spam folder. Contact <a href="mailto:info@jankacompany.com">info@jankacompany.com</a> if you don't receive it shortly.
+                </p>
+                <button class="btn btn-primary close-btn" style="margin-top: var(--spacing-unit);">Got It</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Success Modal -->
+    <div class="modal-overlay" id="contact-success-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="contact-success-title" aria-hidden="true">
+        <div class="modal-content text-center">
+            <header class="modal-header" style="border: none; padding-bottom: 0;">
+                <h3 id="contact-success-title" style="margin: 0 auto;">Message Received</h3>
+                <button class="close-btn" aria-label="Close message modal">&times;</button>
+            </header>
+
+            <div style="padding-top: var(--spacing-unit);">
+                <span class="success-icon">✉️</span>
+                <p>We have successfully received your message.</p>
+                <p style="font-weight: 600;">
+                    We will respond to <strong class="text-primary" id="contact-success-email"></strong> within 24 hours.
+                </p>
+                <button class="btn btn-primary close-btn" style="margin-top: var(--spacing-unit);">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Import -->
+    <script src="script.js"></script>
+</body>
+</html>
