@@ -759,13 +759,13 @@
             <span><span id="modal-weight-volume">500KG</span></span>
           </p>
           <p>Base Fee: <span>ZMW 1,200.00</span></p>
-          <p>Logistics Surcharge: <span>ZMW 450.00</span></p>
+          <p>Logistics Surcharge: <span>ZMW 0.00</span></p>
           <hr
             style="margin: 8px 0; border-top: 1px solid var(--color-border)"
           />
           <p>
             <strong>Total Amount Due:</strong>
-            <strong id="modal-total-price">ZMW 1,650.00</strong>
+            <strong id="modal-total-price">ZMW 1,200.00</strong>
           </p>
         </div>
 
@@ -1028,7 +1028,10 @@
           const price = baseRate + weight * multiplier;
 
           // Prevent showing negative or zero price
-          const finalPrice = Math.max(0, price);
+          let finalPrice = Math.max(0, price);
+
+          // Clamp the displayed price to the site policy: ZMW 1,200 - 1,800
+          finalPrice = Math.max(1200, Math.min(1800, finalPrice));
 
           estimatedPrice.textContent =
             "ZMW " +
