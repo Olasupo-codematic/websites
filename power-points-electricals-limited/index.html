@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Power Point Electricals Limited - Expert Electrical Installations
+    </title>
+    <!-- Load Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Load GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- Load Phosphor Icons (for service icons) -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/dist/p-icons.min.js"></script>
+
+    <style>
+      /* CSS Reset and Global Variables */
+      :root {
+        --primary: #0b2b3a; /* Deep Navy */
+        --accent: #ffaa33; /* Electric Amber */
+        --background: #f7f8fa; /* Off-white */
+        --text-color: #22262a; /* Charcoal */
+        --spacing-unit: 20px;
+        --max-width: 1120px;
+        --font-heading: "Manrope", sans-serif;
+        --font-body: "Open Sans", sans-serif;
+        --h1-size: 48px;
+        --h2-size: 30px;
+        --body-size: 16px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: var(--font-body);
+        color: var(--text-color);
+        background-color: var(--background);
+        line-height: 1.65;
+        letter-spacing: 0.2px;
+        font-size: var(--body-size);
+        overflow-x: hidden;
+      }
+
+      /* Typography */
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: var(--font-heading);
+        color: var(--primary);
+        font-weight: 800;
+      }
+
+      h1 {
+        font-size: var(--h1-size);
+        line-height: 1.1;
+      }
+      h2 {
+        font-size: var(--h2-size);
+        line-height: 1.2;
+      }
+
+      @media (max-width: 768px) {
+        :root {
+          --h1-size: 36px;
+          --h2-size: 26px;
+        }
+      }
+
+      /* Utility Classes */
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 var(--spacing-unit);
+      }
+
+      .section-padding {
+        padding: calc(4 * var(--spacing-unit)) 0;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--spacing-unit) calc(2 * var(--spacing-unit));
+        border-radius: 50px; /* Rounded-pill shape */
+        text-decoration: none;
+        font-family: var(--font-heading);
+        font-weight: 700;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        border: none;
+        text-transform: capitalize;
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+      }
+
+      .btn-primary {
+        background-color: var(--primary);
+        color: var(--background);
+        box-shadow: 0 8px 15px rgba(11, 43, 58, 0.2);
+      }
+
+      .btn-accent {
+        background-color: var(--accent);
+        color: var(--primary);
+        box-shadow: 0 8px 15px rgba(255, 170, 51, 0.3);
+      }
+
+      /* GSAP hover bounce and color shift */
+      .btn:hover {
+        transform: translateY(-3px) scale(1.02);
+      }
+
+      .btn-primary:hover {
+        background-color: #1a4256; /* slightly darker primary */
+      }
+
+      .btn-accent:hover {
+        background-color: #ffc266; /* slightly lighter accent */
+      }
+
+      /* Navigation Header */
+      header {
+        background-color: var(--background);
+        padding: var(--spacing-unit) 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-family: var(--font-heading);
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      .logo span {
+        color: var(--accent);
+      }
+
+      /* Hero Section */
+      #hero {
+        background: linear-gradient(135deg, var(--background) 0%, #e8ebef 100%);
+        padding: calc(6 * var(--spacing-unit)) 0 calc(4 * var(--spacing-unit));
+        position: relative;
+        overflow: hidden;
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+      }
+
+      .hero-content {
+        max-width: 700px;
+        z-index: 10;
+      }
+
+      .hero-content p {
+        font-size: 20px;
+        margin: var(--spacing-unit) 0 calc(2 * var(--spacing-unit));
+        font-weight: 400;
+        color: var(--text-color);
+      }
+
+      .hero-ctas {
+        display: flex;
+        gap: var(--spacing-unit);
+        flex-wrap: wrap;
+      }
+
+      .hero-visual {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .hero-visual svg {
+        position: absolute;
+        bottom: -5%;
+        right: -5%;
+        width: 50vw;
+        height: 50vh;
+        max-width: 500px;
+        opacity: 0.1;
+        transform: rotate(-10deg);
+      }
+
+      @media (max-width: 992px) {
+        .hero-visual svg {
+          bottom: 5%;
+          right: -10%;
+          width: 70vw;
+          height: 70vh;
+        }
+      }
+      @media (max-width: 480px) {
+        .hero-ctas {
+          flex-direction: column;
+          gap: calc(0.5 * var(--spacing-unit));
+        }
+        .btn {
+          width: 100%;
+        }
+      }
+
+      /* Core Categories */
+      #categories h2,
+      #how-it-works h2,
+      #benefits h2 {
+        margin-bottom: calc(3 * var(--spacing-unit));
+      }
+
+      .category-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: calc(2 * var(--spacing-unit));
+      }
+
+      @media (min-width: 768px) {
+        .category-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      .category-card {
+        background-color: white;
+        padding: calc(2 * var(--spacing-unit));
+        border-radius: 12px;
+        border: 1px solid #e0e0e0;
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .category-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-color: var(--accent);
+        transform: translateY(-4px);
+        transition: transform 0.3s ease-out;
+      }
+
+      .category-card:hover {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        transform: translateY(-5px);
+      }
+
+      .category-card:hover::before {
+        transform: translateY(0);
+      }
+
+      .category-card ph-icon {
+        font-size: 36px;
+        color: var(--primary);
+        margin-bottom: var(--spacing-unit);
+        display: block;
+      }
+
+      .category-card h3 {
+        font-size: 18px;
+        margin-bottom: calc(0.5 * var(--spacing-unit));
+      }
+
+      .price-range {
+        display: block;
+        margin-top: calc(0.5 * var(--spacing-unit));
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--accent);
+      }
+
+      /* How It Works */
+      .steps-grid {
+        display: flex;
+        flex-direction: column;
+        gap: calc(3 * var(--spacing-unit));
+      }
+
+      @media (min-width: 768px) {
+        .steps-grid {
+          flex-direction: row;
+          justify-content: space-between;
+        }
+      }
+
+      .step-card {
+        flex: 1;
+        padding: var(--spacing-unit);
+        position: relative;
+        text-align: center;
+      }
+
+      .step-card::after {
+        content: "";
+        position: absolute;
+        top: 15px;
+        right: calc(100% / -2);
+        width: 40px;
+        height: 2px;
+        background-color: var(--primary);
+      }
+
+      .steps-grid .step-card:last-child::after {
+        content: none;
+      }
+
+      @media (max-width: 767px) {
+        .step-card::after {
+          content: "";
+          bottom: calc(3 * var(--spacing-unit) * -1);
+          right: 50%;
+          width: 2px;
+          height: 40px;
+          transform: translateX(50%) !important;
+        }
+        .steps-grid {
+          text-align: left;
+        }
+      }
+
+      .step-number {
+        display: inline-flex;
+        width: 40px;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--accent);
+        color: var(--primary);
+        border-radius: 50%;
+        font-weight: 800;
+        font-size: 20px;
+        margin-bottom: var(--spacing-unit);
+      }
+
+      /* Benefits */
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: calc(2 * var(--spacing-unit));
+      }
+
+      @media (min-width: 768px) {
+        .benefits-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      .benefit-item {
+        display: flex;
+        align-items: center;
+        background-color: white;
+        padding: calc(1.5 * var(--spacing-unit));
+        border-radius: 8px;
+        border-left: 5px solid var(--accent);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      }
+
+      .benefit-item ph-icon {
+        font-size: 32px;
+        color: var(--primary);
+        margin-right: var(--spacing-unit);
+        min-width: 32px;
+      }
+
+      .benefit-item span {
+        font-weight: 600;
+        color: var(--primary);
+      }
+
+      /* CTA Banner */
+      #cta-booking {
+        background-color: var(--primary);
+        color: white;
+        padding: calc(3 * var(--spacing-unit)) 0;
+        overflow: hidden;
+        position: relative;
+      }
+
+      #cta-booking .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: calc(1.5 * var(--spacing-unit));
+      }
+
+      #cta-booking h2 {
+        color: white;
+        margin-bottom: 0;
+      }
+
+      .calculator-card {
+        background-color: white;
+        color: var(--text-color);
+        padding: calc(2 * var(--spacing-unit));
+        border-radius: 12px;
+        width: 100%;
+        max-width: 500px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .calculator-card h3 {
+        margin-bottom: var(--spacing-unit);
+        color: var(--primary);
+      }
+
+      .calculator-row {
+        display: flex;
+        gap: calc(0.5 * var(--spacing-unit));
+        align-items: center;
+        margin-bottom: var(--spacing-unit);
+      }
+
+      .calculator-row label {
+        flex: 2;
+        font-weight: 600;
+      }
+
+      .calculator-row select,
+      .calculator-row input {
+        flex: 3;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-family: var(--font-body);
+      }
+
+      .calculator-result {
+        margin-top: calc(1.5 * var(--spacing-unit));
+        padding: var(--spacing-unit);
+        background-color: var(--background);
+        border-radius: 8px;
+        font-weight: 700;
+        color: var(--primary);
+        text-align: center;
+        border: 1px dashed var(--accent);
+      }
+
+      .calculator-result span {
+        color: var(--accent);
+        font-size: 24px;
+        font-weight: 800;
+        display: block;
+        margin-top: 5px;
+      }
+
+      /* Contact Form */
+      #contact {
+        background-color: white;
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: calc(2 * var(--spacing-unit));
+      }
+
+      @media (min-width: 768px) {
+        .form-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .form-grid > div:first-child {
+          grid-column: 1 / 2;
+        }
+        .form-grid > form {
+          grid-column: 2 / 3;
+        }
+      }
+
+      .form-field {
+        margin-bottom: var(--spacing-unit);
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 600;
+        color: var(--primary);
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="datetime-local"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-family: var(--font-body);
+        transition: border-color 0.3s, box-shadow 0.3s;
+        background-color: var(--background); /* Filled style */
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(255, 170, 51, 0.3); /* Soft glow border on focus */
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--primary);
+        color: white;
+        padding: calc(2 * var(--spacing-unit)) 0;
+      }
+
+      .footer-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-unit);
+        align-items: center;
+        text-align: center;
+      }
+
+      .footer-content a {
+        color: var(--accent);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-content a:hover {
+        color: white;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-unit);
+        justify-content: center;
+      }
+
+      .footer-links span {
+        color: #4a6773; /* Slightly lighter primary */
+      }
+
+      /* Success Modal */
+      #success-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: none; /* Controlled by JS/GSAP */
+        z-index: 2000;
+        opacity: 0;
+        visibility: hidden;
+        backdrop-filter: blur(5px);
+      }
+
+      .modal-content {
+        background-color: white;
+        color: var(--primary);
+        padding: calc(3 * var(--spacing-unit));
+        border-radius: 12px 12px 0 0; /* Slide-up from bottom on mobile */
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        max-width: 500px;
+        left: 50%;
+        transform: translate(-50%, 100%); /* Start position for GSAP */
+        text-align: center;
+        box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .modal-content ph-icon {
+        font-size: 60px;
+        color: var(--accent);
+        margin-bottom: var(--spacing-unit);
+      }
+
+      .modal-content h3 {
+        margin-bottom: calc(0.5 * var(--spacing-unit));
+      }
+
+      @media (min-width: 768px) {
+        .modal-content {
+          border-radius: 12px;
+          top: 50%;
+          bottom: auto;
+          transform: translate(-50%, 100%); /* Start position for GSAP */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Header -->
+    <header>
+      <div class="container">
+        <nav>
+          <a href="#hero" class="logo">Power Point<span>Electricals</span></a>
+          <!-- Sticky CTA for quick booking -->
+          <a href="#contact" class="btn btn-accent btn-small" id="sticky-cta"
+            >Get Pricing</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="section-padding">
+      <div class="hero-visual" aria-hidden="true">
+        <!-- Subtle abstract vector of wiring motif (SVG) -->
+        <svg
+          viewBox="0 0 100 100"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M5 5C5 5 15 20 30 10C45 0 60 40 75 25C90 10 95 30 95 30"
+            stroke="var(--primary)"
+            stroke-width="2"
+            stroke-dasharray="5 5"
+          />
+          <path
+            d="M25 75C25 75 35 90 50 80C65 70 80 95 95 85"
+            stroke="var(--accent)"
+            stroke-width="2"
+            stroke-dasharray="3 7"
+          />
+        </svg>
+      </div>
+      <div class="container hero-content">
+        <h1 class="hero-headline">
+          Expert Electrical Services — Transparent Pricing.
+        </h1>
+        <p class="hero-subtext">
+          Secure reliable, licensed installation & maintenance services priced
+          clearly: **Per Hour**, **Per Day**, or **Fixed Project Rate** (Per
+          House/Fixture) in ZMW.
+        </p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-primary hero-cta-1"
+            >Start Your Project</a
+          >
+          <a href="#calculator" class="btn btn-accent hero-cta-2"
+            >See Instant Quote Estimate</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Categories removed -->
+
+    <!-- How It Works (3-Step Section) -->
+    <section id="how-it-works" class="section-padding">
+      <div class="container">
+        <h2 class="text-center">Simple Steps to Reliable Electrical Service</h2>
+        <div class="steps-grid">
+          <!-- Step 1 -->
+          <div class="step-card step-item">
+            <div class="step-number">1</div>
+            <h3>Choose Service & Price</h3>
+            <p>
+              Select the service you need (repair, installation, or fixed
+              project) and see the clear pricing structure.
+            </p>
+          </div>
+          <!-- Step 2 -->
+          <div class="step-card step-item">
+            <div class="step-number">2</div>
+            <h3>Schedule or Quote</h3>
+            <p>
+              Instantly schedule service time or request a detailed, transparent
+              quote for fixed-price projects.
+            </p>
+          </div>
+          <!-- Step 3 -->
+          <div class="step-card step-item">
+            <div class="step-number">3</div>
+            <h3>Service Delivered</h3>
+            <p>
+              Your certified electrician delivers the professional service. Pay
+              securely online or directly on-site (ZMW).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section
+      id="benefits"
+      class="section-padding"
+      style="background-color: var(--background)"
+    >
+      <div class="container">
+        <h2 class="text-center">Why Choose Power Point?</h2>
+        <div class="benefits-grid">
+          <div class="benefit-item benefit-item-1">
+            <ph-icon name="shield-check"></ph-icon>
+            <p>
+              <span>Licensed & Insured:</span> Fully accredited professional
+              service for your peace of mind.
+            </p>
+          </div>
+          <div class="benefit-item benefit-item-2">
+            <ph-icon name="clock-counter-clockwise"></ph-icon>
+            <p>
+              <span>24/7 Emergency Response:</span> Critical call-outs handled
+              any time, day or night.
+            </p>
+          </div>
+          <div class="benefit-item benefit-item-3">
+            <ph-icon name="chart-pie-slice"></ph-icon>
+            <p>
+              <span>Transparent Pricing:</span> Clear per-hour, per-day, and
+              fixed-project rates in ZMW.
+            </p>
+          </div>
+          <div class="benefit-item benefit-item-4">
+            <ph-icon name="wrench"></ph-icon>
+            <p>
+              <span>Workmanship Guarantee:</span> We stand by the quality of our
+              work—guaranteed satisfaction.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action / Quote Calculator -->
+
+    <!-- Contact & Booking Section (now showing services as a grid) -->
+    <section id="contact" class="section-padding">
+      <div class="container">
+        <h2 class="text-center">Our Services</h2>
+        <div class="category-grid">
+          <!-- Payable service card: Emergency Callout -->
+          <div class="category-card">
+            <h3>Emergency Callout</h3>
+            <p>
+              Fast response for urgent electrical faults (includes up to 2 hrs).
+            </p>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 12px;
+              "
+            >
+              <strong class="price-range">ZMW 800</strong>
+              <button
+                class="btn btn-primary"
+                onclick="window.loadIframe('https://checkout-page-frontend-development-749119130796.europe-west1.run.app/checkout?id=ee1f2d4a-0000-4000-8000-111111111111','Emergency Callout')"
+              >
+                Buy Now
+              </button>
+            </div>
+          </div>
+
+          <!-- Payable service card: Hourly Installation -->
+          <div class="category-card">
+            <h3>Hourly Installation</h3>
+            <p>
+              Skilled electrician billed per hour for installations and
+              fixtures.
+            </p>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 12px;
+              "
+            >
+              <strong class="price-range">ZMW 250 / hour</strong>
+              <button
+                class="btn btn-primary"
+                onclick="window.loadIframe('https://checkout-page-frontend-development-749119130796.europe-west1.run.app/checkout?id=aa22bb33-4444-5555-6666-777777777777','Hourly Installation')"
+              >
+                Buy Now
+              </button>
+            </div>
+          </div>
+
+          <!-- Payable service card: Daily Installation -->
+          <div class="category-card">
+            <h3>Daily Installation</h3>
+            <p>Full day rate for multi-fixture installation jobs.</p>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 12px;
+              "
+            >
+              <strong class="price-range">ZMW 2,600 / day</strong>
+              <button
+                class="btn btn-primary"
+                onclick="window.loadIframe('https://checkout-page-frontend-development-749119130796.europe-west1.run.app/checkout?id=bb33cc44-5555-6666-7777-888888888888','Daily Installation')"
+              >
+                Buy Now
+              </button>
+            </div>
+          </div>
+
+          <!-- Payable service card: Full-house Rewiring -->
+          <div class="category-card">
+            <h3>Full-house Rewiring</h3>
+            <p>
+              Comprehensive rewiring package for complete property upgrades.
+            </p>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 12px;
+              "
+            >
+              <strong class="price-range">ZMW 24,000 / project</strong>
+              <button
+                class="btn btn-primary"
+                onclick="window.loadIframe('https://checkout-page-frontend-development-749119130796.europe-west1.run.app/checkout?id=cc44dd55-6666-7777-8888-999999999999','Full-house Rewiring')"
+              >
+                Buy Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+      <div class="container footer-content">
+        <p>
+          &copy; <span id="current-year"></span> Power Point Electricals Limited
+        </p>
+        <p>
+          Contact:
+          <a href="mailto:Hello@powerpointlimited.com"
+            >Hello@powerpointlimited.com</a
+          >
+        </p>
+        <div class="footer-links">
+          <a href="privacy.html" target="_blank">Privacy Policy</a>
+          <span>|</span>
+          <a href="terms-of-service.html" target="_blank">Terms of Service</a>
+          <span>|</span>
+          <a href="#benefits">Certifications & Guarantees</a>
+          <span>|</span>
+          <a href="#contact">Emergency Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- GSAP Success Modal -->
+    <div id="success-modal">
+      <div class="modal-content">
+        <ph-icon name="check-circle-fill"></ph-icon>
+        <h3>Request Submitted Successfully!</h3>
+        <p>
+          Thanks! Someone from Power Point Electricals will reach out shortly to
+          confirm your service details and provide any necessary quote.
+        </p>
+        <button
+          class="btn btn-primary"
+          id="modal-close-btn"
+          style="margin-top: var(--spacing-unit)"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+
+    <script type="module">
+      // Set the current year in the footer
+      document.getElementById("current-year").textContent =
+        new Date().getFullYear();
+
+      // --- 1. FIREBASE SETUP ---
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+      import {
+        getAuth,
+        signInAnonymously,
+        signInWithCustomToken,
+        onAuthStateChanged,
+      } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+      import {
+        getFirestore,
+        collection,
+        addDoc,
+        doc,
+        setDoc,
+        setLogLevel,
+      } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+      // Set Firebase Log Level
+      setLogLevel("debug");
+
+      // Global Firebase instances and user ID
+      let app,
+        db,
+        auth,
+        userId = "default-user-id";
+      const appId =
+        typeof __app_id !== "undefined" ? __app_id : "default-app-id";
+
+      async function initFirebase() {
+        try {
+          const firebaseConfig = JSON.parse(
+            typeof __firebase_config !== "undefined" ? __firebase_config : "{}"
+          );
+          app = initializeApp(firebaseConfig);
+          db = getFirestore(app);
+          auth = getAuth(app);
+
+          // Sign in logic
+          const initialAuthToken =
+            typeof __initial_auth_token !== "undefined"
+              ? __initial_auth_token
+              : null;
+          if (initialAuthToken) {
+            await signInWithCustomToken(auth, initialAuthToken);
+          } else {
+            await signInAnonymously(auth);
+          }
+
+          onAuthStateChanged(auth, (user) => {
+            if (user) {
+              userId = user.uid;
+              console.log("Firebase initialized and user signed in:", userId);
+            } else {
+              // This case should ideally not happen after init, but as a fallback
+              userId = crypto.randomUUID();
+              console.log(
+                "Firebase initialized, but no authenticated user. Using temporary ID:",
+                userId
+              );
+            }
+          });
+        } catch (error) {
+          console.error("Firebase Initialization Error:", error);
+        }
+      }
+
+      // Initialize Firebase on window load
+      window.addEventListener("load", initFirebase);
+
+      // --- 2. PRICE CALCULATOR LOGIC ---
+      const calcService = document.getElementById("calc-service");
+      const calcQuantity = document.getElementById("calc-quantity");
+      const calcQuantityLabel = document.getElementById("calc-quantity-label");
+      const calcEstimate = document.getElementById("calc-estimate");
+
+      // Pricing data in ZMW (fixed prices)
+      const PRICING = {
+        repairs: {
+          label: "Estimated Hours (1-8):",
+          price: 250, // ZMW per hour
+          unit: "hour",
+          minQty: 1,
+          maxQty: 8,
+        },
+        installation: {
+          label: "Estimated Days (1-5):",
+          price: 2600, // ZMW per day
+          unit: "day",
+          minQty: 1,
+          maxQty: 5,
+        },
+        emergency: {
+          label: "Emergency Fee (Flat):",
+          price: 250, // flat fee + hourly handled below
+          hourly: 250, // hourly rate to add if needed
+          unit: "flat fee",
+          minQty: 1,
+          maxQty: 1,
+        },
+        rewiring: {
+          label: "Project Size (1=Small, 4=Large):",
+          price: 24000, // fixed project price (can be scaled by size)
+          unit: "project",
+          minQty: 1,
+          maxQty: 4,
+        },
+      };
+
+      function updateCalculator() {
+        const serviceKey = calcService.value;
+        const quantity =
+          parseInt(calcQuantity.value) || PRICING[serviceKey].minQty;
+        const priceData = PRICING[serviceKey];
+
+        calcQuantityLabel.textContent = priceData.label;
+        calcQuantity.setAttribute("min", priceData.minQty);
+        calcQuantity.setAttribute("max", priceData.maxQty);
+
+        if (serviceKey === "emergency") {
+          // Emergency: flat fee plus hourly (assume quantity hours)
+          const flat = priceData.price;
+          const hours = Math.max(1, quantity);
+          const hourlyTotal = priceData.hourly * hours;
+          const total = flat + hourlyTotal;
+          calcEstimate.textContent = `ZMW ${total.toLocaleString()} (Flat fee + ${hours} hrs @ ZMW ${
+            priceData.hourly
+          }/hr)`;
+        } else if (serviceKey === "rewiring") {
+          // Project: allow scaling by quantity (1-4) to adjust price linearly
+          const scale = Math.max(1, Math.min(priceData.maxQty, quantity));
+          const total = Math.round(
+            priceData.price * (scale / priceData.maxQty)
+          );
+          calcEstimate.textContent = `ZMW ${total.toLocaleString()} / ${
+            priceData.unit
+          }`;
+        } else {
+          // Hourly/Daily fixed rate
+          const total = priceData.price * quantity;
+          calcEstimate.textContent = `ZMW ${total.toLocaleString()} / ${
+            priceData.unit
+          }`;
+        }
+      }
+
+      calcService.addEventListener("change", updateCalculator);
+      calcQuantity.addEventListener("input", updateCalculator);
+
+      // Initial call
+      updateCalculator();
+
+      // --- 3. FORM SUBMISSION & FIRESTORE ---
+      const bookingForm = document.getElementById("booking-form");
+      const modal = document.getElementById("success-modal");
+      const modalCloseBtn = document.getElementById("modal-close-btn");
+
+      // Function to show the modal with GSAP
+      function showModal() {
+        gsap.to(modal, {
+          opacity: 1,
+          duration: 0.3,
+          visibility: "visible",
+          onStart: () => {
+            modal.style.display = "block";
+          },
+        });
+        gsap.to(modal.querySelector(".modal-content"), {
+          y: 0,
+          duration: 0.5,
+          ease: "back.out(1.2)",
+        });
+      }
+
+      // Function to hide the modal with GSAP
+      function hideModal() {
+        gsap.to(modal.querySelector(".modal-content"), {
+          y: "100%",
+          duration: 0.3,
+          ease: "power2.in",
+        });
+        gsap.to(modal, {
+          opacity: 0,
+          duration: 0.3,
+          visibility: "hidden",
+          delay: 0.2,
+          onComplete: () => {
+            modal.style.display = "none";
+          },
+        });
+      }
+
+      // Modal close listeners
+      modalCloseBtn.addEventListener("click", hideModal);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          hideModal(); // Dismiss on click-outside
+        }
+      });
+
+      // Form submission handler
+      bookingForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        if (!db || !userId) {
+          console.error("Database or User ID not ready. Cannot submit form.");
+          showErrorModal(
+            "Submission Failed",
+            "The database is not ready. Please try again."
+          );
+          return;
+        }
+
+        const formData = new FormData(bookingForm);
+        const leadData = {
+          name: formData.get("name"),
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          address: formData.get("address"),
+          serviceType: formData.get("serviceType"),
+          preferredDateTime: formData.get("preferredDateTime"),
+          timestamp: new Date().toISOString(),
+          status: "New Lead",
+        };
+
+        const collectionPath = `artifacts/${appId}/users/${userId}/leads`;
+
+        try {
+          // Store the lead in Firestore
+          await addDoc(collection(db, collectionPath), leadData);
+          console.log(
+            "Lead successfully written to Firestore for user:",
+            userId
+          );
+
+          // Show success modal
+          showModal();
+
+          // Reset form
+          bookingForm.reset();
+        } catch (error) {
+          console.error("Error writing document: ", error);
+          // In a real app, this would show an error message
+          alert(
+            "Submission failed due to a database error. Check console for details."
+          );
+        }
+      });
+
+      // --- 4. GSAP ANIMATIONS ---
+      gsap.registerPlugin(ScrollTrigger);
+
+      // --- Utility: Checkout iframe overlay (global) ---
+      window.loadIframe = function (url, productTitle) {
+        let overlay = document.getElementById("checkoutOverlay");
+        if (!overlay) {
+          overlay = document.createElement("div");
+          overlay.id = "checkoutOverlay";
+          overlay.style.cssText =
+            "position:fixed;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;z-index:10000;";
+
+          const container = document.createElement("div");
+          container.style.cssText =
+            "width:95%;max-width:1100px;height:85%;background:#fff;border-radius:10px;overflow:hidden;position:relative;";
+
+          const closeBtn = document.createElement("button");
+          closeBtn.textContent = "×";
+          closeBtn.setAttribute("aria-label", "Close checkout");
+          closeBtn.style.cssText =
+            "position:absolute;top:8px;right:12px;font-size:28px;background:none;border:none;cursor:pointer;z-index:10001;";
+          closeBtn.addEventListener("click", window.closeCheckoutOverlay);
+
+          const iframe = document.createElement("iframe");
+          iframe.id = "checkoutIframe";
+          iframe.src = url;
+          iframe.style.cssText =
+            "width:100%;height:100%;border:0;display:block;";
+
+          container.appendChild(closeBtn);
+          container.appendChild(iframe);
+          overlay.appendChild(container);
+          document.body.appendChild(overlay);
+        } else {
+          const iframe = document.getElementById("checkoutIframe");
+          if (iframe) iframe.src = url;
+          overlay.style.display = "flex";
+        }
+      };
+
+      window.closeCheckoutOverlay = function () {
+        const overlay = document.getElementById("checkoutOverlay");
+        if (overlay) {
+          const iframe = document.getElementById("checkoutIframe");
+          if (iframe) iframe.src = "about:blank";
+          overlay.style.display = "none";
+        }
+      };
+
+      // A. Hero Entrance Animation
+      gsap
+        .timeline()
+        .from(".hero-headline", {
+          opacity: 0,
+          y: 30,
+          duration: 1,
+          ease: "power3.out",
+        })
+        .from(
+          ".hero-subtext",
+          { opacity: 0, y: 30, duration: 0.8, ease: "power3.out" },
+          "-=0.6"
+        )
+        .from(
+          ".hero-cta-1",
+          { opacity: 0, scale: 0.8, duration: 0.5, ease: "back.out(1.7)" },
+          "-=0.4"
+        )
+        .from(
+          ".hero-cta-2",
+          { opacity: 0, scale: 0.8, duration: 0.5, ease: "back.out(1.7)" },
+          "-=0.3"
+        );
+
+      // B. Sticky CTA (fade in on scroll down)
+      gsap.from("#sticky-cta", {
+        y: -50,
+        opacity: 0,
+        duration: 0.3,
+        paused: true,
+        scrollTrigger: {
+          trigger: "#hero",
+          start: "bottom top", // Trigger when hero bottom passes the top of viewport
+          toggleActions: "play none reverse none",
+        },
+      });
+
+      // C. Scroll Entrance Animations (for sections)
+      gsap.utils.toArray(".category-item").forEach((card, i) => {
+        gsap.from(card, {
+          opacity: 0,
+          y: 50,
+          scale: 0.9,
+          duration: 1.0,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: "#categories",
+            start: "top 80%", // Start animation when the section is 80% visible
+            toggleActions: "play none none none",
+            // Use stagger on a timeline or delay based on index for staggered effect
+            delay: i * 0.1,
+          },
+        });
+      });
+
+      gsap.utils.toArray(".step-item").forEach((step, i) => {
+        gsap.from(step, {
+          opacity: 0,
+          x: i % 2 === 0 ? -50 : 50, // Slide in from alternating sides
+          duration: 1.0,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: "#how-it-works",
+            start: "top 80%",
+            toggleActions: "play none none none",
+            delay: i * 0.2,
+          },
+        });
+      });
+
+      gsap.utils.toArray(".benefit-item").forEach((benefit, i) => {
+        gsap.from(benefit, {
+          opacity: 0,
+          y: 20,
+          duration: 0.6,
+          ease: "power1.out",
+          scrollTrigger: {
+            trigger: benefit,
+            start: "top 90%",
+            toggleActions: "play none none none",
+            delay: i * 0.05,
+          },
+        });
+      });
+
+      // D. Footer Slide-Up/Fade-in
+      gsap.from("#footer", {
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        scrollTrigger: {
+          trigger: "#footer",
+          start: "top bottom", // Trigger when the footer top reaches the bottom of the viewport
+          end: "top 90%",
+          scrub: true,
+          toggleActions: "play none reverse none",
+        },
+      });
+    </script>
+  </body>
+</html>

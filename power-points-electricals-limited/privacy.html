@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy — Power Point Electricals Limited</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #0b2b3a;
+        --accent: #ffaa33;
+        --background: #f7f8fa;
+        --text-color: #22262a;
+        --spacing-unit: 20px;
+        --max-width: 1120px;
+        --font-heading: "Manrope", sans-serif;
+        --font-body: "Open Sans", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: var(--font-body);
+        color: var(--text-color);
+        background: var(--background);
+        margin: 0;
+      }
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 var(--spacing-unit);
+      }
+      header {
+        padding: var(--spacing-unit) 0;
+        border-bottom: 1px solid #e6e6e6;
+        background: white;
+      }
+      .logo {
+        font-family: var(--font-heading);
+        color: var(--primary);
+        font-weight: 800;
+        text-decoration: none;
+      }
+      main {
+        padding: calc(3 * var(--spacing-unit)) 0;
+      }
+      h1 {
+        font-family: var(--font-heading);
+        color: var(--primary);
+        font-size: 36px;
+        margin-bottom: 8px;
+      }
+      h2 {
+        font-family: var(--font-heading);
+        color: var(--primary);
+        font-size: 20px;
+        margin-top: 18px;
+      }
+      p {
+        margin: 0 0 12px 0;
+      }
+      .hero {
+        background: white;
+        padding: calc(1.5 * var(--spacing-unit));
+        border-radius: 10px;
+        box-shadow: 0 6px 20px rgba(11, 43, 58, 0.04);
+      }
+
+      footer {
+        background: var(--primary);
+        color: white;
+        padding: calc(2 * var(--spacing-unit)) 0;
+        margin-top: 40px;
+      }
+      .footer-links a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          <a class="logo" href="index.html"
+            >Power Point<span style="color: var(--accent)">Electricals</span></a
+          >
+          <div>
+            <a
+              href="index.html"
+              style="
+                text-decoration: none;
+                color: var(--primary);
+                font-weight: 600;
+              "
+              >Home</a
+            >
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="hero">
+          <h1>Privacy Policy</h1>
+          <p class="muted">Last updated: <strong>October 2025</strong></p>
+
+          <p>
+            Power Point Electricals Limited respects your privacy. This policy
+            explains how we collect, use, and protect your personal information
+            when you use our website or purchase services through our checkout
+            provider.
+          </p>
+
+          <h2>Information We Collect</h2>
+          <p>
+            We may collect contact information (name, email, phone), service
+            preferences, and payment data through our third-party checkout
+            provider. We do not store raw payment card data on our servers —
+            payment processing is handled by the checkout provider.
+          </p>
+
+          <h2>How We Use Information</h2>
+          <p>
+            We use collected information to fulfil service bookings, communicate
+            about appointments, send invoices or receipts, and for support and
+            legal compliance. With your consent we may send occasional service
+            updates or marketing emails — you can opt out at any time.
+          </p>
+
+          <h2>Third Party Services</h2>
+          <p>
+            We work with third-party providers (payment processors, analytics,
+            Firebase) who may access personal information as necessary to
+            deliver their services. Their use of your information is governed by
+            their privacy policies.
+          </p>
+
+          <h2>Security</h2>
+          <p>
+            We implement reasonable security measures to protect information.
+            However, no method of transmission over the internet is completely
+            secure. If you suspect a breach, contact us immediately.
+          </p>
+
+          <h2>Contact</h2>
+          <p>
+            Questions about this policy can be sent to
+            <a href="mailto:Hello@powerpointlimited.com"
+              >Hello@powerpointlimited.com</a
+            >.
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container" style="text-align: center">
+        <p>&copy; <span id="year"></span> Power Point Electricals Limited</p>
+        <div class="footer-links" style="margin-top: 8px">
+          <a href="terms-of-service.html">Terms of Service</a>
+          <span style="color: #fff; margin: 0 8px">|</span>
+          <a href="index.html" style="color: #fff">Home</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

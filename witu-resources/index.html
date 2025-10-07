@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Witu Resources Zambia Limited | Professional Consulting & Stationery
+    </title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&family=Inter:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  </head>
+  <body>
+    <!-- Success Modal (Hidden by default) -->
+    <div id="success-modal" class="modal">
+      <div class="modal-content">
+        <span class="modal-close-btn">&times;</span>
+        <div class="modal-icon">&#10003;</div>
+        <h3 class="modal-title">Submission Successful!</h3>
+        <p class="modal-message">
+          Thanks! Someone from Witu Resources Zambia Limited will reach out
+          shortly to confirm your details.
+        </p>
+      </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="header">
+      <div class="container header-inner">
+        <a href="#" class="logo">Witu Resources</a>
+        <nav class="nav" id="main-nav">
+          <a href="#consulting" class="nav-link">Consulting</a>
+          <a href="#shop" class="nav-link">Stationery Shop</a>
+          <a href="#categories" class="nav-link">Categories</a>
+          <a href="#contact" class="nav-link nav-cta">Get in Touch</a>
+        </nav>
+        <button
+          class="menu-toggle"
+          aria-controls="main-nav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          &#9776;
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- 🏠 Hero Section -->
+      <section class="hero">
+        <div class="container hero-content">
+          <h1 class="hero-headline">
+            Professional Consulting. Everyday Stationery.
+          </h1>
+          <p class="hero-subtext">
+            Witu Resources Zambia Limited connects you to expert consulting and
+            everyday business essentials — all in one trusted place.
+          </p>
+          <div class="hero-ctas">
+            <a href="#shop" class="btn btn-primary">Shop Now</a>
+            <a href="#contact" class="btn btn-secondary">Book a Consultation</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🛒 Stationery Shop Section -->
+      <section id="shop" class="section section-shop">
+        <div class="container">
+          <h2 class="section-title">Shop Stationery Essentials</h2>
+          <div class="product-grid">
+            <!-- Product 1: Pen Set -->
+            <div class="product-card" data-product="Premium Pen Set">
+              <div class="product-image-placeholder">🖊️</div>
+              <h3 class="product-title">Premium Gel Pen Set (12)</h3>
+              <p class="product-price">ZMW 95.00</p>
+              <button class="btn btn-primary btn-shop">Buy Now</button>
+            </div>
+            <!-- Product 2: Copier Paper -->
+            <div class="product-card" data-product="A4 Copier Paper">
+              <div class="product-image-placeholder">📄</div>
+              <h3 class="product-title">A4 White Copier Paper (500 Sheets)</h3>
+              <p class="product-price">ZMW 120.00</p>
+              <button class="btn btn-primary btn-shop">Add to Cart</button>
+            </div>
+            <!-- Product 3: Legal Pad -->
+            <div class="product-card" data-product="Legal Pad">
+              <div class="product-image-placeholder">📝</div>
+              <h3 class="product-title">Yellow Legal Pads (10 Pack)</h3>
+              <p class="product-price">ZMW 85.50</p>
+              <button class="btn btn-primary btn-shop">Buy Now</button>
+            </div>
+            <!-- Product 4: Stapler -->
+            <div class="product-card" data-product="Heavy Duty Stapler">
+              <div class="product-image-placeholder">🖇️</div>
+              <h3 class="product-title">Heavy Duty Office Stapler</h3>
+              <p class="product-price">ZMW 199.99</p>
+              <button class="btn btn-primary btn-shop">Buy Now</button>
+            </div>
+            <!-- Product 5: Highlighter Set -->
+            <div class="product-card" data-product="Highlighter Set">
+              <div class="product-image-placeholder">🌈</div>
+              <h3 class="product-title">Fluorescent Highlighter Set (6)</h3>
+              <p class="product-price">ZMW 65.00</p>
+              <button class="btn btn-primary btn-shop">Buy Now</button>
+            </div>
+            <!-- Product 6: Laminating Pouches -->
+            <div class="product-card" data-product="Laminating Pouches">
+              <div class="product-image-placeholder">🛡️</div>
+              <h3 class="product-title">A3 Laminating Pouches (100)</h3>
+              <p class="product-price">ZMW 350.00</p>
+              <button class="btn btn-primary btn-shop">Add to Cart</button>
+            </div>
+            <!-- Product 7: Toner Cartridge -->
+            <div class="product-card" data-product="Toner Cartridge">
+              <div class="product-image-placeholder">🖨️</div>
+              <h3 class="product-title">HP Compatible Black Toner</h3>
+              <p class="product-price">ZMW 580.00</p>
+              <button class="btn btn-primary btn-shop">Buy Now</button>
+            </div>
+            <!-- Product 8: Geometry Set -->
+            <div class="product-card" data-product="Geometry Set">
+              <div class="product-image-placeholder">📐</div>
+              <h3 class="product-title">Student Geometry Set</h3>
+              <p class="product-price">ZMW 45.00</p>
+              <button class="btn btn-primary btn-shop">Buy Now</button>
+            </div>
+            <!-- Product 9: Index Dividers -->
+            <div class="product-card" data-product="Index Dividers">
+              <div class="product-image-placeholder">📂</div>
+              <h3 class="product-title">A4 Index File Dividers (10 Tab)</h3>
+              <p class="product-price">ZMW 75.00</p>
+              <button class="btn btn-primary btn-shop">Add to Cart</button>
+            </div>
+            <!-- Product 10: Office Calculator -->
+            <div class="product-card" data-product="Office Calculator">
+              <div class="product-image-placeholder">🔢</div>
+              <h3 class="product-title">Solar Powered Desktop Calculator</h3>
+              <p class="product-price">ZMW 155.00</p>
+              <button class="btn btn-primary btn-shop">Buy Now</button>
+            </div>
+          </div>
+          <div style="text-align: center; margin-top: 40px">
+            <a href="#categories" class="btn btn-secondary"
+              >Explore All Categories</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- 🧭 Core Categories -->
+      <section id="categories" class="section">
+        <div class="container">
+          <h2 class="section-title">Explore Our Offerings</h2>
+          <div class="category-grid">
+            <div class="category-card" data-category="Consulting Services">
+              <div class="category-icon">&#x1F4BC;</div>
+              <h3 class="category-title">Consulting Services</h3>
+              <p>Expert guidance tailored to your business needs.</p>
+            </div>
+            <div class="category-card" data-category="Office Stationery">
+              <div class="category-icon">&#x1F4DD;</div>
+              <h3 class="category-title">Office Stationery</h3>
+              <p>Pens, paper, files, and all your corporate essentials.</p>
+            </div>
+            <div class="category-card" data-category="School Supplies">
+              <div class="category-icon">&#x1F392;</div>
+              <h3 class="category-title">School Supplies</h3>
+              <p>Quality notebooks, geometry sets, and learning aids.</p>
+            </div>
+            <div class="category-card" data-category="Printing Accessories">
+              <div class="category-icon">&#x1F5A8;</div>
+              <h3 class="category-title">Printing Accessories</h3>
+              <p>Toners, ink, and printer parts for seamless operation.</p>
+            </div>
+            <div class="category-card" data-category="Bulk Orders">
+              <div class="category-icon">&#x1F69A;</div>
+              <h3 class="category-title">Bulk Orders</h3>
+              <p>Economical pricing for large-volume corporate purchases.</p>
+            </div>
+            <div class="category-card" data-category="Business Strategy">
+              <div class="category-icon">&#x1F4C8;</div>
+              <h3 class="category-title">Business Strategy</h3>
+              <p>Data-driven strategy consulting for growth and efficiency.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ⚙️ How It Works -->
+      <section class="section section-works">
+        <div class="container">
+          <h2 class="section-title">How It Works</h2>
+          <div class="step-container">
+            <div class="step-card" data-step="1">
+              <div class="step-number">1</div>
+              <h3 class="step-title">Choose</h3>
+              <p>Select your stationery product or book a consultation slot.</p>
+            </div>
+            <div class="step-card" data-step="2">
+              <div class="step-number">2</div>
+              <h3 class="step-title">Confirm</h3>
+              <p>Verify your order or consultation details and availability.</p>
+            </div>
+            <div class="step-card" data-step="3">
+              <div class="step-number">3</div>
+              <h3 class="step-title">Engage</h3>
+              <p>Pay securely and get delivery or consultation confirmation.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🌟 Benefits Section -->
+      <section class="section section-benefits">
+        <div class="container">
+          <h2 class="section-title">Why Choose Witu?</h2>
+          <div class="benefit-grid">
+            <div class="benefit-card">
+              <div class="benefit-icon">&#x1F4B0;</div>
+              <h3 class="benefit-title">Trusted Zambia-based Company</h3>
+              <p>
+                Dedicated to local excellence and ethical business practices.
+              </p>
+            </div>
+            <div class="benefit-card">
+              <div class="benefit-icon">&#x26A1;</div>
+              <h3 class="benefit-title">Fast Delivery & Bulk Discounts</h3>
+              <p>
+                Quick turnaround times and economical pricing for volume orders.
+              </p>
+            </div>
+            <div class="benefit-card">
+              <div class="benefit-icon">&#x1F4AF;</div>
+              <h3 class="benefit-title">
+                Verified Products & Quality Assurance
+              </h3>
+              <p>
+                We guarantee the quality and authenticity of every item sold.
+              </p>
+            </div>
+            <div class="benefit-card">
+              <div class="benefit-icon">&#x1F4E9;</div>
+              <h3 class="benefit-title">24/7 Customer Support</h3>
+              <p>
+                Ready to assist you with orders or consultation queries anytime.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 📱 Final Call to Action -->
+      <section class="section final-cta-section">
+        <div class="container final-cta-content">
+          <h2>Shop Smarter with Witu Resources Zambia Limited.</h2>
+          <div class="final-ctas">
+            <a href="#shop" class="btn btn-primary">Start Shopping</a>
+            <a href="#contact" class="btn btn-secondary">Book Consultation</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 📩 Contact Section -->
+      <section id="contact" class="section section-contact">
+        <div class="container">
+          <h2 class="section-title">Contact Us</h2>
+          <form id="contact-form" class="contact-form">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                aria-label="Your Name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                aria-label="Email Address"
+              />
+            </div>
+            <div class="form-group">
+              <label for="message">Your Message / Query</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                aria-label="Your Message or Query"
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary form-submit-btn">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- ⚖️ Footer -->
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p class="footer-info">
+          © 2024 Witu Resources Zambia Limited |
+          <a href="mailto:Support@witultd.com" class="footer-link"
+            >Support@witultd.com</a
+          >
+        </p>
+        <div class="footer-links">
+          <a href="terms-of-service.html" class="footer-link"
+            >Terms of Service</a
+          >
+          <a href="privacy.html" class="footer-link">Privacy Policy</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ryangel Solution Limited | One Hub. Unlimited Possibilities.</title>
+    <!-- Load Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Load GSAP and ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <style>
+      /* Define the custom fonts and base styles */
+      :root {
+        --primary: #0057b7;
+        --accent: #f9a826;
+        --background: #f8f9fb;
+        --text-color: #1e1e1e;
+      }
+      body {
+        font-family: "Open Sans", sans-serif;
+        color: var(--text-color);
+        background-color: var(--background);
+        line-height: 1.65;
+        letter-spacing: 0.2px;
+        overflow-x: hidden;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Manrope", sans-serif;
+        color: var(--text-color);
+      }
+      /* H1 custom styling */
+      .h1-custom {
+        font-size: 32px; /* Default for mobile */
+        font-weight: 800;
+      }
+      @media (min-width: 768px) {
+        .h1-custom {
+          font-size: 48px;
+        }
+      }
+      /* H2 custom styling */
+      .h2-custom {
+        font-size: 24px;
+        font-weight: 700;
+      }
+      @media (min-width: 768px) {
+        .h2-custom {
+          font-size: 30px;
+        }
+      }
+      /* Custom Button Styling */
+      .btn-primary {
+        background-color: var(--primary);
+        transition: background-color 0.3s, transform 0.15s;
+      }
+      .btn-accent {
+        background-color: var(--accent);
+        transition: background-color 0.3s, transform 0.15s;
+      }
+      /* Hero Gradient Background */
+      .hero-bg {
+        background: linear-gradient(
+          135deg,
+          var(--background) 0%,
+          #e0f2ff 50%,
+          var(--background) 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Custom glow effect for inputs */
+      .input-glow:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(249, 168, 38, 0.4); /* Accent color glow */
+        border-color: var(--accent);
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-white shadow-md">
+      <nav
+        class="container mx-auto px-5 py-4 flex justify-between items-center lg:max-w-[1120px]"
+      >
+        <div class="text-2xl font-black text-[var(--primary)] font-manrope">
+          Ryangel
+        </div>
+        <div class="hidden md:flex space-x-6 text-sm font-semibold">
+          <a href="#shop" class="hover:text-[var(--accent)] transition-colors"
+            >Shop</a
+          >
+          <a
+            href="#marketing"
+            class="hover:text-[var(--accent)] transition-colors"
+            >Services</a
+          >
+          <a
+            href="#how-it-works"
+            class="hover:text-[var(--accent)] transition-colors"
+            >How It Works</a
+          >
+          <a
+            href="#contact"
+            class="hover:text-[var(--accent)] transition-colors"
+            >Contact</a
+          >
+        </div>
+        <a
+          href="#"
+          class="hidden md:inline-block px-4 py-2 text-sm text-white rounded-full font-bold btn-primary hover:bg-[var(--accent)]"
+          >Sign In</a
+        >
+        <button
+          id="mobile-menu-button"
+          class="md:hidden p-2 rounded-lg text-[var(--primary)] hover:bg-gray-100 transition-colors"
+        >
+          <!-- Hamburger Icon SVG -->
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            ></path>
+          </svg>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Mobile Menu Overlay (Hidden by Default) -->
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 bg-white z-50 transform -translate-y-full transition-transform duration-300 md:hidden flex flex-col p-8"
+    >
+      <button
+        id="close-menu-button"
+        class="self-end p-2 text-3xl text-[var(--primary)]"
+      >
+        &times;
+      </button>
+      <div class="flex flex-col space-y-6 mt-8 text-xl font-bold">
+        <a href="#shop" class="hover:text-[var(--accent)] transition-colors"
+          >Shop</a
+        >
+        <a
+          href="#marketing"
+          class="hover:text-[var(--accent)] transition-colors"
+          >Services</a
+        >
+        <a
+          href="#how-it-works"
+          class="hover:text-[var(--accent)] transition-colors"
+          >How It Works</a
+        >
+        <a href="#contact" class="hover:text-[var(--accent)] transition-colors"
+          >Contact</a
+        >
+        <a
+          href="#"
+          class="px-6 py-3 text-white rounded-full font-bold btn-primary text-center"
+          >Sign In</a
+        >
+      </div>
+    </div>
+
+    <main>
+      <!-- 🏠 Hero Section -->
+      <section id="hero" class="hero-bg py-24 md:py-32 text-center relative">
+        <!-- Floating Icons - animated by GSAP -->
+        <div id="floating-icons">
+          <span
+            class="absolute top-1/4 left-1/4 text-4xl transform -translate-x-1/2 -translate-y-1/2 opacity-0"
+            >💻</span
+          >
+          <span
+            class="absolute top-3/4 right-1/4 text-5xl transform -translate-x-1/2 -translate-y-1/2 opacity-0"
+            >📈</span
+          >
+          <span
+            class="absolute top-1/2 left-3/4 text-3xl transform -translate-x-1/2 -translate-y-1/2 opacity-0"
+            >👟</span
+          >
+          <span
+            class="absolute top-1/4 right-3/4 text-6xl transform -translate-x-1/2 -translate-y-1/2 opacity-0"
+            >✨</span
+          >
+        </div>
+
+        <div class="container mx-auto px-5 lg:max-w-[1120px] relative z-10">
+          <h1
+            id="hero-headline"
+            class="h1-custom text-[var(--text-color)] mb-4 opacity-0 scale-95"
+          >
+            One Hub. Unlimited Possibilities.
+          </h1>
+          <p
+            id="hero-subtext"
+            class="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-gray-600 opacity-0"
+          >
+            Ryangel Solution Limited connects you to products, tools, and
+            marketing services that power your growth in **Zambian Kwacha**.
+          </p>
+          <div id="hero-ctas" class="flex justify-center space-x-4 opacity-0">
+            <button
+              class="px-8 py-3 text-lg text-white rounded-full font-bold btn-primary btn-hover-animate"
+              data-color="primary"
+            >
+              Shop Now
+            </button>
+            <button
+              class="px-8 py-3 text-lg text-white rounded-full font-bold btn-accent btn-hover-animate"
+              data-color="accent"
+            >
+              Get Marketing Help
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🛍️ Featured Products -->
+      <section id="products" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-5 lg:max-w-[1120px]">
+          <h2 class="h2-custom text-center mb-12">Featured Products</h2>
+
+          <div id="product-grid" class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <!-- Products injected by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Core categories removed -->
+
+      <!-- ⚙️ How It Works (3-Step Section) -->
+      <section id="how-it-works" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-5 lg:max-w-[1120px]">
+          <h2 class="h2-custom text-center mb-16">Simple Steps to Success</h2>
+
+          <div id="steps-container" class="grid md:grid-cols-3 gap-12">
+            <!-- Step 1 -->
+            <div class="step-card text-center">
+              <div
+                class="w-24 h-24 mx-auto bg-blue-100 rounded-full flex items-center justify-center mb-6"
+              >
+                <span class="text-4xl text-[var(--primary)]">1️⃣</span>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Browse & Select</h3>
+              <p class="text-gray-600">
+                Browse products or marketing plans tailored for your needs.
+                Filter by Zambian Kwacha pricing.
+              </p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-card text-center">
+              <div
+                class="w-24 h-24 mx-auto bg-orange-100 rounded-full flex items-center justify-center mb-6"
+              >
+                <span class="text-4xl text-[var(--accent)]">🛒</span>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Commit or Consult</h3>
+              <p class="text-gray-600">
+                Add physical items to your cart or request a free consultation
+                for marketing services.
+              </p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-card text-center">
+              <div
+                class="w-24 h-24 mx-auto bg-green-100 rounded-full flex items-center justify-center mb-6"
+              >
+                <span class="text-4xl text-green-600">📦</span>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Instant Results</h3>
+              <p class="text-gray-600">
+                Get fast delivery for products or receive your digital package
+                and strategy instantly.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🌟 Benefits Section -->
+      <section class="py-16 md:py-24">
+        <div class="container mx-auto px-5 lg:max-w-[1120px]">
+          <h2 class="h2-custom text-center mb-12">Why Choose Ryangel?</h2>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Benefit 1 -->
+            <div
+              class="benefit-item flex items-start space-x-4 bg-white p-6 rounded-xl shadow-md"
+            >
+              <div class="flex-shrink-0 text-3xl text-[var(--accent)]">🚚</div>
+              <div>
+                <h3 class="text-lg font-bold">Fast Delivery</h3>
+                <p class="text-gray-600">
+                  Reliable and swift delivery services across Zambia, bringing
+                  your products to your doorstep.
+                </p>
+              </div>
+            </div>
+            <!-- Benefit 2 -->
+            <div
+              class="benefit-item flex items-start space-x-4 bg-white p-6 rounded-xl shadow-md"
+            >
+              <div class="flex-shrink-0 text-3xl text-[var(--primary)]">🛡️</div>
+              <div>
+                <h3 class="text-lg font-bold">Verified Vendors</h3>
+                <p class="text-gray-600">
+                  Shop with confidence knowing all vendors and service providers
+                  are thoroughly vetted.
+                </p>
+              </div>
+            </div>
+            <!-- Benefit 3 -->
+            <div
+              class="benefit-item flex items-start space-x-4 bg-white p-6 rounded-xl shadow-md"
+            >
+              <div class="flex-shrink-0 text-3xl text-[var(--primary)]">💰</div>
+              <div>
+                <h3 class="text-lg font-bold">Affordable Packages</h3>
+                <p class="text-gray-600">
+                  High-quality products and market-leading services available at
+                  competitive Kwacha rates.
+                </p>
+              </div>
+            </div>
+            <!-- Benefit 4 -->
+            <div
+              class="benefit-item flex items-start space-x-4 bg-white p-6 rounded-xl shadow-md"
+            >
+              <div class="flex-shrink-0 text-3xl text-[var(--accent)]">🤝</div>
+              <div>
+                <h3 class="text-lg font-bold">Marketing Tools for SMEs</h3>
+                <p class="text-gray-600">
+                  Specialized digital marketing tools and templates designed
+                  specifically to empower small-to-medium enterprises.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- App CTA banner removed to prioritize product visibility -->
+
+      <!-- 📩 Contact Section -->
+      <section id="contact" class="py-16 md:py-24 bg-[var(--background)]">
+        <div class="container mx-auto px-5 lg:max-w-[1120px]">
+          <h2 class="h2-custom text-center mb-12">Get in Touch</h2>
+          <div
+            class="max-w-xl mx-auto bg-white p-8 md:p-10 rounded-2xl shadow-2xl"
+          >
+            <form id="contact-form" class="space-y-6">
+              <div>
+                <label
+                  for="name"
+                  class="block text-sm font-medium text-gray-700 mb-1"
+                  >Name</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  class="input-glow w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 transition-all duration-300"
+                />
+              </div>
+              <div>
+                <label
+                  for="email"
+                  class="block text-sm font-medium text-gray-700 mb-1"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="input-glow w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 transition-all duration-300"
+                />
+              </div>
+              <div>
+                <label
+                  for="message"
+                  class="block text-sm font-medium text-gray-700 mb-1"
+                  >Message</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  required
+                  class="input-glow w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 transition-all duration-300"
+                ></textarea>
+              </div>
+              <div class="text-center">
+                <button
+                  type="submit"
+                  class="px-8 py-3 text-lg text-white rounded-full font-bold btn-accent btn-hover-animate w-full md:w-auto"
+                  data-color="accent"
+                >
+                  Send Message
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Success Modal (Hidden by default) -->
+    <div
+      id="success-modal"
+      class="fixed inset-0 bg-gray-900 bg-opacity-70 z-50 flex items-end justify-center pointer-events-none opacity-0"
+    >
+      <div
+        class="bg-white rounded-t-2xl p-6 md:p-8 shadow-2xl w-full max-w-md transform translate-y-full"
+      >
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-xl font-bold text-[var(--primary)]">Thank You!</h3>
+          <button
+            id="close-modal-button"
+            class="text-gray-500 hover:text-gray-800 text-2xl"
+          >
+            &times;
+          </button>
+        </div>
+        <p class="text-gray-700">
+          Someone from Ryangel Solution Limited will reach out shortly to
+          discuss your request.
+        </p>
+        <div class="mt-4 text-sm text-gray-500">
+          You can expect an email confirmation at the address you provided.
+        </div>
+      </div>
+    </div>
+
+    <!-- ⚖️ Footer -->
+    <footer class="bg-[var(--text-color)] text-white py-12">
+      <div
+        id="footer-content"
+        class="container mx-auto px-5 lg:max-w-[1120px] text-center md:text-left opacity-0 translate-y-10"
+      >
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 gap-8 border-b border-gray-700 pb-8 mb-8"
+        >
+          <div>
+            <h4 class="text-xl font-bold mb-3">Ryangel Solution Limited</h4>
+            <p class="text-gray-400 text-sm">
+              One Hub. Unlimited Possibilities.
+            </p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-3">Company</h4>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a
+                  href="terms-of-service.html"
+                  class="hover:text-[var(--accent)] transition-colors"
+                  >Terms of Service</a
+                >
+              </li>
+              <li>
+                <a
+                  href="privacy.html"
+                  class="hover:text-[var(--accent)] transition-colors"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="hover:text-[var(--accent)] transition-colors"
+                  >Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-3">Get in Touch</h4>
+            <p class="text-gray-400 text-sm">
+              Email: Manager@ryangellimited.com
+            </p>
+          </div>
+        </div>
+        <div class="text-center text-sm text-gray-500">
+          &copy; <span id="current-year"></span> Ryangel Solution Limited. All
+          rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // GSAP is loaded globally via CDN
+      gsap.registerPlugin(ScrollTrigger);
+
+      const primaryColor = "var(--primary)";
+      const accentColor = "var(--accent)";
+
+      // 1. Utility Function: Button Hover GSAP Effect
+      function initButtonHoverEffects() {
+        document.querySelectorAll(".btn-hover-animate").forEach((button) => {
+          const isPrimary = button.getAttribute("data-color") === "primary";
+
+          button.addEventListener("mouseenter", () => {
+            gsap.to(button, {
+              scale: 1.05,
+              duration: 0.15,
+              ease: "power1.out",
+              backgroundColor: isPrimary ? accentColor : primaryColor, // Shift color
+            });
+          });
+
+          button.addEventListener("mouseleave", () => {
+            gsap.to(button, {
+              scale: 1,
+              duration: 0.15,
+              ease: "power1.out",
+              backgroundColor: isPrimary ? primaryColor : accentColor, // Shift back
+            });
+          });
+        });
+      }
+
+      // 2. Hero Section Animations
+      function animateHero() {
+        const tl = gsap.timeline();
+        tl.to("#hero-headline", {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          ease: "power2.out",
+        })
+          .to(
+            "#hero-subtext",
+            { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+            "-=0.4"
+          )
+          .to(
+            "#hero-ctas",
+            { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+            "-=0.3"
+          );
+
+        // Floating Icons Animation
+        gsap.utils.toArray("#floating-icons span").forEach((icon, i) => {
+          gsap.to(icon, {
+            opacity: 1,
+            y: i % 2 === 0 ? 15 : -15,
+            x: i % 2 === 0 ? 15 : -15,
+            rotation: i % 2 === 0 ? 10 : -10,
+            duration: 8 + i,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+            delay: i * 0.5,
+          });
+        });
+      }
+
+      // 3. Core Categories Animations (Pop-in with staggered hover flips)
+      function animateCategories() {
+        gsap.from(".category-card", {
+          scrollTrigger: {
+            trigger: "#category-grid",
+            start: "top 80%",
+          },
+          opacity: 0,
+          scale: 0.8,
+          y: 50,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: "back.out(1.7)",
+        });
+      }
+
+      // 4. How It Works Animations (Slide-in sequence)
+      function animateSteps() {
+        gsap.from(".step-card", {
+          scrollTrigger: {
+            trigger: "#steps-container",
+            start: "top 80%",
+          },
+          opacity: 0,
+          y: 50,
+          duration: 0.7,
+          stagger: 0.2,
+          ease: "power2.out",
+        });
+      }
+
+      // 5. Benefits Animations (Fade-up staggered)
+      function animateBenefits() {
+        gsap.from(".benefit-item", {
+          scrollTrigger: {
+            trigger: ".benefit-item",
+            start: "top 90%",
+          },
+          opacity: 0,
+          y: 20,
+          duration: 0.5,
+          stagger: 0.15,
+          ease: "power1.out",
+        });
+      }
+
+      // 6. App Download CTA (Slide-in banner)
+      function animateAppCta() {
+        gsap.to("#app-cta-banner", {
+          scrollTrigger: {
+            trigger: "#app-cta-banner",
+            start: "top 90%",
+            end: "bottom 10%",
+            toggleActions: "play reverse play reverse",
+          },
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+        });
+        // Floating product animation within the banner
+        gsap.to("#floating-product-icon", {
+          y: 10,
+          duration: 3,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
+      }
+
+      // 7. Footer Animation (Fade-in + slide-up on scroll end)
+      function animateFooter() {
+        gsap.to("#footer-content", {
+          scrollTrigger: {
+            trigger: "footer",
+            start: "top 95%",
+            toggleActions: "play none none none",
+          },
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+      }
+
+      // 8. Contact Form Submission and Modal
+      const contactForm = document.getElementById("contact-form");
+      const successModal = document.getElementById("success-modal");
+      const closeButton = document.getElementById("close-modal-button");
+      const modalContent = successModal.querySelector("div");
+
+      function showModal() {
+        successModal.classList.remove("pointer-events-none");
+        gsap.to(successModal, { opacity: 1, duration: 0.3 });
+        gsap.fromTo(
+          modalContent,
+          { y: "100%" },
+          { y: "0%", duration: 0.5, ease: "power3.out" }
+        );
+      }
+
+      function hideModal() {
+        gsap.to(modalContent, {
+          y: "100%",
+          duration: 0.3,
+          ease: "power2.in",
+          onComplete: () => {
+            gsap.to(successModal, {
+              opacity: 0,
+              duration: 0.3,
+              onComplete: () => {
+                successModal.classList.add("pointer-events-none");
+              },
+            });
+          },
+        });
+      }
+
+      contactForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // Simulate form submission success
+        console.log("Form submitted successfully!");
+
+        // Show the success modal
+        showModal();
+
+        // Reset the form
+        contactForm.reset();
+      });
+
+      closeButton.addEventListener("click", hideModal);
+
+      // Close modal on outside click
+      successModal.addEventListener("click", (e) => {
+        if (e.target === successModal) {
+          hideModal();
+        }
+      });
+
+      // 9. Mobile Menu Logic
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const closeMenuButton = document.getElementById("close-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuButton.addEventListener("click", () => {
+        gsap.to(mobileMenu, { y: "0%", duration: 0.3, ease: "power2.out" });
+      });
+
+      const closeMobileMenu = () => {
+        gsap.to(mobileMenu, { y: "-100%", duration: 0.3, ease: "power2.in" });
+      };
+
+      closeMenuButton.addEventListener("click", closeMobileMenu);
+
+      // Close menu when a link is clicked
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeMobileMenu);
+      });
+
+      // Initialize all functions
+      window.onload = function () {
+        initButtonHoverEffects();
+        animateHero();
+        animateCategories();
+        animateSteps();
+        animateBenefits();
+        animateAppCta();
+        animateFooter();
+        document.getElementById("current-year").textContent =
+          new Date().getFullYear();
+        // Render featured products
+        renderProducts();
+      };
+
+      // --- Products: sample catalog based on business model ---
+      const PRODUCTS = [
+        {
+          id: "prod-ebook-marketing-001",
+          name: "Ebook: Starter Ecommerce Playbook",
+          price: 75000,
+          currency: "ZMW",
+          category: "Business Tools & Templates",
+          image: "",
+        },
+        {
+          id: "prod-social-kit-002",
+          name: "Social Media Content Kit",
+          price: 120000,
+          currency: "ZMW",
+          category: "Marketing Packages",
+          image: "",
+        },
+        {
+          id: "prod-wireless-headset-003",
+          name: "Wireless Headset (Pro)",
+          price: 140000,
+          currency: "ZMW",
+          category: "Electronics & Gadgets",
+          image: "",
+        },
+        {
+          id: "prod-store-theme-004",
+          name: "E-commerce Store Theme + Setup",
+          price: 150000,
+          currency: "ZMW",
+          category: "E-commerce Consultancy",
+          image: "",
+        },
+      ];
+
+      function formatPrice(zmw) {
+        return `ZMW ${zmw.toLocaleString()}`;
+      }
+
+      function renderProducts() {
+        const grid = document.getElementById("product-grid");
+        PRODUCTS.forEach((p) => {
+          const card = document.createElement("div");
+          card.className =
+            "bg-white p-4 rounded-xl shadow hover:shadow-lg transition-all duration-200";
+
+          const title = document.createElement("h3");
+          title.className = "text-sm font-semibold mb-2";
+          title.textContent = p.name;
+
+          const cat = document.createElement("div");
+          cat.className = "text-xs text-gray-500 mb-3";
+          cat.textContent = p.category;
+
+          const price = document.createElement("div");
+          price.className = "text-lg font-bold text-[var(--primary)] mb-3";
+          price.textContent = formatPrice(p.price);
+
+          const btn = document.createElement("button");
+          btn.className =
+            "px-4 py-2 rounded-full bg-[var(--accent)] text-[var(--text-color)] font-bold";
+          btn.textContent = "Buy Now";
+          btn.addEventListener("click", () => {
+            const checkoutUrl = `https://checkout-page-frontend-development-749119130796.europe-west1.run.app/checkout?id=${encodeURIComponent(
+              p.id
+            )}`;
+            window.loadIframe(checkoutUrl, p.name);
+          });
+
+          card.appendChild(title);
+          card.appendChild(cat);
+          card.appendChild(price);
+          card.appendChild(btn);
+
+          grid.appendChild(card);
+        });
+      }
+
+      // --- Utility: Checkout iframe overlay (global) ---
+      window.loadIframe = function (url, productTitle) {
+        let overlay = document.getElementById("checkoutOverlay");
+        if (!overlay) {
+          overlay = document.createElement("div");
+          overlay.id = "checkoutOverlay";
+          overlay.style.cssText =
+            "position:fixed;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;z-index:10000;";
+
+          const container = document.createElement("div");
+          container.style.cssText =
+            "width:95%;max-width:1100px;height:85%;background:#fff;border-radius:10px;overflow:hidden;position:relative;";
+
+          const closeBtn = document.createElement("button");
+          closeBtn.textContent = "×";
+          closeBtn.setAttribute("aria-label", "Close checkout");
+          closeBtn.style.cssText =
+            "position:absolute;top:8px;right:12px;font-size:28px;background:none;border:none;cursor:pointer;z-index:10001;";
+          closeBtn.addEventListener("click", window.closeCheckoutOverlay);
+
+          const iframe = document.createElement("iframe");
+          iframe.id = "checkoutIframe";
+          iframe.src = url;
+          iframe.style.cssText =
+            "width:100%;height:100%;border:0;display:block;";
+
+          container.appendChild(closeBtn);
+          container.appendChild(iframe);
+          overlay.appendChild(container);
+          document.body.appendChild(overlay);
+        } else {
+          const iframe = document.getElementById("checkoutIframe");
+          if (iframe) iframe.src = url;
+          overlay.style.display = "flex";
+        }
+      };
+
+      window.closeCheckoutOverlay = function () {
+        const overlay = document.getElementById("checkoutOverlay");
+        if (overlay) {
+          const iframe = document.getElementById("checkoutIframe");
+          if (iframe) iframe.src = "about:blank";
+          overlay.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>

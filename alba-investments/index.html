@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alba Investments Limited | Social Media Packages</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&family=Open+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- Icon library (simple, professional icons) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <style>
+      /* CSS Reset and Base Styles */
+      :root {
+        --primary: #1b5e59; /* Deep Teal */
+        --accent: #f6a623; /* Warm Amber */
+        --background: #f7fafb; /* Light Cool Gray */
+        --text: #0f1720; /* Near-Black */
+        --spacing-unit: 20px;
+        --max-width: 1120px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Open Sans", sans-serif;
+        color: var(--text);
+        background-color: var(--background);
+        line-height: 1.65;
+        letter-spacing: 0.2px;
+        min-height: 100vh;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Manrope", sans-serif;
+        color: var(--text);
+        line-height: 1.2;
+      }
+
+      h1 {
+        font-size: 48px;
+        font-weight: 800;
+      }
+      h2 {
+        font-size: 30px;
+        font-weight: 800;
+      }
+      p {
+        font-size: 16px;
+      }
+
+      a {
+        color: var(--primary);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      a:hover {
+        color: var(--accent);
+      }
+
+      /* Utility Classes */
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 var(--spacing-unit);
+      }
+
+      .section-padding {
+        padding: calc(var(--spacing-unit) * 4) 0;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      /* Components */
+
+      /* Header & Navigation */
+      header {
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: var(--spacing-unit) 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .logo {
+        font-family: "Manrope", sans-serif;
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--primary);
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        border-radius: 50px; /* Rounded-pill shape */
+        font-weight: 700;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        text-transform: capitalize;
+        border: 2px solid transparent;
+        font-size: 16px;
+        letter-spacing: 0.5px;
+      }
+
+      .btn-primary {
+        background-color: var(--primary);
+        color: white;
+        border-color: var(--primary);
+      }
+
+      .btn-primary:hover {
+        background-color: #144743; /* Darker teal */
+      }
+
+      .btn-secondary {
+        background-color: transparent;
+        color: var(--primary);
+        border-color: var(--primary);
+      }
+      .btn-secondary:hover {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      /* Hero Section */
+      #hero {
+        padding: calc(var(--spacing-unit) * 5) 0;
+        background: linear-gradient(135deg, var(--background) 0%, #e8f0f3 100%);
+        min-height: 60vh;
+        display: flex;
+        align-items: center;
+      }
+
+      #hero h1 {
+        font-size: 40px;
+        margin-bottom: var(--spacing-unit);
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      #hero p {
+        font-size: 20px;
+        color: var(--text);
+        margin-bottom: calc(var(--spacing-unit) * 2);
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-ctas {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-unit);
+      }
+
+      /* Core Categories */
+      #categories .category-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: calc(var(--spacing-unit) * 2);
+        margin-top: calc(var(--spacing-unit) * 2);
+      }
+
+      .category-card {
+        background-color: white;
+        padding: calc(var(--spacing-unit) * 2);
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        border: 2px solid transparent;
+        transform: translateY(0); /* For GSAP initial state */
+      }
+
+      .category-card i {
+        font-size: 36px;
+        color: var(--primary);
+        margin-bottom: var(--spacing-unit);
+        display: block;
+      }
+
+      .category-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      /* How It Works */
+      #how-it-works .steps-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: calc(var(--spacing-unit) * 3);
+        margin-top: calc(var(--spacing-unit) * 3);
+      }
+
+      .step-item {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--spacing-unit);
+      }
+
+      .step-number {
+        font-family: "Manrope", sans-serif;
+        font-size: 28px;
+        font-weight: 800;
+        color: var(--accent);
+        flex-shrink: 0;
+        width: 40px;
+      }
+
+      .step-content {
+        border-left: 3px solid var(--primary);
+        padding-left: var(--spacing-unit);
+      }
+
+      .step-content h3 {
+        margin-bottom: 5px;
+        color: var(--primary);
+      }
+
+      /* Benefits */
+      #benefits .benefits-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: calc(var(--spacing-unit) * 2);
+        margin-top: calc(var(--spacing-unit) * 2);
+      }
+
+      .benefit-item {
+        display: flex;
+        align-items: center;
+        background-color: white;
+        padding: calc(var(--spacing-unit) * 1.5);
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+      }
+
+      .benefit-item i {
+        font-size: 24px;
+        color: var(--accent);
+        margin-right: var(--spacing-unit);
+        flex-shrink: 0;
+      }
+
+      /* Pricing */
+      #pricing .pricing-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: calc(var(--spacing-unit) * 2);
+        margin-top: calc(var(--spacing-unit) * 3);
+      }
+
+      .package-card {
+        background-color: white;
+        border-radius: 12px;
+        padding: calc(var(--spacing-unit) * 2);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        border-top: 5px solid var(--primary);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      .package-card.highlight {
+        border-top-color: var(--accent);
+      }
+
+      .package-card h3 {
+        color: var(--primary);
+        margin-bottom: var(--spacing-unit);
+      }
+
+      .price {
+        font-size: 36px;
+        font-weight: 800;
+        color: var(--accent);
+        margin-bottom: var(--spacing-unit);
+      }
+
+      .price small {
+        font-size: 16px;
+        color: var(--text);
+        font-weight: 400;
+      }
+
+      .features li {
+        list-style: none;
+        padding: 8px 0;
+        border-bottom: 1px dashed #eee;
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .features li:last-child {
+        border-bottom: none;
+      }
+
+      .features i {
+        color: var(--primary);
+        margin-right: 8px;
+        margin-top: 4px;
+        font-size: 14px;
+        flex-shrink: 0;
+      }
+
+      .package-card .btn {
+        width: 100%;
+        margin-top: calc(var(--spacing-unit) * 1.5);
+      }
+
+      /* Contact Form */
+      #contact {
+        background-color: white;
+      }
+
+      .contact-form {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-unit);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .form-group {
+        position: relative;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: var(--background);
+        transition: box-shadow 0.3s, border-color 0.3s;
+        font-size: 16px;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(27, 94, 89, 0.2); /* Soft glow border */
+        outline: none;
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      /* Dynamic Package Info Widget */
+      #package-info {
+        padding: var(--spacing-unit);
+        background-color: var(--primary);
+        color: white;
+        border-radius: 8px;
+        margin-top: var(--spacing-unit);
+        line-height: 1.5;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transform: scale(1);
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--text);
+        color: #ccc;
+        padding: calc(var(--spacing-unit) * 2) 0;
+        text-align: center;
+        font-size: 14px;
+      }
+
+      footer a {
+        color: var(--accent);
+        margin: 0 10px;
+      }
+
+      /* Optional Feature: FAQ Accordion */
+      .faq-accordion {
+        max-width: 800px;
+        margin: calc(var(--spacing-unit) * 3) auto 0;
+      }
+
+      .faq-item {
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 1px;
+        overflow: hidden;
+        background-color: white;
+        border-radius: 8px;
+      }
+
+      .faq-question {
+        padding: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--primary);
+        transition: background-color 0.2s;
+      }
+
+      .faq-question:hover {
+        background-color: #f0f7f7;
+      }
+
+      .faq-answer {
+        padding: 0 15px;
+        max-height: 0;
+        transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+        background-color: var(--background);
+        color: var(--text);
+      }
+
+      .faq-answer p {
+        padding: 15px 0;
+      }
+
+      .faq-icon {
+        transition: transform 0.3s;
+      }
+
+      .faq-item.active .faq-icon {
+        transform: rotate(180deg);
+      }
+
+      .faq-item.active .faq-answer {
+        max-height: 500px; /* Large enough to accommodate content */
+        padding-bottom: 15px;
+      }
+
+      /* Modal Styles (Success Message) */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 1000;
+        display: none; /* Controlled by JS/GSAP */
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-content {
+        background-color: white;
+        padding: calc(var(--spacing-unit) * 2);
+        border-radius: 12px 12px 0 0; /* Mobile-style slide up */
+        max-width: 90%;
+        width: 500px;
+        box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        position: absolute;
+        bottom: 0; /* Start position for slide-up */
+      }
+
+      .modal-content i {
+        font-size: 48px;
+        color: var(--primary);
+        margin-bottom: var(--spacing-unit);
+      }
+
+      .modal-content h3 {
+        color: var(--primary);
+      }
+
+      /* Sticky Mobile CTA */
+      #mobile-cta-sticky {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        background-color: white;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 99;
+        display: none; /* Hidden by default, shown via media query */
+      }
+
+      #mobile-cta-sticky .btn {
+        width: 100%;
+        padding: 15px 20px;
+      }
+
+      /* Media Queries for Responsiveness */
+
+      /* Tablet (>= 480px) */
+      @media (min-width: 480px) {
+        #hero h1 {
+          font-size: 56px;
+        }
+        #mobile-cta-sticky {
+          display: block;
+        }
+      }
+
+      /* Tablet/Small Desktop (>= 768px) */
+      @media (min-width: 768px) {
+        #hero h1 {
+          font-size: 64px;
+        }
+        .category-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+        .steps-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .benefit-item {
+          display: block;
+          text-align: center;
+        }
+        .benefit-item i {
+          margin: 0 0 10px 0;
+        }
+        .benefits-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .pricing-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        .contact-form {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .contact-form .full-width {
+          grid-column: 1 / span 2;
+        }
+
+        #mobile-cta-sticky {
+          display: none; /* Hide sticky CTA on larger screens */
+        }
+
+        .modal-content {
+          border-radius: 12px;
+          position: relative;
+          bottom: auto;
+        }
+      }
+
+      /* Desktop (>= 992px) */
+      @media (min-width: 992px) {
+        h1 {
+          font-size: 80px;
+        }
+        h2 {
+          font-size: 40px;
+        }
+        .section-padding {
+          padding: calc(var(--spacing-unit) * 6) 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="main-header">
+      <div
+        class="container"
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <a href="#" class="logo">Alba Investments</a>
+        <nav>
+          <!-- Simple navigation for a landing page -->
+        </nav>
+      </div>
+    </header>
+
+    <!-- Sticky Mobile CTA -->
+    <div id="mobile-cta-sticky">
+      <a href="#pricing" class="btn btn-primary">Buy Package</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="text-center">
+      <div class="container">
+        <h1 class="hero-text">Social media that drives value.</h1>
+        <p class="hero-text">
+          Alba Investments Limited helps businesses grow with high-impact
+          social-media packages delivered instantly to your inbox.
+        </p>
+        <div class="hero-ctas">
+          <a href="#pricing" class="btn btn-primary hero-cta-btn"
+            >Get Packages</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Categories Section -->
+    <section id="categories" class="section-padding">
+      <div class="container text-center">
+        <h2 class="animate-header">Our Core Service Pillars</h2>
+        <div class="category-grid">
+          <div class="category-card category-item">
+            <i class="fas fa-chart-line"></i>
+            <h3>Strategy & Planning</h3>
+          </div>
+          <div class="category-card category-item">
+            <i class="fas fa-pen-nib"></i>
+            <h3>Content Creation</h3>
+          </div>
+          <div class="category-card category-item">
+            <i class="fas fa-calendar-alt"></i>
+            <h3>Scheduling & Posting</h3>
+          </div>
+          <div class="category-card category-item">
+            <i class="fas fa-tachometer-alt"></i>
+            <h3>Analytics & Reporting</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section
+      id="how-it-works"
+      class="section-padding"
+      style="background-color: white"
+    >
+      <div class="container text-center">
+        <h2 class="animate-header">The 3-Step Process</h2>
+        <div class="steps-grid">
+          <div class="step-item step-animate">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Choose a package</h3>
+              <p>
+                Select the service level that matches your business needs and
+                budget, from Starter to Scale.
+              </p>
+            </div>
+          </div>
+          <div class="step-item step-animate">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>Provide Brand Info</h3>
+              <p>
+                Complete a simple form with your brand details, preferences, and
+                social media goals.
+              </p>
+            </div>
+          </div>
+          <div class="step-item step-animate">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Receive Assets & Calendar</h3>
+              <p>
+                Get a comprehensive email package with your content, calendar,
+                strategy, and next steps.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="section-padding">
+      <div class="container text-center">
+        <h2 class="animate-header">Why Choose Alba Investments?</h2>
+        <div class="benefits-grid">
+          <div class="benefit-item benefit-animate">
+            <i class="fas fa-envelope"></i>
+            <h4>Fast Delivery — Delivered via Email</h4>
+            <p>
+              No complex portal logins. Receive all assets directly in your
+              inbox for immediate use.
+            </p>
+          </div>
+          <div class="benefit-item benefit-animate">
+            <i class="fas fa-check-circle"></i>
+            <h4>Clear, Actionable Reports</h4>
+            <p>
+              Analytics are translated into plain language and actionable next
+              steps for growth.
+            </p>
+          </div>
+          <div class="benefit-item benefit-animate">
+            <i class="fas fa-lightbulb"></i>
+            <h4>Proven Content Templates</h4>
+            <p>
+              Leverage templates and formats that we know drive engagement and
+              conversions.
+            </p>
+          </div>
+          <div class="benefit-item benefit-animate">
+            <i class="fas fa-layer-group"></i>
+            <h4>Flexible Packages for SMEs</h4>
+            <p>
+              Our solutions are designed specifically for the budgets and
+              agility of small to mid-sized enterprises.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section
+      id="pricing"
+      class="section-padding"
+      style="background-color: white"
+    >
+      <div class="container text-center">
+        <h2 class="animate-header">Select Your Package (Prices in ZMW)</h2>
+        <div class="pricing-grid">
+          <!-- Starter -->
+          <div class="package-card package-animate">
+            <h3>Starter</h3>
+            <p class="price">ZMW 1,200<small>/ month</small></p>
+            <p>Ideal for new businesses or testing the waters.</p>
+            <ul class="features">
+              <li><i class="fas fa-check"></i> 12 Posts / Month</li>
+              <li><i class="fas fa-check"></i> Strategy Snapshot</li>
+              <li><i class="fas fa-check"></i> 1 Basic Report</li>
+            </ul>
+            <a
+              href="#contact"
+              data-package="Starter"
+              class="btn btn-primary buy-now-btn"
+              >Buy Now</a
+            >
+          </div>
+
+          <!-- Growth (Highlight) -->
+          <div class="package-card package-animate highlight">
+            <h3>Growth</h3>
+            <p class="price">ZMW 3,000<small>/ month</small></p>
+            <p>Perfect for established businesses looking to accelerate.</p>
+            <ul class="features">
+              <li><i class="fas fa-check"></i> 24 Posts / Month</li>
+              <li><i class="fas fa-check"></i> Monthly Analytics Report</li>
+              <li><i class="fas fa-check"></i> 1 Campaign Idea</li>
+            </ul>
+            <a
+              href="#contact"
+              data-package="Growth"
+              class="btn btn-primary buy-now-btn"
+              >Buy Now</a
+            >
+          </div>
+
+          <!-- Scale -->
+          <div class="package-card package-animate">
+            <h3>Scale</h3>
+            <p class="price">ZMW 6,500<small>/ month</small></p>
+            <p>For high-volume content needs and aggressive growth.</p>
+            <ul class="features">
+              <li><i class="fas fa-check"></i> 48 Posts / Month</li>
+              <li><i class="fas fa-check"></i> Biweekly Reports</li>
+              <li><i class="fas fa-check"></i> Ad Copy Suggestions</li>
+            </ul>
+            <a
+              href="#contact"
+              data-package="Scale"
+              class="btn btn-primary buy-now-btn"
+              >Buy Now</a
+            >
+          </div>
+
+          <!-- Custom -->
+          <div class="package-card package-animate">
+            <h3>Custom</h3>
+            <p class="price">Contact <small>for quote</small></p>
+            <p>Tailored enterprise packages and complex requirements.</p>
+            <ul class="features">
+              <li><i class="fas fa-check"></i> Dedicated Consultant</li>
+              <li><i class="fas fa-check"></i> Full Content Calendar</li>
+              <li><i class="fas fa-check"></i> Bespoke Strategy</li>
+            </ul>
+            <a
+              href="#contact"
+              data-package="Custom"
+              class="btn btn-secondary buy-now-btn"
+              >Contact Sales</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding">
+      <div class="container text-center">
+        <h2 class="animate-header">Ready to Grow? Get in Touch.</h2>
+        <form id="contact-form" class="contact-form">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="company">Company Name</label>
+            <input type="text" id="company" name="company" required />
+          </div>
+          <div class="form-group">
+            <label for="package">Interested Package</label>
+            <select id="package" name="package" required>
+              <option
+                value="Starter"
+                data-price="1,200 ZMW"
+                data-delivery="48 hours"
+              >
+                Starter (ZMW 1,200)
+              </option>
+              <option
+                value="Growth"
+                data-price="3,000 ZMW"
+                data-delivery="72 hours"
+              >
+                Growth (ZMW 3,000)
+              </option>
+              <option
+                value="Scale"
+                data-price="6,500 ZMW"
+                data-delivery="5 business days"
+              >
+                Scale (ZMW 6,500)
+              </option>
+              <option
+                value="Custom"
+                data-price="Quote Required"
+                data-delivery="Variable"
+              >
+                Custom (Quote)
+              </option>
+            </select>
+          </div>
+
+          <!-- Dynamic Package Info Widget -->
+          <div id="package-info" class="full-width">
+            <p>
+              <strong>Selected:</strong> <span id="info-package">Starter</span>
+            </p>
+            <p>
+              <strong>Price:</strong> <span id="info-price">1,200 ZMW</span>
+            </p>
+            <p>
+              <strong>Est. Delivery:</strong>
+              <span id="info-delivery">48 hours</span>
+            </p>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="brief">Project Brief / Questions</label>
+            <textarea
+              id="brief"
+              name="brief"
+              placeholder="Tell us about your social media goals..."
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-group full-width">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              style="padding: 15px 30px"
+            >
+              Submit Inquiry
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- FAQ Section (Optional Feature) -->
+    <section id="faq" class="section-padding">
+      <div class="container">
+        <h2 class="animate-header text-center">Common Questions</h2>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How are the packages delivered?</span>
+              <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+              <p>
+                All packages (content, strategy, reports, and calendars) are
+                delivered securely via email within the specified turnaround
+                time for your chosen package. This simple email delivery ensures
+                fast deployment without complex client portals.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>What if I need revisions?</span>
+              <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Our packages include a single round of minor revisions on the
+                content draft before final delivery. For complex or ongoing
+                revision needs, we recommend the Scale or Custom packages which
+                offer more hands-on consulting.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Do you handle the actual posting?</span>
+              <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Our primary service is providing ready-to-use assets and
+                strategies. We focus on Content Creation and Planning. However,
+                we provide detailed scheduling instructions and can integrate
+                with your existing scheduling tools like Buffer or Hootsuite.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="main-footer">
+      <div class="container">
+        <p>
+          &copy; 2024 Alba Investments Limited |
+          <a href="mailto:Info@albainvests.com">Info@albainvests.com</a>
+        </p>
+        <p style="margin-top: 5px">
+          <a href="terms-of-service.html">Terms of Service</a> |
+          <a href="privacy.html">Privacy Policy</a>
+        </p>
+      </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal-overlay">
+      <div class="modal-content">
+        <i class="fas fa-check-circle"></i>
+        <h3>Success! Inquiry Sent.</h3>
+        <p style="margin-top: 10px">
+          Thanks! Someone from Alba Investments Limited will reach out via email
+          within 24 hours.
+        </p>
+        <button
+          class="btn btn-primary"
+          id="modal-dismiss-btn"
+          style="margin-top: 20px"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const GREETING_MODAL = document.getElementById("success-modal");
+        const PACKAGE_SELECT = document.getElementById("package");
+        const INFO_PACKAGE = document.getElementById("info-package");
+        const INFO_PRICE = document.getElementById("info-price");
+        const INFO_DELIVERY = document.getElementById("info-delivery");
+        const CONTACT_FORM = document.getElementById("contact-form");
+        const BUY_NOW_BUTTONS = document.querySelectorAll(".buy-now-btn");
+
+        // --- 1. GSAP Animations & ScrollTriggers ---
+
+        // Initial Hero Animation (Entrance)
+        gsap
+          .timeline({ delay: 0.3 })
+          .from(".hero-text", {
+            y: 30,
+            opacity: 0,
+            stagger: 0.2,
+            duration: 0.8,
+            ease: "power2.out",
+          })
+          .from(
+            ".hero-cta-btn",
+            {
+              y: 20,
+              opacity: 0,
+              stagger: 0.15,
+              duration: 0.5,
+              ease: "back.out(1.2)",
+            },
+            "-=0.4"
+          );
+
+        // Card Hover Animation (Category & Pricing)
+        const applyCardHovers = (selector) => {
+          document.querySelectorAll(selector).forEach((card) => {
+            // Initial setup for animation
+            gsap.set(card, { transformOrigin: "center center" });
+
+            const hoverTL = gsap.timeline({
+              paused: true,
+              defaults: { duration: 0.3, ease: "power1.out" },
+            });
+            hoverTL.to(card, {
+              scale: 1.03,
+              boxShadow: "0 10px 20px rgba(27, 94, 89, 0.15)",
+              borderColor: card.classList.contains("highlight")
+                ? "var(--accent)"
+                : "var(--primary)",
+            });
+
+            card.addEventListener("mouseenter", () => hoverTL.play());
+            card.addEventListener("mouseleave", () => hoverTL.reverse());
+          });
+        };
+
+        applyCardHovers(".category-card");
+        applyCardHovers(".package-card");
+
+        // Button Hover Animation
+        document.querySelectorAll(".btn").forEach((button) => {
+          gsap
+            .to(button, {
+              scale: 1.05,
+              duration: 0.3,
+              paused: true,
+              ease: "back.out(2)",
+              boxShadow: "0 5px 15px rgba(246, 166, 35, 0.4)",
+            })
+            .reverse();
+
+          button.addEventListener("mouseenter", (e) => {
+            gsap.to(e.currentTarget, {
+              scale: 1.05,
+              boxShadow: "0 5px 15px rgba(246, 166, 35, 0.4)",
+              duration: 0.3,
+              ease: "back.out(2)",
+            });
+          });
+          button.addEventListener("mouseleave", (e) => {
+            gsap.to(e.currentTarget, {
+              scale: 1,
+              boxShadow: "none",
+              duration: 0.3,
+            });
+          });
+        });
+
+        // Scroll Triggers for Sections
+
+        // Header fade-in
+        gsap.utils.toArray(".animate-header").forEach((header) => {
+          gsap.from(header, {
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: header,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            },
+          });
+        });
+
+        // Category Pop-in (Staggered)
+        gsap.from(".category-item", {
+          scale: 0.8,
+          opacity: 0,
+          duration: 0.6,
+          stagger: 0.15,
+          ease: "back.out(1.5)",
+          scrollTrigger: {
+            trigger: "#categories",
+            start: "top 75%",
+            toggleActions: "play none none none",
+          },
+        });
+
+        // How It Works Slide-in (Staggered)
+        gsap.from(".step-animate", {
+          x: -50,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: "#how-it-works",
+            start: "top 70%",
+            toggleActions: "play none none none",
+          },
+        });
+
+        // Benefits Fade-up with Icon Bounce
+        gsap.from(".benefit-animate", {
+          y: 50,
+          opacity: 0,
+          duration: 0.7,
+          stagger: 0.1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: "#benefits",
+            start: "top 70%",
+            toggleActions: "play none none none",
+          },
+        });
+
+        // Footer Slide-up on Scroll End
+        gsap.from("#main-footer", {
+          y: 50,
+          opacity: 0,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: "body",
+            start: "bottom bottom",
+            end: "bottom 95%",
+            scrub: 0.5,
+            toggleActions: "play none none reverse",
+          },
+        });
+
+        // --- 2. Modal Logic ---
+
+        const openModal = () => {
+          GREETING_MODAL.style.display = "flex";
+          // Slide-up from bottom (mobile style)
+          gsap.to(GREETING_MODAL, { opacity: 1, duration: 0.3 });
+          gsap.fromTo(
+            GREETING_MODAL.querySelector(".modal-content"),
+            { y: "100%", opacity: 0 },
+            { y: "0%", opacity: 1, duration: 0.5, ease: "back.out(1.2)" }
+          );
+        };
+
+        const closeModal = () => {
+          // Slide down to dismiss
+          gsap.to(GREETING_MODAL.querySelector(".modal-content"), {
+            y: "100%",
+            opacity: 0,
+            duration: 0.4,
+            ease: "power2.in",
+            onComplete: () => {
+              gsap.to(GREETING_MODAL, {
+                opacity: 0,
+                duration: 0.2,
+                onComplete: () => {
+                  GREETING_MODAL.style.display = "none";
+                },
+              });
+            },
+          });
+        };
+
+        // Dismiss handlers
+        document
+          .getElementById("modal-dismiss-btn")
+          .addEventListener("click", closeModal);
+        GREETING_MODAL.addEventListener("click", (e) => {
+          if (e.target === GREETING_MODAL) {
+            closeModal();
+          }
+        });
+
+        // --- 3. Form Submission Handling ---
+
+        CONTACT_FORM.addEventListener("submit", function (e) {
+          e.preventDefault(); // Prevent page reload
+
+          // 1. Simulate form submission/data capture
+          const formData = new FormData(CONTACT_FORM);
+          const submissionData = Object.fromEntries(formData.entries());
+          console.log("Form submitted with data:", submissionData);
+
+          // 2. Clear the form
+          CONTACT_FORM.reset();
+
+          // 3. Update the package info widget back to default
+          updatePackageInfo();
+
+          // 4. Show the success modal
+          openModal();
+        });
+
+        // --- 4. Package Selector Widget Logic ---
+
+        const updatePackageInfo = () => {
+          const selectedOption =
+            PACKAGE_SELECT.options[PACKAGE_SELECT.selectedIndex];
+          const pkg = selectedOption.value;
+          const price = selectedOption.getAttribute("data-price");
+          const delivery = selectedOption.getAttribute("data-delivery");
+
+          // GSAP flash animation on info update
+          gsap
+            .timeline()
+            .to("#package-info", {
+              scale: 1.05,
+              duration: 0.1,
+              ease: "power1.in",
+            })
+            .call(() => {
+              INFO_PACKAGE.textContent = pkg;
+              INFO_PRICE.textContent = price;
+              INFO_DELIVERY.textContent = delivery;
+            })
+            .to("#package-info", {
+              scale: 1,
+              duration: 0.3,
+              ease: "power1.out",
+            });
+        };
+
+        PACKAGE_SELECT.addEventListener("change", updatePackageInfo);
+
+        // Prefill logic from 'Buy Now' buttons
+        BUY_NOW_BUTTONS.forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            const packageName = e.currentTarget.getAttribute("data-package");
+
+            // Find and select the corresponding option
+            for (let i = 0; i < PACKAGE_SELECT.options.length; i++) {
+              if (PACKAGE_SELECT.options[i].value === packageName) {
+                PACKAGE_SELECT.selectedIndex = i;
+                break;
+              }
+            }
+            updatePackageInfo();
+          });
+        });
+
+        // Initialize widget on load
+        updatePackageInfo();
+
+        // --- 5. FAQ Accordion Logic ---
+        document.querySelectorAll(".faq-question").forEach((question) => {
+          question.addEventListener("click", (e) => {
+            const parentItem = e.currentTarget.closest(".faq-item");
+            const isActive = parentItem.classList.contains("active");
+
+            // Close all other active items
+            document.querySelectorAll(".faq-item.active").forEach((item) => {
+              if (item !== parentItem) {
+                item.classList.remove("active");
+              }
+            });
+
+            // Toggle current item
+            if (!isActive) {
+              parentItem.classList.add("active");
+            } else {
+              parentItem.classList.remove("active");
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
