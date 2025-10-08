@@ -487,6 +487,8 @@
         color: var(--primary);
       }
 
+      /* (removed) checkout iframe styles to keep implementation minimal */
+
       /* Sticky Mobile CTA */
       #mobile-cta-sticky {
         position: fixed;
@@ -742,12 +744,13 @@
               <li><i class="fas fa-check"></i> Strategy Snapshot</li>
               <li><i class="fas fa-check"></i> 1 Basic Report</li>
             </ul>
-            <a
-              href="#contact"
+            <button
+
+             
               data-package="Starter"
               class="btn btn-primary buy-now-btn"
-              >Buy Now</a
-            >
+              onclick="loadIframe('https://checkout-page-frontend-development-749119130796.europe-west1.run.app/checkout?id=560227f5-424c-4efc-9248-3d6c071bd5d1', 'Starter')"
+              >Buy Now</button>
           </div>
 
           <!-- Growth (Highlight) -->
@@ -760,12 +763,11 @@
               <li><i class="fas fa-check"></i> Monthly Analytics Report</li>
               <li><i class="fas fa-check"></i> 1 Campaign Idea</li>
             </ul>
-            <a
-              href="#contact"
+            <button
               data-package="Growth"
               class="btn btn-primary buy-now-btn"
-              >Buy Now</a
-            >
+              onclick="loadIframe('https://checkout-page-frontend-development-749119130796.europe-west1.run.app/checkout?id=1f306f00-d51a-47f3-8fac-a66236a493cc', 'Growth')"
+            >Buy Now</button>
           </div>
 
           <!-- Scale -->
@@ -778,32 +780,15 @@
               <li><i class="fas fa-check"></i> Biweekly Reports</li>
               <li><i class="fas fa-check"></i> Ad Copy Suggestions</li>
             </ul>
-            <a
-              href="#contact"
+            <button
               data-package="Scale"
               class="btn btn-primary buy-now-btn"
-              >Buy Now</a
-            >
+              onclick="loadIframe('https://checkout-page-frontend-development-749119130796.europe-west1.run.app/checkout?id=0040e347-f6fc-4432-9b22-7cbe6e68353d', 'Scale')"
+            >Buy Now</button>
           </div>
 
           <!-- Custom -->
-          <div class="package-card package-animate">
-            <h3>Custom</h3>
-            <p class="price">Contact <small>for quote</small></p>
-            <p>Tailored enterprise packages and complex requirements.</p>
-            <ul class="features">
-              <li><i class="fas fa-check"></i> Dedicated Consultant</li>
-              <li><i class="fas fa-check"></i> Full Content Calendar</li>
-              <li><i class="fas fa-check"></i> Bespoke Strategy</li>
-            </ul>
-            <a
-              href="#contact"
-              data-package="Custom"
-              class="btn btn-secondary buy-now-btn"
-              >Contact Sales</a
-            >
-          </div>
-        </div>
+          
       </div>
     </section>
 
@@ -979,11 +964,14 @@
       </div>
     </div>
 
+    <!-- (removed) inline checkout section to avoid forced scrolling -->
+
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         gsap.registerPlugin(ScrollTrigger);
 
-        const GREETING_MODAL = document.getElementById("success-modal");
+  const GREETING_MODAL = document.getElementById("success-modal");
+  // (no static checkout section; iframe will be injected dynamically)
         const PACKAGE_SELECT = document.getElementById("package");
         const INFO_PACKAGE = document.getElementById("info-package");
         const INFO_PRICE = document.getElementById("info-price");
@@ -1186,7 +1174,10 @@
           }
         });
 
-        // --- 3. Form Submission Handling ---
+      
+        // No close handlers needed for inline iframe
+
+        // --- 3b. Form Submission Handling ---
 
         CONTACT_FORM.addEventListener("submit", function (e) {
           e.preventDefault(); // Prevent page reload
@@ -1237,21 +1228,7 @@
 
         PACKAGE_SELECT.addEventListener("change", updatePackageInfo);
 
-        // Prefill logic from 'Buy Now' buttons
-        BUY_NOW_BUTTONS.forEach((btn) => {
-          btn.addEventListener("click", (e) => {
-            const packageName = e.currentTarget.getAttribute("data-package");
-
-            // Find and select the corresponding option
-            for (let i = 0; i < PACKAGE_SELECT.options.length; i++) {
-              if (PACKAGE_SELECT.options[i].value === packageName) {
-                PACKAGE_SELECT.selectedIndex = i;
-                break;
-              }
-            }
-            updatePackageInfo();
-          });
-        });
+        // No extra JS click handler needed for Buy Now buttons
 
         // Initialize widget on load
         updatePackageInfo();
@@ -1279,5 +1256,6 @@
         });
       });
     </script>
+    <script src="navigate.js"></script>
   </body>
 </html>

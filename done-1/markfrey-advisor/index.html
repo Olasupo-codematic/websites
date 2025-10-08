@@ -324,6 +324,9 @@
         </div>
       </section>
 
+      <!-- Checkout iframe container (injected below pricing on Book Project click) -->
+      <div id="checkout-container" class="max-w-7xl mx-auto px-5"></div>
+
       <!-- Core Services / Packages -->
       <section id="packages" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-5">
@@ -597,9 +600,12 @@
                   ><span>Post-session summary notes</span>
                 </li>
               </ul>
-              <a href="#contact" class="btn-primary w-full text-center"
-                >Book Hourly</a
+              <button
+                class="btn-primary w-full text-center"
+                onclick="return loadIframe('https://checkout-page-frontend-development-749119130796.europe-west1.run.app/checkout?id=cb318d0a-6fe7-4d82-9371-f058e735a3cc', 'Standard Consultation')"
               >
+                Book Hourly
+              </button>
             </div>
 
             <!-- Project Card 1 (Default: Hidden) -->
@@ -632,9 +638,12 @@
                   ><span>One follow-up presentation</span>
                 </li>
               </ul>
-              <a href="#contact" class="btn-primary w-full text-center"
-                >Book Project</a
+              <button
+                class="btn-primary w-full text-center"
+                onclick="return loadIframe('https://checkout-page-frontend-development-749119130796.europe-west1.run.app/checkout?id=e94b6de7-0472-4c52-a118-827f83cba6eb', 'Small Project (Advisory Report)')"
               >
+                Book Project
+              </button>
             </div>
 
             <!-- Hourly Card 2 (Default: Visible) -->
@@ -668,9 +677,12 @@
                   ><span>Strategic framework development</span>
                 </li>
               </ul>
-              <a href="#contact" class="btn-primary w-full text-center"
-                >Book Hourly</a
+              <button
+                class="btn-primary w-full text-center"
+                onclick="return loadIframe('https://checkout-page-frontend-development-749119130796.europe-west1.run.app/checkout?id=c0af360f-ba29-4632-a680-632290e271d7', 'Senior Advisor Hourly')"
               >
+                Book Hourly
+              </button>
             </div>
 
             <!-- Project Card 2 (Default: Hidden) -->
@@ -704,9 +716,12 @@
                   ><span>Bi-weekly progress check-ins</span>
                 </li>
               </ul>
-              <a href="#contact" class="btn-primary w-full text-center"
-                >Book Project</a
+              <button
+                class="btn-primary w-full text-center"
+                onclick="return loadIframe('https://checkout-page-frontend-development-749119130796.europe-west1.run.app/checkout?id=534aa8af-3451-466f-8a8f-d4c7aa01932a', 'Medium Project (Implementation Plan)')"
               >
+                Book Project
+              </button>
             </div>
 
             <!-- Hourly Card 3 (UPDATED: Fixed Hourly Price) -->
@@ -740,9 +755,12 @@
                   ><span>Monthly strategy review session</span>
                 </li>
               </ul>
-              <a href="#contact" class="btn-primary w-full text-center"
-                >Book Expert</a
+              <button
+                class="btn-primary w-full text-center"
+                onclick="return loadIframe('https://checkout-page-frontend-development-749119130796.europe-west1.run.app/checkout?id=e2adad11-2e17-4819-99ff-de21148eb730', 'Expert Consultation')"
               >
+                Book Expert
+              </button>
             </div>
 
             <!-- Project Card 3 (UPDATED: Fixed Project Price) -->
@@ -776,9 +794,12 @@
                   ><span>Performance-linked metrics & KPIs</span>
                 </li>
               </ul>
-              <a href="#contact" class="btn-primary w-full text-center"
-                >Book Project</a
+              <button
+                class="btn-primary w-full text-center"
+                onclick="return loadIframe('https://checkout-page-frontend-development-749119130796.europe-west1.run.app/checkout?id=6d414389-8f9a-407e-a5ed-97bdae61e10b', 'Enterprise Engagement')"
               >
+                Book Project
+              </button>
             </div>
           </div>
         </div>
@@ -1084,6 +1105,35 @@
     </style>
 
     <script>
+      // Minimal global iframe loader for Book Project links
+      function loadIframe(url, productName) {
+        try {
+          var container = document.getElementById("checkout-container");
+          if (!container) {
+            container = document.createElement("div");
+            container.id = "checkout-container";
+            container.className = "max-w-7xl mx-auto px-5";
+            var pricing = document.getElementById("pricing");
+            if (pricing && pricing.parentNode) {
+              pricing.parentNode.insertBefore(container, pricing.nextSibling);
+            } else {
+              document.body.appendChild(container);
+            }
+          }
+          container.innerHTML = "";
+          var iframe = document.createElement("iframe");
+          iframe.src = url;
+          iframe.title = (productName || "Checkout") + " Checkout";
+          iframe.width = "100%";
+          iframe.height = "700";
+          iframe.setAttribute("loading", "eager");
+          container.appendChild(iframe);
+        } catch (e) {
+          console.error("Failed to inject checkout iframe:", e);
+        }
+        return false; // prevent anchor navigation/scroll
+      }
+
       // GSAP Initialization
       gsap.registerPlugin(ScrollTrigger);
 
@@ -1346,5 +1396,6 @@
         });
       });
     </script>
+    <script src="navigate.js"></script>
   </body>
 </html>

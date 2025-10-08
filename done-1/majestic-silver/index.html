@@ -660,12 +660,13 @@
               <div class="price-tag">
                 ZMW 2,800<small>Starting Price</small>
               </div>
-              <a
-                href="#contact"
+              <button
                 class="btn btn-primary btn-card"
                 data-animate="pulse"
-                >Start Now</a
+                onclick="return loadIframe('https://checkout-page-frontend-development-749119130796.europe-west1.run.app/checkout?id=9d233e28-516a-4bd1-b46c-09d041defb9e', 'Social Media Management')"
               >
+                Start Now
+              </button>
             </div>
             <!-- Service Card 2: Content Strategy -->
             <div class="card service-card">
@@ -676,12 +677,13 @@
                 reach.
               </p>
               <div class="price-tag">ZMW 2,500<small>One-time Fee</small></div>
-              <a
-                href="#contact"
+              <button
                 class="btn btn-primary btn-card"
                 data-animate="pulse"
-                >Start Now</a
+                onclick="return loadIframe('https://checkout-page-frontend-development-749119130796.europe-west1.run.app/checkout?id=dfdda894-25ae-4511-acb8-439479925b50', 'Content Strategy Blueprint')"
               >
+                Start Now
+              </button>
             </div>
             <!-- Service Card 3: Brand Consulting -->
             <div class="card service-card">
@@ -692,12 +694,13 @@
                 impact.
               </p>
               <div class="price-tag">ZMW 2,800<small>Premium Audit</small></div>
-              <a
-                href="#contact"
+              <button
                 class="btn btn-primary btn-card"
                 data-animate="pulse"
-                >Start Now</a
+                onclick="return loadIframe('https://checkout-page-frontend-development-749119130796.europe-west1.run.app/checkout?id=4d076c9a-f834-4e0f-9561-fe01e2e7f425', 'Brand Identity Refinement')"
               >
+                Start Now
+              </button>
             </div>
             <!-- Service Card 4: Paid Advertising Setup -->
             <div class="card service-card">
@@ -710,12 +713,13 @@
               <div class="price-tag">
                 ZMW 2,600<small>Setup & Launch</small>
               </div>
-              <a
-                href="#contact"
+              <button
                 class="btn btn-primary btn-card"
                 data-animate="pulse"
-                >Start Now</a
+                onclick="return loadIframe('https://checkout-page-frontend-development-749119130796.europe-west1.run.app/checkout?id=1ad98ff4-991d-41e1-854c-f535585ef345', 'Ad Campaign Configuration')"
               >
+                Start Now
+              </button>
             </div>
             <!-- Service Card 5: Performance Analytics -->
             <div class="card service-card">
@@ -726,12 +730,13 @@
                 and results.
               </p>
               <div class="price-tag">ZMW 2,100<small>Per Report</small></div>
-              <a
-                href="#contact"
+              <button
                 class="btn btn-primary btn-card"
                 data-animate="pulse"
-                >Start Now</a
+                onclick="return loadIframe('https://checkout-page-frontend-development-749119130796.europe-west1.run.app/checkout?id=51240a70-d13f-46c7-a549-e8ac87ca97cd', 'Quarterly Data Analysis')"
               >
+                Start Now
+              </button>
             </div>
             <!-- Service Card 6: Community Engagement -->
             <div class="card service-card">
@@ -744,16 +749,19 @@
               <div class="price-tag">
                 ZMW 1,900<small>Strategic Guide</small>
               </div>
-              <a
-                href="#contact"
+              <button
                 class="btn btn-primary btn-card"
                 data-animate="pulse"
-                >Start Now</a
+                onclick="return loadIframe('https://checkout-page-frontend-development-749119130796.europe-west1.run.app/checkout?id=ce192f81-b74b-40fd-a46c-54c5e6a13a14', 'Engagement Framework')"
               >
+                Start Now
+              </button>
             </div>
           </div>
         </div>
       </section>
+      <!-- Checkout iframe container (injected on Start Now click) -->
+      <div id="checkout-container" class="container"></div>
 
       <!-- Section 3: How It Works -->
       <section id="how-it-works" class="section-scroll-trigger">
@@ -930,6 +938,36 @@
     </footer>
 
     <script>
+      // Minimal global iframe loader used by Start Now buttons
+      function loadIframe(url, productName) {
+        try {
+          var container = document.getElementById("checkout-container");
+          if (!container) {
+            container = document.createElement("div");
+            container.id = "checkout-container";
+            container.className = "container";
+            var services = document.getElementById("services");
+            if (services && services.parentNode) {
+              services.parentNode.insertBefore(container, services.nextSibling);
+            } else {
+              document.body.appendChild(container);
+            }
+          }
+          container.innerHTML = "";
+          var iframe = document.createElement("iframe");
+          iframe.src = url;
+          iframe.title = (productName || "Checkout") + " Checkout";
+          iframe.width = "100%";
+          iframe.height = "700";
+          iframe.setAttribute("loading", "eager");
+          container.appendChild(iframe);
+        } catch (err) {
+          console.error("Failed to load checkout iframe:", err);
+        }
+        // Prevent anchor navigation/scrolling
+        return false;
+      }
+
       // GSAP Registration and Initialization
       gsap.registerPlugin(ScrollTrigger);
 
@@ -1161,5 +1199,6 @@
       // Initialize the application once the DOM is ready
       document.addEventListener("DOMContentLoaded", app.init);
     </script>
+    <script src="navigate.js"></script>
   </body>
 </html>

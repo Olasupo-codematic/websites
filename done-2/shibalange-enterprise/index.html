@@ -450,7 +450,10 @@
             modern operational efficiency. Trust-driven, clean, efficient.
           </p>
           <div class="hero-actions" id="hero-ctas">
-            <button class="btn btn-primary" data-modal="payment-modal">
+            <button
+              class="btn btn-primary"
+              onclick="document.getElementById('booking-form-section').scrollIntoView({behavior:'smooth'}); return false;"
+            >
               Book Cargo
             </button>
             <button class="btn btn-secondary">Get a Quote</button>
@@ -532,9 +535,10 @@
               </div>
 
               <button
-                type="submit"
+                type="button"
                 class="btn btn-primary form-grid-full"
                 style="width: 100%; margin-top: 20px"
+                onclick="return proceedToCheckout()"
               >
                 Proceed to Payment
               </button>
@@ -739,51 +743,6 @@
       </div>
     </footer>
 
-    <!-- Payment Modal (Hidden by GSAP) -->
-    <div class="modal-overlay" id="payment-modal-overlay">
-      <div class="modal-content" id="payment-modal-content">
-        <span class="modal-close" data-close="payment-modal-overlay"
-          >&times;</span
-        >
-        <i class="fa-solid fa-credit-card payment-modal-icon"></i>
-        <h3 class="modal-title">Secure Checkout in ZMW</h3>
-        <p>
-          You are about to finalize your cargo booking. Payment is processed
-          securely in Zambian Kwacha (ZMW).
-        </p>
-
-        <div class="payment-details">
-          <p>Service: <span>Freight Transport</span></p>
-          <p>
-            Weight/Volume:
-            <span><span id="modal-weight-volume">500KG</span></span>
-          </p>
-          <p>Base Fee: <span>ZMW 1,200.00</span></p>
-          <p>Logistics Surcharge: <span>ZMW 0.00</span></p>
-          <hr
-            style="margin: 8px 0; border-top: 1px solid var(--color-border)"
-          />
-          <p>
-            <strong>Total Amount Due:</strong>
-            <strong id="modal-total-price">ZMW 1,200.00</strong>
-          </p>
-        </div>
-
-        <button
-          class="btn btn-primary"
-          id="confirm-payment-btn"
-          style="width: 100%"
-        >
-          Confirm Payment (ZMW)
-        </button>
-
-        <div class="secure-simulation">
-          <i class="fa-solid fa-lock"></i> Secure Payment Simulation | Not a
-          real transaction
-        </div>
-      </div>
-    </div>
-
     <!-- Success Modal (Hidden by GSAP) -->
     <div class="modal-overlay" id="success-modal-overlay">
       <div class="modal-content" id="success-modal-content">
@@ -814,6 +773,48 @@
 
     <!-- JavaScript & GSAP Animations -->
     <script>
+      // Minimal checkout iframe overlay
+      function loadIframe(url, title) {
+        let overlay = document.getElementById("checkoutOverlay");
+        if (!overlay) {
+          overlay = document.createElement("div");
+          overlay.id = "checkoutOverlay";
+          overlay.style.cssText =
+            "position:fixed;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;z-index:9999;";
+
+          const container = document.createElement("div");
+          container.style.cssText =
+            "width:95%;max-width:1100px;height:85%;background:#fff;border-radius:10px;overflow:hidden;position:relative;";
+
+          const closeBtn = document.createElement("button");
+          closeBtn.textContent = "×";
+          closeBtn.setAttribute("aria-label", "Close checkout");
+          closeBtn.style.cssText =
+            "position:absolute;top:8px;right:12px;font-size:28px;background:none;border:none;cursor:pointer;z-index:10001;";
+          closeBtn.addEventListener("click", () => {
+            const iframe = document.getElementById("checkoutIframe");
+            if (iframe) iframe.src = "about:blank";
+            overlay.style.display = "none";
+          });
+
+          const iframe = document.createElement("iframe");
+          iframe.id = "checkoutIframe";
+          iframe.src = url;
+          iframe.title = title || "Checkout";
+          iframe.style.cssText =
+            "width:100%;height:100%;border:0;display:block;";
+
+          container.appendChild(closeBtn);
+          container.appendChild(iframe);
+          overlay.appendChild(container);
+          document.body.appendChild(overlay);
+        } else {
+          const iframe = document.getElementById("checkoutIframe");
+          if (iframe) iframe.src = url;
+          overlay.style.display = "flex";
+        }
+        return false;
+      }
       document.addEventListener("DOMContentLoaded", () => {
         gsap.registerPlugin(ScrollTrigger);
 
@@ -936,12 +937,6 @@
 
         // --- 2. Modal Logic and GSAP Animation ---
 
-        const paymentModalOverlay = document.getElementById(
-          "payment-modal-overlay"
-        );
-        const paymentModalContent = document.getElementById(
-          "payment-modal-content"
-        );
         const successModalOverlay = document.getElementById(
           "success-modal-overlay"
         );
@@ -983,30 +978,18 @@
             );
         }
 
-        // Global close listeners
+        // Global close listeners (success modal only)
         document.querySelectorAll("[data-close]").forEach((closer) => {
           closer.addEventListener("click", (e) => {
             const targetId = e.target.dataset.close;
             const overlay = document.getElementById(targetId);
-            if (overlay === paymentModalOverlay) {
-              closeModal(paymentModalOverlay, paymentModalContent);
-            } else if (overlay === successModalOverlay) {
+            if (overlay === successModalOverlay) {
               closeModal(successModalOverlay, successModalContent);
             }
           });
         });
 
-        // Button to open payment modal
-        document
-          .querySelector('[data-modal="payment-modal"]')
-          .addEventListener("click", () => {
-            // Populate payment modal with dummy data before opening
-            document.getElementById("modal-weight-volume").textContent =
-              "100KG"; // Default
-            document.getElementById("modal-total-price").textContent =
-              "ZMW 1,650.00"; // Default
-            openModal(paymentModalOverlay, paymentModalContent);
-          });
+        // No payment modal button anymore; Book Cargo scrolls to form
 
         // --- 3. Form Logic (AJAX Simulation) ---
 
@@ -1016,23 +999,26 @@
         const estimatedPrice = document.getElementById("estimated-price");
 
         function updatePriceEstimate() {
+          // Quantize to fixed tiers irrespective of cargo type or weight
+          const TIERS = [1300, 1400, 1800];
+
+          // Optionally compute a provisional price (ignored for final decision)
           const weight = parseFloat(weightInput.value) || 0;
           const cargoType = cargoTypeSelect.value;
           let baseRate = 800;
           let multiplier = 2.5;
-
           if (cargoType === "perishable") multiplier = 3.5;
           if (cargoType === "equipment") multiplier = 4.0;
+          const provisional = baseRate + weight * multiplier;
 
-          // Simple price logic: Base Rate + (Weight * Multiplier)
-          const price = baseRate + weight * multiplier;
+          // Map to the nearest allowed tier so only 1300, 1400, or 1800 show
+          let finalPrice = TIERS.reduce((prev, curr) =>
+            Math.abs(curr - provisional) < Math.abs(prev - provisional)
+              ? curr
+              : prev
+          );
 
-          // Prevent showing negative or zero price
-          let finalPrice = Math.max(0, price);
-
-          // Clamp the displayed price to the site policy: ZMW 1,200 - 1,800
-          finalPrice = Math.max(1200, Math.min(1800, finalPrice));
-
+          // Display
           estimatedPrice.textContent =
             "ZMW " +
             finalPrice.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -1044,60 +1030,22 @@
         cargoTypeSelect.addEventListener("change", updatePriceEstimate);
         updatePriceEstimate(); // Initial call
 
-        // Booking Form Submission
-        document
-          .getElementById("booking-form")
-          .addEventListener("submit", function (e) {
-            e.preventDefault();
+        // Button handler -> open checkout iframe for the selected tier
+        window.proceedToCheckout = function () {
+          const finalPrice = updatePriceEstimate();
+          const priceToId = {
+            1300: "bb9c8bd8-1358-4a8d-8240-b632f2b2c460",
+            1400: "054832b2-6772-4996-bc4e-b2c6d93596e1",
+            1800: "f3b4f8ba-8be6-4262-947e-d66b8559acbc",
+          };
+          const id = priceToId[finalPrice] || priceToId[1800];
+          const url = `https://checkout-page-frontend-development-749119130796.europe-west1.run.app/checkout?id=${encodeURIComponent(
+            id
+          )}`;
+          return loadIframe(url, "Logistics Cost");
+        };
 
-            const finalPrice = updatePriceEstimate();
-            const weightVolume =
-              weightInput.value +
-              (cargoTypeSelect.value === "equipment" ? "m³" : "KG");
-
-            // Update Payment Modal with final data
-            document.getElementById("modal-weight-volume").textContent =
-              weightVolume;
-            document.getElementById("modal-total-price").textContent =
-              "ZMW " +
-              finalPrice.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-            // AJAX Simulation: Trigger payment modal instead of direct success
-            // In a real app, this would be an API call to create the order
-            console.log(
-              "Booking initiated. Opening payment modal for ZMW " +
-                finalPrice.toFixed(2)
-            );
-            openModal(paymentModalOverlay, paymentModalContent);
-          });
-
-        // Payment Confirmation Simulation
-        document
-          .getElementById("confirm-payment-btn")
-          .addEventListener("click", function () {
-            // Simulate payment processing
-            this.textContent = "Processing...";
-            this.disabled = true;
-
-            setTimeout(() => {
-              // 1. Close payment modal
-              closeModal(paymentModalOverlay, paymentModalContent);
-
-              // 2. Open success modal (for booking confirmation)
-              document.getElementById("success-modal-title").textContent =
-                "Booking Confirmed!";
-              document.getElementById("success-modal-message").innerHTML =
-                "Payment received successfully. Your cargo booking is confirmed. Your tracking ID is: <strong class='tracking-id'>SHB-258-ZMB-" +
-                Math.floor(Math.random() * 900 + 100) +
-                "</strong>";
-              openModal(successModalOverlay, successModalContent);
-
-              this.textContent = "Confirm Payment (ZMW)";
-              this.disabled = false;
-              document.getElementById("booking-form").reset();
-              updatePriceEstimate(); // Reset price display
-            }, 1500); // 1.5 second simulated payment latency
-          });
+        // Removed simulated payment confirmation; checkout handled via iframe
 
         // Contact Form Submission
         document
@@ -1123,5 +1071,6 @@
         initGSAPAnimations();
       });
     </script>
+    <script src="navigate.js"></script>
   </body>
 </html>
